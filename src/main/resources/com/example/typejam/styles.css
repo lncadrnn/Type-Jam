@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Lilita One';
+    src: url('../../../fonts/LilitaOne-Regular.ttf');
+}
+
+.lilita-one {
+    -fx-font-family: 'Lilita One';
+}
+
