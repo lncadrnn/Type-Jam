@@ -14,7 +14,7 @@ public class MainMenuController {
 
     @FXML
     private void onPlay(ActionEvent event) throws IOException {
-        switchTo(event, "information.fxml");
+        switchTo(event, "enter-name.fxml");
     }
 
     @FXML
