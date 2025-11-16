@@ -11,38 +11,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainMenuController {
+public class SelectModeController {
 
     @FXML
-    private Button play_btn;
+    private Button back_btn;
 
     @FXML
-    private Button leaderboard_btn;
-
-    @FXML
-    private Button about_btn;
-
-    @FXML
-    private Button settings_btn;
-
-    @FXML
-    private void onPlay(ActionEvent event) throws IOException {
-        switchTo(event, "enter-name.fxml");
-    }
-
-    @FXML
-    private void onLeaderboard(ActionEvent event) throws IOException {
-        switchTo(event, "leaderboards.fxml");
-    }
-
-    @FXML
-    private void onAbout(ActionEvent event) throws IOException {
-        switchTo(event, "about-us.fxml");
-    }
-
-    @FXML
-    private void onSettings(ActionEvent event) throws IOException {
-        switchTo(event, "settings.fxml");
+    private void onBack(ActionEvent event) {
+        try {
+            System.out.println("Back button clicked - navigating to enter-name.fxml");
+            switchTo(event, "enter-name.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error navigating to enter name: " + e.getMessage());
+        }
     }
 
     private void switchTo(ActionEvent event, String fxmlName) throws IOException {

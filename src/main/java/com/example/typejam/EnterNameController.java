@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,25 +14,37 @@ import java.io.IOException;
 public class EnterNameController {
 
     @FXML
-    private void onBack(ActionEvent event) throws IOException {
-        switchTo(event, "main-menu.fxml");
+    private Button back_btn;
+
+    @FXML
+    private void onBack(ActionEvent event) {
+        try {
+            System.out.println("Back button clicked - navigating to main-menu.fxml");
+            switchTo(event, "main-menu.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error navigating to main menu: " + e.getMessage());
+        }
     }
 
     @FXML
-    private void onNext(ActionEvent event) throws IOException {
-        switchTo(event, "select-mode.fxml");
+    private void onNext(ActionEvent event) {
+        try {
+            System.out.println("Next button clicked - navigating to select-mode.fxml");
+            switchTo(event, "select-mode.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error navigating to select mode: " + e.getMessage());
+        }
     }
 
     private void switchTo(ActionEvent event, String fxmlName) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlName));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
+        Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = stage.getScene();
-        if (scene == null) {
-            scene = new Scene(root, 760, 495);
-            stage.setScene(scene);
-        } else {
-            scene.setRoot(root);
-        }
+        Scene scene = new Scene(root, 760, 495);
+        stage.setScene(scene);
+        stage.show();
     }
 }
 
