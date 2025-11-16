@@ -14,7 +14,6 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 760, 495);
         // Disable maximize/minimize: use UTILITY style (close only) and prevent resizing
-        stage.initStyle(StageStyle.UTILITY);
         stage.setResizable(false);
         stage.setTitle("Typing Test Application");
         stage.setScene(scene);
