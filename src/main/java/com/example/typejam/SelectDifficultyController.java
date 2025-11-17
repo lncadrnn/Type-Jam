@@ -32,29 +32,30 @@ public class SelectDifficultyController {
     private javafx.scene.text.Text errorText;
 
     private Button selectedDifficultyButton = null;
+    private String selectedDifficulty = null;
 
     @FXML
     private void onEasyClick(ActionEvent event) {
-        selectDifficulty(easyBtn);
+        selectDifficulty(easyBtn, "Easy");
         // Hide error message if it was showing
         errorText.setVisible(false);
     }
 
     @FXML
     private void onAverageClick(ActionEvent event) {
-        selectDifficulty(averageBtn);
+        selectDifficulty(averageBtn, "Medium");
         // Hide error message if it was showing
         errorText.setVisible(false);
     }
 
     @FXML
     private void onDifficultClick(ActionEvent event) {
-        selectDifficulty(difficultBtn);
+        selectDifficulty(difficultBtn, "Hard");
         // Hide error message if it was showing
         errorText.setVisible(false);
     }
 
-    private void selectDifficulty(Button selectedButton) {
+    private void selectDifficulty(Button selectedButton, String difficulty) {
         // Reset previously selected button
         if (selectedDifficultyButton != null) {
             selectedDifficultyButton.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;");
@@ -62,6 +63,7 @@ public class SelectDifficultyController {
 
         // Apply selected style to the new button
         selectedDifficultyButton = selectedButton;
+        selectedDifficulty = difficulty;
         selectedDifficultyButton.setStyle("-fx-background-color: rgba(43, 82, 55, 0.37); -fx-border-color: #2B5237; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;");
     }
 
@@ -87,6 +89,9 @@ public class SelectDifficultyController {
 
         // Hide error message if it was showing
         errorText.setVisible(false);
+
+        // Save the selected difficulty to GameData
+        GameData.getInstance().setDifficulty(selectedDifficulty);
 
         try {
             System.out.println("Next button clicked - navigating to ready-scene.fxml");

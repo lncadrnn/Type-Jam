@@ -48,6 +48,9 @@ public class EnterNameController {
         // Hide error message if it was showing
         errorText.setVisible(false);
 
+        // Save the player name to GameData
+        GameData.getInstance().setPlayerName(name);
+
         try {
             System.out.println("Next button clicked - navigating to select-mode.fxml");
             switchTo(event, "select-mode.fxml");

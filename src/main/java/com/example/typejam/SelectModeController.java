@@ -29,22 +29,23 @@ public class SelectModeController {
     private javafx.scene.text.Text errorText;
 
     private Button selectedModeButton = null;
+    private String selectedMode = null;
 
     @FXML
     private void onTimeChallengeClick(ActionEvent event) {
-        selectMode(timeChallengeBtn);
+        selectMode(timeChallengeBtn, "Time Challenge");
         // Hide error message if it was showing
         errorText.setVisible(false);
     }
 
     @FXML
     private void onEndlessModeClick(ActionEvent event) {
-        selectMode(endlessModeBtn);
+        selectMode(endlessModeBtn, "Endless Mode");
         // Hide error message if it was showing
         errorText.setVisible(false);
     }
 
-    private void selectMode(Button selectedButton) {
+    private void selectMode(Button selectedButton, String mode) {
         // Reset previously selected button
         if (selectedModeButton != null) {
             selectedModeButton.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;");
@@ -52,6 +53,7 @@ public class SelectModeController {
 
         // Apply selected style to the new button
         selectedModeButton = selectedButton;
+        selectedMode = mode;
         selectedModeButton.setStyle("-fx-background-color: rgba(43, 82, 55, 0.37); -fx-border-color: #2B5237; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;");
     }
 
@@ -77,6 +79,9 @@ public class SelectModeController {
 
         // Hide error message if it was showing
         errorText.setVisible(false);
+
+        // Save the selected mode to GameData
+        GameData.getInstance().setMode(selectedMode);
 
         try {
             System.out.println("Next button clicked - navigating to select-difficulty.fxml");
