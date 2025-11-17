@@ -24,6 +24,9 @@ public class TypingGameController {
     private Text difficultyText;
 
     @FXML
+    private javafx.scene.control.Button backButton;
+
+    @FXML
     public void initialize() {
         // Get data from GameData singleton
         GameData gameData = GameData.getInstance();
@@ -41,8 +44,14 @@ public class TypingGameController {
     }
 
     @FXML
-    private void onBack(ActionEvent event) throws IOException {
-        switchTo(event, "ready-scene.fxml");
+    public void onBack(ActionEvent event) {
+        System.out.println("Back button clicked!");
+        try {
+            switchTo(event, "ready-scene.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error loading ready-scene.fxml: " + e.getMessage());
+        }
     }
 
     private void switchTo(ActionEvent event, String fxmlName) throws IOException {

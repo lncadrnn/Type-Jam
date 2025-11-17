@@ -21,19 +21,6 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="670.0" />
          </children>
       </StackPane>
-      <HBox alignment="CENTER" layoutX="44.0" layoutY="50.0" prefHeight="70.0" prefWidth="94.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#onBack" prefHeight="52.0" style="-fx-background-color: white; -fx-background-radius: 100;">
-               <graphic>
-                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/back.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
       <VBox alignment="TOP_CENTER" layoutX="46.0" layoutY="44.0" prefHeight="278.0" prefWidth="673.0">
          <children>
             <Text fx:id="playerNameText" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="{Name}" textAlignment="CENTER" wrappingWidth="379.6180624961853">
@@ -96,5 +83,18 @@
             </TextField>
          </children>
       </StackPane>
+      <HBox alignment="CENTER" layoutX="44.0" layoutY="50.0" prefHeight="70.0" prefWidth="94.0">
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBack" prefHeight="52.0" style="-fx-background-color: white; -fx-background-radius: 100;">
+               <graphic>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="false">
+                     <image>
+                        <Image url="@../../../assets/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
