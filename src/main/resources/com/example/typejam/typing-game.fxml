@@ -1,16 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="495.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <Text layoutX="200" layoutY="240" text="Typing Game - Coming Soon" fill="#2b5237">
-            <font>
-                <Font name="Arial Bold" size="24.0" />
-            </font>
-        </Text>
-    </children>
+   <children>
+      <StackPane prefHeight="496.0" prefWidth="761.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="495.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="760.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="670.0" />
+         </children>
+      </StackPane>
+      <HBox alignment="CENTER" layoutX="44.0" layoutY="50.0" prefHeight="70.0" prefWidth="94.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="52.0" style="-fx-background-color: white; -fx-background-radius: 100;">
+               <graphic>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <VBox alignment="TOP_CENTER" layoutX="46.0" layoutY="44.0" prefHeight="278.0" prefWidth="673.0">
+         <children>
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="{Name}" textAlignment="CENTER" wrappingWidth="379.6180624961853">
+               <font>
+                  <Font name="Arial Bold" size="32.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="23.0" />
+               </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="{Difficulty} Level">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Text>
+            <StackPane alignment="TOP_CENTER" prefHeight="178.0" prefWidth="661.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="180.0" stroke="#2b5237" strokeType="INSIDE" strokeWidth="5.0" style="-fx-arc-width: 40; -fx-arc-height: 40;" width="589.0">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="{Data Here}" wrappingWidth="551.914587020874">
+                     <StackPane.margin>
+                        <Insets top="15.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </StackPane>
+         </children>
+      </VBox>
+      <StackPane layoutX="576.0" layoutY="49.0" prefHeight="94.0" prefWidth="102.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="54.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 40; -fx-arc-width: 40;" width="99.0" />
+            <Text fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="{TIME}">
+               <font>
+                  <Font name="Arial Bold" size="21.0" />
+               </font>
+            </Text>
+         </children>
+            <TextField prefHeight="55.0" prefWidth="591.0" promptText="Start typing here" text="asasdas">
+      <StackPane layoutX="87.0" layoutY="322.0" prefHeight="128.0" prefWidth="591.0">
+         <children>
+            <TextField fx:id="typingField" prefHeight="55.0" prefWidth="591.0" promptText="Start typing here..." style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #2b5237; -fx-border-width: 2;">
+               <font>
+                  <Font size="19.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+         </children>
+      </StackPane>
+   </children>
 </AnchorPane>
-

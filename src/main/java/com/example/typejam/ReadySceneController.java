@@ -52,7 +52,6 @@ public class ReadySceneController {
             playerName = playerName.substring(0, 30) + "...";
         }
 
-        // Create title text with colored name
         Text titlePart1 = new Text("Are you ready, ");
         titlePart1.setFill(Color.web("#2b5237"));
         titlePart1.setFont(Font.font("Arial", FontWeight.BOLD, 25));
