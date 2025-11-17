@@ -89,9 +89,8 @@ public class SelectDifficultyController {
         errorText.setVisible(false);
 
         try {
-            System.out.println("Next button clicked - navigating to next screen");
-            // TODO: Navigate to the next screen (e.g., game screen)
-            // switchTo(event, "game-screen.fxml");
+            System.out.println("Next button clicked - navigating to ready-scene.fxml");
+            switchTo(event, "ready-scene.fxml");
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Error navigating to next screen: " + e.getMessage());
@@ -107,4 +106,3 @@ public class SelectDifficultyController {
         stage.show();
     }
 }
-
