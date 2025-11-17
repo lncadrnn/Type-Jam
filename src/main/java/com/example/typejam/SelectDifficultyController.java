@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SelectModeController {
+public class SelectDifficultyController {
 
     @FXML
     private Button back_btn;
@@ -22,22 +22,23 @@ public class SelectModeController {
     @FXML
     private void onBack(ActionEvent event) {
         try {
-            System.out.println("Back button clicked - navigating to enter-name.fxml");
-            switchTo(event, "enter-name.fxml");
+            System.out.println("Back button clicked - navigating to select-mode.fxml");
+            switchTo(event, "select-mode.fxml");
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error navigating to enter name: " + e.getMessage());
+            System.err.println("Error navigating to select mode: " + e.getMessage());
         }
     }
 
     @FXML
     private void onNext(ActionEvent event) {
         try {
-            System.out.println("Next button clicked - navigating to select-difficulty.fxml");
-            switchTo(event, "select-difficulty.fxml");
-        } catch (IOException e) {
+            System.out.println("Next button clicked - navigating to next screen");
+            // TODO: Navigate to the next screen (e.g., game screen)
+            // switchTo(event, "game-screen.fxml");
+        } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Error navigating to select difficulty: " + e.getMessage());
+            System.err.println("Error navigating to next screen: " + e.getMessage());
         }
     }
 
