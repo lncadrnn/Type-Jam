@@ -66,7 +66,7 @@
                   <Button fx:id="averageBtn" mnemonicParsing="false" onAction="#onAverageClick" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="684.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Average" wrappingWidth="323.4700516462326">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Medium" wrappingWidth="323.4700516462326">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
@@ -88,7 +88,7 @@
                   <Button fx:id="difficultBtn" mnemonicParsing="false" onAction="#onDifficultClick" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="684.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Difficult" wrappingWidth="323.4700516462326">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hard" wrappingWidth="323.4700516462326">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
