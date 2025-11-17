@@ -28,21 +28,30 @@ public class SelectDifficultyController {
     @FXML
     private Button difficultBtn;
 
+    @FXML
+    private javafx.scene.text.Text errorText;
+
     private Button selectedDifficultyButton = null;
 
     @FXML
     private void onEasyClick(ActionEvent event) {
         selectDifficulty(easyBtn);
+        // Hide error message if it was showing
+        errorText.setVisible(false);
     }
 
     @FXML
     private void onAverageClick(ActionEvent event) {
         selectDifficulty(averageBtn);
+        // Hide error message if it was showing
+        errorText.setVisible(false);
     }
 
     @FXML
     private void onDifficultClick(ActionEvent event) {
         selectDifficulty(difficultBtn);
+        // Hide error message if it was showing
+        errorText.setVisible(false);
     }
 
     private void selectDifficulty(Button selectedButton) {
@@ -69,6 +78,16 @@ public class SelectDifficultyController {
 
     @FXML
     private void onNext(ActionEvent event) {
+        // Check if a difficulty is selected
+        if (selectedDifficultyButton == null) {
+            // Show error message
+            errorText.setVisible(true);
+            return;
+        }
+
+        // Hide error message if it was showing
+        errorText.setVisible(false);
+
         try {
             System.out.println("Next button clicked - navigating to next screen");
             // TODO: Navigate to the next screen (e.g., game screen)

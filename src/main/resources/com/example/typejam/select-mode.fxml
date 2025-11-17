@@ -31,6 +31,14 @@
                   <Font name="Arial Bold" size="32.0" />
                </font>
             </Text>
+            <Text fx:id="errorText" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a mode first!" visible="false">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Text>
             <StackPane prefHeight="108.0" prefWidth="684.0">
                <children>
                   <Button fx:id="timeChallengeBtn" mnemonicParsing="false" onAction="#onTimeChallengeClick" prefHeight="78.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />

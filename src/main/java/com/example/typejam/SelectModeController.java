@@ -25,16 +25,23 @@ public class SelectModeController {
     @FXML
     private Button endlessModeBtn;
 
+    @FXML
+    private javafx.scene.text.Text errorText;
+
     private Button selectedModeButton = null;
 
     @FXML
     private void onTimeChallengeClick(ActionEvent event) {
         selectMode(timeChallengeBtn);
+        // Hide error message if it was showing
+        errorText.setVisible(false);
     }
 
     @FXML
     private void onEndlessModeClick(ActionEvent event) {
         selectMode(endlessModeBtn);
+        // Hide error message if it was showing
+        errorText.setVisible(false);
     }
 
     private void selectMode(Button selectedButton) {
@@ -61,6 +68,16 @@ public class SelectModeController {
 
     @FXML
     private void onNext(ActionEvent event) {
+        // Check if a mode is selected
+        if (selectedModeButton == null) {
+            // Show error message
+            errorText.setVisible(true);
+            return;
+        }
+
+        // Hide error message if it was showing
+        errorText.setVisible(false);
+
         try {
             System.out.println("Next button clicked - navigating to select-difficulty.fxml");
             switchTo(event, "select-difficulty.fxml");
