@@ -36,7 +36,7 @@
       </HBox>
       <VBox alignment="TOP_CENTER" layoutX="46.0" layoutY="44.0" prefHeight="278.0" prefWidth="673.0">
          <children>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="{Name}" textAlignment="CENTER" wrappingWidth="379.6180624961853">
+            <Text fx:id="playerNameText" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="{Name}" textAlignment="CENTER" wrappingWidth="379.6180624961853">
                <font>
                   <Font name="Arial Bold" size="32.0" />
                </font>
@@ -44,7 +44,7 @@
                   <Insets top="23.0" />
                </VBox.margin>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="{Difficulty} Level">
+            <Text fx:id="difficultyText" strokeType="OUTSIDE" strokeWidth="0.0" text="{Difficulty} Level">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
