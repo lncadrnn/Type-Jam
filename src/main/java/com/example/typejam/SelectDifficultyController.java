@@ -20,6 +20,43 @@ public class SelectDifficultyController {
     private Button next_btn;
 
     @FXML
+    private Button easyBtn;
+
+    @FXML
+    private Button averageBtn;
+
+    @FXML
+    private Button difficultBtn;
+
+    private Button selectedDifficultyButton = null;
+
+    @FXML
+    private void onEasyClick(ActionEvent event) {
+        selectDifficulty(easyBtn);
+    }
+
+    @FXML
+    private void onAverageClick(ActionEvent event) {
+        selectDifficulty(averageBtn);
+    }
+
+    @FXML
+    private void onDifficultClick(ActionEvent event) {
+        selectDifficulty(difficultBtn);
+    }
+
+    private void selectDifficulty(Button selectedButton) {
+        // Reset previously selected button
+        if (selectedDifficultyButton != null) {
+            selectedDifficultyButton.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;");
+        }
+
+        // Apply selected style to the new button
+        selectedDifficultyButton = selectedButton;
+        selectedDifficultyButton.setStyle("-fx-background-color: rgba(43, 82, 55, 0.37); -fx-border-color: #2B5237; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;");
+    }
+
+    @FXML
     private void onBack(ActionEvent event) {
         try {
             System.out.println("Back button clicked - navigating to select-mode.fxml");

@@ -33,8 +33,8 @@
             </Text>
             <StackPane prefHeight="80.0" prefWidth="684.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="391.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
-                  <VBox alignment="CENTER" prefHeight="59.0" prefWidth="684.0">
+                  <Button fx:id="easyBtn" mnemonicParsing="false" onAction="#onEasyClick" prefHeight="71.0" prefWidth="391.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="59.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Easy" wrappingWidth="350.8033957481384">
                            <font>
@@ -55,8 +55,8 @@
             </StackPane>
             <StackPane prefHeight="80.0" prefWidth="684.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="391.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
-                  <VBox alignment="CENTER" prefHeight="59.0" prefWidth="684.0">
+                  <Button fx:id="averageBtn" mnemonicParsing="false" onAction="#onAverageClick" prefHeight="71.0" prefWidth="391.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="59.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Average" wrappingWidth="350.8033957481384">
                            <font>
@@ -74,8 +74,8 @@
             </StackPane>
             <StackPane prefHeight="80.0" prefWidth="684.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="391.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
-                  <VBox alignment="CENTER" prefHeight="59.0" prefWidth="684.0">
+                  <Button fx:id="difficultBtn" mnemonicParsing="false" onAction="#onDifficultClick" prefHeight="71.0" prefWidth="391.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="59.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Difficult" wrappingWidth="350.8033957481384">
                            <font>

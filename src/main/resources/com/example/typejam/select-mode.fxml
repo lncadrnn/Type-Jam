@@ -33,8 +33,8 @@
             </Text>
             <StackPane prefHeight="108.0" prefWidth="684.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
-                  <VBox alignment="CENTER" prefHeight="107.0" prefWidth="684.0">
+                  <Button fx:id="timeChallengeBtn" mnemonicParsing="false" onAction="#onTimeChallengeClick" prefHeight="78.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="107.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time Challenge" wrappingWidth="368.1367392539978">
                            <font>
@@ -52,8 +52,8 @@
             </StackPane>
             <StackPane prefHeight="89.0" prefWidth="684.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
-                  <VBox alignment="CENTER" prefHeight="107.0" prefWidth="684.0">
+                  <Button fx:id="endlessModeBtn" mnemonicParsing="false" onAction="#onEndlessModeClick" prefHeight="78.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="107.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Endless Mode" wrappingWidth="368.1367392539978">
                            <font>

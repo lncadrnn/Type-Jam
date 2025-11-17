@@ -20,6 +20,35 @@ public class SelectModeController {
     private Button next_btn;
 
     @FXML
+    private Button timeChallengeBtn;
+
+    @FXML
+    private Button endlessModeBtn;
+
+    private Button selectedModeButton = null;
+
+    @FXML
+    private void onTimeChallengeClick(ActionEvent event) {
+        selectMode(timeChallengeBtn);
+    }
+
+    @FXML
+    private void onEndlessModeClick(ActionEvent event) {
+        selectMode(endlessModeBtn);
+    }
+
+    private void selectMode(Button selectedButton) {
+        // Reset previously selected button
+        if (selectedModeButton != null) {
+            selectedModeButton.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;");
+        }
+
+        // Apply selected style to the new button
+        selectedModeButton = selectedButton;
+        selectedModeButton.setStyle("-fx-background-color: rgba(43, 82, 55, 0.37); -fx-border-color: #2B5237; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;");
+    }
+
+    @FXML
     private void onBack(ActionEvent event) {
         try {
             System.out.println("Back button clicked - navigating to enter-name.fxml");
