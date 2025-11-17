@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,6 +17,12 @@ public class EnterNameController {
 
     @FXML
     private Button back_btn;
+
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private Text errorText;
 
     @FXML
     private void onBack(ActionEvent event) {
@@ -29,6 +37,17 @@ public class EnterNameController {
 
     @FXML
     private void onNext(ActionEvent event) {
+        String name = nameField.getText().trim();
+
+        if (name.isEmpty()) {
+            // Show error message
+            errorText.setVisible(true);
+            return;
+        }
+
+        // Hide error message if it was showing
+        errorText.setVisible(false);
+
         try {
             System.out.println("Next button clicked - navigating to select-mode.fxml");
             switchTo(event, "select-mode.fxml");

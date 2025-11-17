@@ -40,9 +40,17 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Text>
-            <TextField prefHeight="69.0" prefWidth="484.0" promptText="Enter here." style="-fx-border-color: #2B5237; -fx-border-width: 5; -fx-background-radius: 100; -fx-border-radius: 100;">
+            <Text fx:id="errorText" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter a name first!" visible="false">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
                <VBox.margin>
-                  <Insets left="80.0" right="80.0" top="40.0" />
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="nameField" prefHeight="69.0" prefWidth="484.0" promptText="Enter here." style="-fx-border-color: #2B5237; -fx-border-width: 5; -fx-background-radius: 100; -fx-border-radius: 100;">
+               <VBox.margin>
+                  <Insets left="80.0" right="80.0" top="20.0" />
                </VBox.margin>
                <font>
                   <Font name="Arial" size="25.0" />
@@ -61,7 +69,7 @@
             </Button>
          </children>
       </VBox>
-      <TilePane alignment="CENTER" hgap="10.0" layoutX="43.0" layoutY="37.0" prefHeight="78.0" prefWidth="678.0" mouseTransparent="true">
+      <TilePane alignment="CENTER" hgap="10.0" layoutX="43.0" layoutY="37.0" mouseTransparent="true" prefHeight="78.0" prefWidth="678.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 10;" width="140.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 10;" width="140.0" />
@@ -72,7 +80,7 @@
          <children>
             <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="52.0" prefWidth="52.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
                <graphic>
-                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="false" preserveRatio="true" mouseTransparent="true">
+                  <ImageView fitHeight="52.0" fitWidth="52.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
                      <image>
                         <Image url="@../../../assets/back.png" />
                      </image>
