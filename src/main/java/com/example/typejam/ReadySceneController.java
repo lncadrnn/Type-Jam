@@ -47,6 +47,11 @@ public class ReadySceneController {
         String mode = gameData.getMode() != null ? gameData.getMode() : "Mode";
         String difficulty = gameData.getDifficulty() != null ? gameData.getDifficulty() : "Difficulty";
 
+        // Truncate player name to 30 characters maximum with ellipsis
+        if (playerName.length() > 30) {
+            playerName = playerName.substring(0, 30) + "...";
+        }
+
         // Create title text with colored name
         Text titlePart1 = new Text("Are you ready, ");
         titlePart1.setFill(Color.web("#2b5237"));
