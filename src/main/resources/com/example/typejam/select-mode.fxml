@@ -25,24 +25,62 @@
          <children>
             <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT MODE">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets />
                </VBox.margin>
                <font>
                   <Font name="Arial Bold" size="32.0" />
                </font>
             </Text>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your game mode.">
+            <StackPane prefHeight="108.0" prefWidth="684.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <VBox alignment="CENTER" prefHeight="107.0" prefWidth="684.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time Challenge" wrappingWidth="368.1367392539978">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Race against the clock" wrappingWidth="363.4700826704502">
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="89.0" prefWidth="684.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <VBox alignment="CENTER" prefHeight="107.0" prefWidth="684.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Endless Mode" wrappingWidth="368.1367392539978">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type until you finish all text" wrappingWidth="363.4700826704502">
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="199.0" style="-fx-background-color: #2B5237; -fx-background-radius: 50;" text="NEXT" textFill="#f6b539">
                <font>
-                  <Font name="Arial Bold" size="16.0" />
+                  <Font name="Arial Bold" size="25.0" />
                </font>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets top="20.0" />
                </VBox.margin>
-            </Text>
+            </Button>
             <!-- Add your mode selection buttons here -->
          </children>
       </VBox>
-      <TilePane alignment="CENTER" hgap="10.0" layoutX="43.0" layoutY="37.0" prefHeight="78.0" prefWidth="678.0" mouseTransparent="true">
+      <TilePane alignment="CENTER" hgap="10.0" layoutX="43.0" layoutY="37.0" mouseTransparent="true" prefHeight="78.0" prefWidth="678.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 10;" width="140.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 10;" width="140.0" />
@@ -53,7 +91,7 @@
          <children>
             <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="52.0" prefWidth="52.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
                <graphic>
-                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="false" preserveRatio="true" mouseTransparent="true">
+                  <ImageView fitHeight="52.0" fitWidth="52.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
                      <image>
                         <Image url="@../../../assets/back.png" />
                      </image>
@@ -67,4 +105,3 @@
       </HBox>
     </children>
 </AnchorPane>
-
