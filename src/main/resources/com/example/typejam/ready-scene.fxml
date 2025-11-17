@@ -5,8 +5,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -18,23 +20,78 @@
                 <javafx.scene.shape.Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="419.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 70; -fx-arc-height: 70;" width="678.0" />
             </children>
         </StackPane>
-        <TilePane alignment="CENTER" hgap="10.0" layoutX="43.0" layoutY="37.0" mouseTransparent="true" prefHeight="78.0" prefWidth="678.0">
-            <children>
-                <javafx.scene.shape.Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 10;" width="140.0" />
-                <javafx.scene.shape.Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 10;" width="140.0" />
-                <javafx.scene.shape.Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 10;" width="140.0" />
-            </children>
-        </TilePane>
-        <Text layoutX="220.0" layoutY="230.0" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Get Ready!" wrappingWidth="321.765625">
-            <font>
-                <Font name="Arial Bold" size="48.0" />
-            </font>
-        </Text>
-        <Button layoutX="281.0" layoutY="300.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="199.0" style="-fx-background-color: #2B5237; -fx-background-radius: 50;" text="START" textFill="#f6b539">
-            <font>
-                <Font name="Arial Bold" size="25.0" />
-            </font>
-        </Button>
+      <VBox alignment="TOP_CENTER" layoutX="40.0" layoutY="37.0" prefHeight="338.0" prefWidth="678.0">
+         <children>
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you ready, {Name}?">
+               <font>
+                  <Font name="Arial Bold" size="25.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Text>
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="You have selected {mode} in {difficulty} level.">
+               <font>
+                  <Font name="Arial Bold" size="22.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="202.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/hands-typing.png" />
+               </image>
+            </ImageView>
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Crush the words, own the rhythm, and let your">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Text>
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="skills do the talking.">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="41.0" layoutY="373.0" prefHeight="85.0" prefWidth="678.0" spacing="32.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;" text="MAIN MENU" textFill="#f6b539">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/leaderboard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/question-mark.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;" text="LET'S TYPE" textFill="#f6b539">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
     </children>
 </AnchorPane>
-
