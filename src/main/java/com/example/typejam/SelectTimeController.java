@@ -28,6 +28,9 @@ public class SelectTimeController {
     @FXML
     private Button next_btn;
 
+    @FXML
+    private javafx.scene.text.Text errorText;
+
     private Button selectedTimeButton = null;
     private String selectedTime = null;
 
@@ -56,6 +59,9 @@ public class SelectTimeController {
         selectedTimeButton = selectedButton;
         selectedTime = time;
         selectedTimeButton.setStyle("-fx-background-color: rgba(43, 82, 55, 0.37); -fx-border-color: #2B5237; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;");
+
+        // Hide error message if it was showing
+        errorText.setVisible(false);
     }
 
     @FXML
@@ -71,10 +77,18 @@ public class SelectTimeController {
 
     @FXML
     private void onNext(ActionEvent event) {
-        // Save the selected time to GameData
-        if (selectedTime != null) {
-            GameData.getInstance().setTime(selectedTime);
+        // Check if a time is selected
+        if (selectedTimeButton == null) {
+            // Show error message
+            errorText.setVisible(true);
+            return;
         }
+
+        // Hide error message if it was showing
+        errorText.setVisible(false);
+
+        // Save the selected time to GameData
+        GameData.getInstance().setTime(selectedTime);
 
         try {
             System.out.println("Next button clicked - navigating to select-difficulty.fxml");
