@@ -46,6 +46,9 @@ public class TypingGameController {
     private boolean gameStarted = false;
     private boolean gameFinished = false;
     private boolean endlessMode = false;
+    private boolean timeChallengeMode = false;
+    private int timeLimitSeconds = 0;
+    private long countdownStartTime = 0;
 
     // Sample texts based on difficulty
     private static final String[] EASY_TEXTS = {
@@ -73,9 +76,16 @@ public class TypingGameController {
         String playerName = gameData.getPlayerName() != null ? gameData.getPlayerName() : "Player";
         String difficulty = gameData.getDifficulty() != null ? gameData.getDifficulty() : "Easy";
         String mode = gameData.getMode();
+        String timeLimit = gameData.getTime();
 
-        // Determine endless mode
+        // Determine game mode
         endlessMode = mode != null && mode.equalsIgnoreCase("Endless Mode");
+        timeChallengeMode = mode != null && mode.equalsIgnoreCase("Time Challenge");
+
+        // Parse time limit for Time Challenge mode
+        if (timeChallengeMode && timeLimit != null) {
+            timeLimitSeconds = parseTimeLimit(timeLimit);
+        }
 
         // Configure timer/infinity visuals based on mode
         if (endlessMode) {
@@ -85,7 +95,15 @@ public class TypingGameController {
         } else {
             // Time challenge or other mode: hide infinity image, show timer
             if (infinityImage != null) infinityImage.setVisible(false);
-            if (timeText != null) timeText.setVisible(true);
+            if (timeText != null) {
+                timeText.setVisible(true);
+                // Set initial countdown time for Time Challenge mode
+                if (timeChallengeMode && timeLimitSeconds > 0) {
+                    int minutes = timeLimitSeconds / 60;
+                    int seconds = timeLimitSeconds % 60;
+                    timeText.setText(String.format("%d:%02d", minutes, seconds));
+                }
+            }
         }
 
         // Truncate player name to 30 characters maximum with ellipsis
@@ -137,28 +155,87 @@ public class TypingGameController {
         return texts[(int) (Math.random() * texts.length)];
     }
 
+    private int parseTimeLimit(String timeLimit) {
+        // Parse time limits like "1 Minute", "3 Minutes", "5 Minutes"
+        if (timeLimit == null) return 0;
+
+        String[] parts = timeLimit.split(" ");
+        if (parts.length > 0) {
+            try {
+                int minutes = Integer.parseInt(parts[0]);
+                return minutes * 60; // Convert to seconds
+            } catch (NumberFormatException e) {
+                System.err.println("Could not parse time limit: " + timeLimit);
+                return 0;
+            }
+        }
+        return 0;
+    }
+
     private void startGame() {
         gameStarted = true;
         if (endlessMode) {
             // Endless mode: no timer needed
             return;
         }
-        startTime = System.nanoTime();
 
-        // Start timer (only for timed modes)
-        timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                long elapsedMillis = (now - startTime) / 1_000_000;
-                int seconds = (int) (elapsedMillis / 1000);
-                int minutes = seconds / 60;
-                seconds = seconds % 60;
-                if (timeText != null) {
-                    timeText.setText(String.format("%d:%02d", minutes, seconds));
+        startTime = System.nanoTime();
+        countdownStartTime = System.nanoTime();
+
+        if (timeChallengeMode && timeLimitSeconds > 0) {
+            // Time Challenge mode: countdown timer
+            timer = new AnimationTimer() {
+                @Override
+                public void handle(long now) {
+                    long elapsedMillis = (now - countdownStartTime) / 1_000_000;
+                    int elapsedSeconds = (int) (elapsedMillis / 1000);
+                    int remainingSeconds = timeLimitSeconds - elapsedSeconds;
+
+                    if (remainingSeconds <= 0) {
+                        // Time's up!
+                        remainingSeconds = 0;
+                        if (timeText != null) {
+                            timeText.setText("0:00");
+                        }
+                        handleTimeUp();
+                        return;
+                    }
+
+                    int minutes = remainingSeconds / 60;
+                    int seconds = remainingSeconds % 60;
+                    if (timeText != null) {
+                        timeText.setText(String.format("%d:%02d", minutes, seconds));
+                    }
                 }
-            }
-        };
+            };
+        } else {
+            // Regular count-up timer for other modes
+            timer = new AnimationTimer() {
+                @Override
+                public void handle(long now) {
+                    long elapsedMillis = (now - startTime) / 1_000_000;
+                    int seconds = (int) (elapsedMillis / 1000);
+                    int minutes = seconds / 60;
+                    seconds = seconds % 60;
+                    if (timeText != null) {
+                        timeText.setText(String.format("%d:%02d", minutes, seconds));
+                    }
+                }
+            };
+        }
         timer.start();
+    }
+
+    private void handleTimeUp() {
+        if (!gameFinished) {
+            gameFinished = true;
+            if (timer != null) {
+                timer.stop();
+            }
+            typingField.setDisable(true);
+            System.out.println("Time's up! Game over.");
+            // You can add a dialog or message here to show time's up
+        }
     }
 
     private void updateTextDisplay(String typedText) {
