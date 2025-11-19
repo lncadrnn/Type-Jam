@@ -8,13 +8,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class TypeJam extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Load custom font
         Font.loadFont(getClass().getResourceAsStream("/fonts/LilitaOne-Regular.ttf"), 12);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(TypeJam.class.getResource("main-menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 760, 495);
         // Disable maximize/minimize: use UTILITY style (close only) and prevent resizing
         stage.setResizable(false);
