@@ -43,9 +43,9 @@ public class ReadySceneController {
     public void initialize() {
         // Get data from GameData singleton
         GameData gameData = GameData.getInstance();
-        String playerName = gameData.getPlayerName() != null ? gameData.getPlayerName() : "Player";
-        String mode = gameData.getMode() != null ? gameData.getMode() : "Mode";
-        String difficulty = gameData.getDifficulty() != null ? gameData.getDifficulty() : "Difficulty";
+        String playerName = gameData.getPlayerName() != null ? gameData.getPlayerName() : "PLAYER";
+        String mode = gameData.getMode() != null ? gameData.getMode().toUpperCase() : "MODE";
+        String difficulty = gameData.getDifficulty() != null ? gameData.getDifficulty().toUpperCase() : "DIFFICULTY";
 
         // Truncate player name to 30 characters maximum with ellipsis
         if (playerName.length() > 30) {
@@ -57,7 +57,7 @@ public class ReadySceneController {
         titlePart1.setFont(Font.font("Arial", FontWeight.BOLD, 25));
 
         Text titleName = new Text(playerName);
-        titleName.setFill(Color.web("#F6B539"));
+        titleName.setFill(Color.web("#2b5237"));
         titleName.setFont(Font.font("Arial", FontWeight.BOLD, 25));
 
         Text titlePart2 = new Text("?");
@@ -72,7 +72,7 @@ public class ReadySceneController {
         descPart1.setFont(Font.font("Arial", FontWeight.BOLD, 22));
 
         Text descMode = new Text(mode);
-        descMode.setFill(Color.web("#F6B539"));
+        descMode.setFill(Color.web("#2b5237"));
         descMode.setFont(Font.font("Arial", FontWeight.BOLD, 22));
 
         Text descPart2 = new Text(" in ");
@@ -80,10 +80,10 @@ public class ReadySceneController {
         descPart2.setFont(Font.font("Arial", FontWeight.BOLD, 22));
 
         Text descDifficulty = new Text(difficulty);
-        descDifficulty.setFill(Color.web("#F6B539"));
+        descDifficulty.setFill(Color.web("#2b5237"));
         descDifficulty.setFont(Font.font("Arial", FontWeight.BOLD, 22));
 
-        Text descPart3 = new Text(" level.");
+        Text descPart3 = new Text(" LEVEL.");
         descPart3.setFill(Color.web("#2b5237"));
         descPart3.setFont(Font.font("Arial", FontWeight.BOLD, 22));
 
