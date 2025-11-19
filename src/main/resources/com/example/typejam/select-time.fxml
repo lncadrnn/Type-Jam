@@ -21,19 +21,6 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="670.0" />
          </children>
       </StackPane>
-      <HBox alignment="CENTER" layoutX="52.0" layoutY="48.0" prefHeight="74.0" prefWidth="85.0">
-         <children>
-            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" style="-fx-background-color: #fff;" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="525.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/back.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
       <VBox alignment="TOP_CENTER" layoutX="48.0" layoutY="46.0" prefHeight="406.0" prefWidth="672.0">
          <children>
             <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT TIME LIIMIT">
@@ -128,5 +115,18 @@
             </Button>
          </children>
       </VBox>
+      <HBox alignment="CENTER" layoutX="52.0" layoutY="48.0" prefHeight="74.0" prefWidth="85.0">
+         <children>
+            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" style="-fx-background-color: #fff;" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

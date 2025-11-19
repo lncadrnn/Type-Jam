@@ -64,6 +64,14 @@ public class SelectTimeController {
         errorText.setVisible(false);
     }
 
+    // Ensure the back button is front-most at runtime so it can receive mouse events
+    @FXML
+    public void initialize() {
+        if (back_btn != null) {
+            back_btn.toFront();
+        }
+    }
+
     @FXML
     private void onBack(ActionEvent event) {
         try {
@@ -108,4 +116,3 @@ public class SelectTimeController {
         stage.show();
     }
 }
-
