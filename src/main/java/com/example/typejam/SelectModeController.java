@@ -53,7 +53,7 @@ public class SelectModeController {
     private void showOverlay() throws IOException {
         if (overlayPane == null) {
             // Load the overlay FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("time-challenge-overlay.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("select-time.fxml"));
             overlayPane = loader.load();
 
             // Position it to cover the entire scene
