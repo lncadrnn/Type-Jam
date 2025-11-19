@@ -62,6 +62,11 @@
       <StackPane layoutX="576.0" layoutY="49.0" prefHeight="94.0" prefWidth="102.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="54.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 40; -fx-arc-width: 40;" width="99.0" />
+            <ImageView fx:id="infinityImage" fitHeight="49.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/infinity.png" />
+               </image>
+            </ImageView>
             <Text fx:id="timeText" fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00">
                <font>
                   <Font name="Arial Bold" size="21.0" />

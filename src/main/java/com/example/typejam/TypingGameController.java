@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -36,11 +37,15 @@ public class TypingGameController {
     @FXML
     private javafx.scene.control.Button backButton;
 
+    @FXML
+    private ImageView infinityImage;
+
     private String targetText;
     private long startTime;
     private AnimationTimer timer;
     private boolean gameStarted = false;
     private boolean gameFinished = false;
+    private boolean endlessMode = false;
 
     // Sample texts based on difficulty
     private static final String[] EASY_TEXTS = {
@@ -67,6 +72,21 @@ public class TypingGameController {
         GameData gameData = GameData.getInstance();
         String playerName = gameData.getPlayerName() != null ? gameData.getPlayerName() : "Player";
         String difficulty = gameData.getDifficulty() != null ? gameData.getDifficulty() : "Easy";
+        String mode = gameData.getMode();
+
+        // Determine endless mode
+        endlessMode = mode != null && mode.equalsIgnoreCase("Endless Mode");
+
+        // Configure timer/infinity visuals based on mode
+        if (endlessMode) {
+            // Show infinity image, hide time text
+            if (infinityImage != null) infinityImage.setVisible(true);
+            if (timeText != null) timeText.setVisible(false);
+        } else {
+            // Time challenge or other mode: hide infinity image, show timer
+            if (infinityImage != null) infinityImage.setVisible(false);
+            if (timeText != null) timeText.setVisible(true);
+        }
 
         // Truncate player name to 30 characters maximum with ellipsis
         if (playerName.length() > 30) {
@@ -119,9 +139,13 @@ public class TypingGameController {
 
     private void startGame() {
         gameStarted = true;
+        if (endlessMode) {
+            // Endless mode: no timer needed
+            return;
+        }
         startTime = System.nanoTime();
 
-        // Start timer
+        // Start timer (only for timed modes)
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -129,7 +153,9 @@ public class TypingGameController {
                 int seconds = (int) (elapsedMillis / 1000);
                 int minutes = seconds / 60;
                 seconds = seconds % 60;
-                timeText.setText(String.format("%d:%02d", minutes, seconds));
+                if (timeText != null) {
+                    timeText.setText(String.format("%d:%02d", minutes, seconds));
+                }
             }
         };
         timer.start();
@@ -168,13 +194,16 @@ public class TypingGameController {
             }
             typingField.setDisable(true);
 
-            // Calculate final time
-            long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
-            int seconds = (int) (elapsedMillis / 1000);
-            int minutes = seconds / 60;
-            seconds = seconds % 60;
-
-            System.out.println("Game completed in " + minutes + ":" + String.format("%02d", seconds));
+            if (!endlessMode) {
+                // Calculate final time only for timed modes
+                long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
+                int seconds = (int) (elapsedMillis / 1000);
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+                System.out.println("Game completed in " + minutes + ":" + String.format("%02d", seconds));
+            } else {
+                System.out.println("Endless mode text completed.");
+            }
             // You can add a completion dialog or transition here
         }
     }
@@ -202,4 +231,3 @@ public class TypingGameController {
         stage.show();
     }
 }
-
