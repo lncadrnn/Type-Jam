@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.SelectTimeController">
    <children>
       <StackPane prefHeight="496.0" prefWidth="765.0">
          <children>
@@ -23,7 +23,7 @@
       </StackPane>
       <HBox alignment="CENTER" layoutX="52.0" layoutY="48.0" prefHeight="74.0" prefWidth="85.0">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: #fff;" textFill="WHITE">
+            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" style="-fx-background-color: #fff;" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="525.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,7 +46,7 @@
             </Text>
             <StackPane prefHeight="63.0" prefWidth="684.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="oneMinuteBtn" mnemonicParsing="false" onAction="#onOneMinuteClick" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1 Minute" wrappingWidth="323.4700516462326">
@@ -68,7 +68,7 @@
             </StackPane>
             <StackPane prefHeight="63.0" prefWidth="684.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="threeMinuteBtn" mnemonicParsing="false" onAction="#onThreeMinuteClick" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3 Minute" wrappingWidth="323.4700516462326">
@@ -90,7 +90,7 @@
             </StackPane>
             <StackPane prefHeight="63.0" prefWidth="684.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="fiveMinuteBtn" mnemonicParsing="false" onAction="#onFiveMinuteClick" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5 Minute" wrappingWidth="323.4700516462326">
@@ -110,7 +110,7 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </StackPane>
-            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="199.0" style="-fx-background-color: #2B5237; -fx-background-radius: 50;" text="NEXT" textFill="#f6b539">
+            <Button fx:id="next_btn" mnemonicParsing="false" onAction="#onNext" prefHeight="37.0" prefWidth="199.0" style="-fx-background-color: #2B5237; -fx-background-radius: 50;" text="NEXT" textFill="#f6b539">
                <font>
                   <Font name="Arial Bold" size="22.0" />
                </font>

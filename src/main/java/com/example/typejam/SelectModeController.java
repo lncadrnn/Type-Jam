@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -33,48 +32,21 @@ public class SelectModeController {
     @FXML
     private javafx.scene.text.Text errorText;
 
-    private StackPane overlayPane;
 
     private Button selectedModeButton = null;
     private String selectedMode = null;
 
     @FXML
     private void onTimeChallengeClick(ActionEvent event) {
-        // Show the Time Challenge overlay on top of current scene
+        // Save the mode and navigate to select-time.fxml
+        GameData.getInstance().setMode("Time Challenge");
+
         try {
-            System.out.println("Time Challenge button clicked - showing overlay");
-            showOverlay();
+            System.out.println("Time Challenge button clicked - navigating to select-time.fxml");
+            switchTo(event, "select-time.fxml");
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error showing time challenge overlay: " + e.getMessage());
-        }
-    }
-
-    private void showOverlay() throws IOException {
-        if (overlayPane == null) {
-            // Load the overlay FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("select-time.fxml"));
-            overlayPane = loader.load();
-
-            // Position it to cover the entire scene
-            AnchorPane.setTopAnchor(overlayPane, 0.0);
-            AnchorPane.setBottomAnchor(overlayPane, 0.0);
-            AnchorPane.setLeftAnchor(overlayPane, 0.0);
-            AnchorPane.setRightAnchor(overlayPane, 0.0);
-
-            // Add click handler to close overlay when clicking on background
-            overlayPane.setOnMouseClicked(e -> hideOverlay());
-        }
-
-        // Add overlay to the root pane
-        if (!rootPane.getChildren().contains(overlayPane)) {
-            rootPane.getChildren().add(overlayPane);
-        }
-    }
-
-    private void hideOverlay() {
-        if (overlayPane != null && rootPane.getChildren().contains(overlayPane)) {
-            rootPane.getChildren().remove(overlayPane);
+            System.err.println("Error navigating to select time: " + e.getMessage());
         }
     }
 

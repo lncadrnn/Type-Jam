@@ -9,6 +9,7 @@ public class GameData {
     private String playerName;
     private String mode;
     private String difficulty;
+    private String time;
 
     private GameData() {
         // Private constructor for singleton
@@ -45,10 +46,19 @@ public class GameData {
         this.difficulty = difficulty;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public void reset() {
         playerName = null;
         mode = null;
         difficulty = null;
+        time = null;
     }
 }
 
