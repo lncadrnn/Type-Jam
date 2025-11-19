@@ -18,7 +18,7 @@
    <children>
       <StackPane prefHeight="496.0" prefWidth="761.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="495.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="760.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="506.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="768.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="670.0" />
          </children>
       </StackPane>
