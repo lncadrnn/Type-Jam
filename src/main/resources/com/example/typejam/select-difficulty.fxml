@@ -110,7 +110,7 @@
                   <Font name="Arial Bold" size="22.0" />
                </font>
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets top="27.0" />
                </VBox.margin>
             </Button>
          </children>
