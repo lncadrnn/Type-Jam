@@ -42,7 +42,7 @@
             <StackPane prefHeight="108.0" prefWidth="684.0">
                <children>
                   <Button fx:id="timeChallengeBtn" mnemonicParsing="false" onAction="#onTimeChallengeClick" prefHeight="78.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
-                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="107.0" prefWidth="684.0">
+                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="123.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time Challenge" wrappingWidth="368.1367392539978">
                            <font>
@@ -77,12 +77,12 @@
                   </VBox>
                </children>
             </StackPane>
-            <Button fx:id="next_btn" mnemonicParsing="false" onAction="#onNext" prefHeight="56.0" prefWidth="199.0" style="-fx-background-color: #2B5237; -fx-background-radius: 50;" text="NEXT" textFill="#f6b539">
+            <Button fx:id="next_btn" mnemonicParsing="false" onAction="#onNext" prefHeight="45.0" prefWidth="199.0" style="-fx-background-color: #2B5237; -fx-background-radius: 50;" text="NEXT" textFill="#f6b539">
                <font>
                   <Font name="Arial Bold" size="25.0" />
                </font>
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
             </Button>
             <!-- Add your mode selection buttons here -->
