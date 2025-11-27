@@ -243,7 +243,7 @@ public class TypingGameController {
 
         for (int i = 0; i < targetText.length(); i++) {
             Text charText = new Text(String.valueOf(targetText.charAt(i)));
-            charText.setFont(Font.font("Arial", 16));
+            charText.setFont(Font.font("Arial", 28));
 
             if (i < typedText.length()) {
                 // Character has been typed
