@@ -35,7 +35,43 @@ public class ResultSceneController {
     private Button letsTypeButton;
 
     @FXML
+    private javafx.scene.text.Text wpmValue;
+
+    @FXML
+    private javafx.scene.text.Text accuracyValue;
+
+    @FXML
+    private javafx.scene.text.Text timeValue;
+
+    @FXML
+    private javafx.scene.text.Text charactersValue;
+
+    @FXML
     public void initialize() {
+        // Get game data
+        GameData gameData = GameData.getInstance();
+
+        // Display statistics
+        wpmValue.setText(String.valueOf(Math.round(gameData.getWpm())));
+        accuracyValue.setText(String.format("%.2f%%", gameData.getAccuracy()));
+
+        // Format time consumed in words
+        double timeConsumed = gameData.getTimeTaken();
+        int minutes = (int) timeConsumed / 60;
+        int seconds = (int) timeConsumed % 60;
+
+        String timeText;
+        if (minutes > 0 && seconds > 0) {
+            timeText = minutes + (minutes == 1 ? " minute " : " minutes ") + seconds + (seconds == 1 ? " second" : " seconds");
+        } else if (minutes > 0) {
+            timeText = minutes + (minutes == 1 ? " minute" : " minutes");
+        } else {
+            timeText = seconds + (seconds == 1 ? " second" : " seconds");
+        }
+        timeValue.setText(timeText);
+
+        charactersValue.setText(String.valueOf(gameData.getCharactersTyped()));
+
         // Calculate star rating based on game results
         int stars = calculateStarRating();
         displayStars(stars);

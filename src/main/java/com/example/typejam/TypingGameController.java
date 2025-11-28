@@ -51,6 +51,9 @@ public class TypingGameController {
     private long countdownStartTime = 0;
     private int correctChars = 0;
     private int totalCharsTyped = 0;
+    private int errors = 0;
+    private int totalIncorrectKeystrokes = 0; // Track all incorrect keystrokes (cumulative)
+    private String previousTypedText = ""; // Track previous state to detect changes
 
     // Sample texts based on difficulty
     private static final String[] EASY_TEXTS = {
@@ -91,9 +94,12 @@ public class TypingGameController {
 
         // Configure timer/infinity visuals based on mode
         if (endlessMode) {
-            // Show infinity image, hide time text
-            if (infinityImage != null) infinityImage.setVisible(true);
-            if (timeText != null) timeText.setVisible(false);
+            // Endless mode: hide infinity image, show time counting up from 0:00
+            if (infinityImage != null) infinityImage.setVisible(false);
+            if (timeText != null) {
+                timeText.setVisible(true);
+                timeText.setText("0:00");
+            }
         } else {
             // Time challenge or other mode: hide infinity image, show timer
             if (infinityImage != null) infinityImage.setVisible(false);
@@ -176,15 +182,25 @@ public class TypingGameController {
 
     private void startGame() {
         gameStarted = true;
-        if (endlessMode) {
-            // Endless mode: no timer needed
-            return;
-        }
 
         startTime = System.nanoTime();
         countdownStartTime = System.nanoTime();
 
-        if (timeChallengeMode && timeLimitSeconds > 0) {
+        if (endlessMode) {
+            // Endless mode: count up timer starting from 0
+            timer = new AnimationTimer() {
+                @Override
+                public void handle(long now) {
+                    long elapsedMillis = (now - startTime) / 1_000_000;
+                    int seconds = (int) (elapsedMillis / 1000);
+                    int minutes = seconds / 60;
+                    seconds = seconds % 60;
+                    if (timeText != null) {
+                        timeText.setText(String.format("%d:%02d", minutes, seconds));
+                    }
+                }
+            };
+        } else if (timeChallengeMode && timeLimitSeconds > 0) {
             // Time Challenge mode: countdown timer
             timer = new AnimationTimer() {
                 @Override
@@ -241,21 +257,28 @@ public class TypingGameController {
             GameData gameData = GameData.getInstance();
             gameData.setTimeTaken(timeLimitSeconds); // Used full time
 
-            // Calculate accuracy based on what was typed
-            int totalChars = targetText.length();
-            double accuracy = totalCharsTyped > 0 ? (correctChars / (double) totalCharsTyped) * 100 : 0;
-            gameData.setAccuracy(accuracy);
-            gameData.setTotalCharacters(totalChars);
-            gameData.setCorrectCharacters(correctChars);
+            // Calculate accuracy: accounts for all incorrect keystrokes (even if corrected)
+            // Total keystrokes = correct keystrokes + incorrect keystrokes
+            int totalKeystrokesTyped = totalCharsTyped + totalIncorrectKeystrokes;
+            double accuracy = totalKeystrokesTyped > 0 ?
+                ((double)totalCharsTyped / totalKeystrokesTyped) * 100 : 0;
+            if (accuracy < 0) accuracy = 0; // Ensure non-negative
 
-            // Calculate WPM based on correct characters typed
-            double words = correctChars / 5.0;
+            gameData.setAccuracy(accuracy);
+            gameData.setTotalCharacters(targetText.length());
+            gameData.setCorrectCharacters(correctChars);
+            gameData.setCharactersTyped(totalCharsTyped);
+            gameData.setErrors(totalIncorrectKeystrokes); // Use cumulative errors
+
+            // Calculate WPM = (total characters typed / 5) / time in minutes
             double minutes = timeLimitSeconds / 60.0;
-            double wpm = minutes > 0 ? words / minutes : 0;
+            double wpm = minutes > 0 ? (totalCharsTyped / 5.0) / minutes : 0;
             gameData.setWpm(wpm);
 
             System.out.println("Accuracy: " + String.format("%.2f", accuracy) + "%");
             System.out.println("WPM: " + String.format("%.2f", wpm));
+            System.out.println("Characters Typed: " + totalCharsTyped);
+            System.out.println("Total Incorrect Keystrokes: " + totalIncorrectKeystrokes);
 
             // Navigate to loading screen
             try {
@@ -270,6 +293,39 @@ public class TypingGameController {
     private void updateTextDisplay(String typedText) {
         dataTextFlow.getChildren().clear();
 
+        // Track new incorrect keystrokes by comparing with previous state
+        int minLength = Math.min(typedText.length(), previousTypedText.length());
+
+        // Check for new characters typed or corrections
+        if (typedText.length() > previousTypedText.length()) {
+            // New character(s) added - check if they're incorrect
+            for (int i = minLength; i < typedText.length(); i++) {
+                if (i < targetText.length() && typedText.charAt(i) != targetText.charAt(i)) {
+                    totalIncorrectKeystrokes++;
+                }
+            }
+        } else if (typedText.length() < previousTypedText.length()) {
+            // Character(s) deleted (backspace) - no change to totalIncorrectKeystrokes
+            // The error already counted when it was first typed
+        } else {
+            // Same length but character changed at some position
+            for (int i = 0; i < typedText.length(); i++) {
+                if (typedText.charAt(i) != previousTypedText.charAt(i)) {
+                    // Character changed - if the new one is incorrect, count it
+                    if (i < targetText.length() && typedText.charAt(i) != targetText.charAt(i)) {
+                        totalIncorrectKeystrokes++;
+                    }
+                }
+            }
+        }
+
+        previousTypedText = typedText;
+
+        // Reset counters for current state display
+        correctChars = 0;
+        errors = 0;
+        totalCharsTyped = typedText.length();
+
         for (int i = 0; i < targetText.length(); i++) {
             Text charText = new Text(String.valueOf(targetText.charAt(i)));
             charText.setFont(Font.font("Arial", 28));
@@ -279,9 +335,11 @@ public class TypingGameController {
                 if (typedText.charAt(i) == targetText.charAt(i)) {
                     // Correct character - green
                     charText.setFill(Color.web("#28a745"));
+                    correctChars++;
                 } else {
                     // Incorrect character - red
                     charText.setFill(Color.web("#dc3545"));
+                    errors++;
                 }
             } else {
                 // Character not yet typed - black
@@ -303,37 +361,70 @@ public class TypingGameController {
             // Calculate game results
             GameData gameData = GameData.getInstance();
 
-            if (!endlessMode) {
-                // Calculate final time only for timed modes
+            double timeTakenSeconds;
+            if (endlessMode) {
+                // For endless mode, just count the seconds consumed
                 long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
-                double timeTakenSeconds = elapsedMillis / 1000.0;
+                timeTakenSeconds = elapsedMillis / 1000.0;
+                gameData.setTimeTaken(timeTakenSeconds);
+
+                int seconds = (int) timeTakenSeconds;
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+                System.out.println("Endless mode completed in " + minutes + ":" + String.format("%02d", seconds));
+            } else if (timeChallengeMode) {
+                // For timed challenge: time consumed = time spent
+                long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
+                timeTakenSeconds = elapsedMillis / 1000.0; // Time consumed (time spent)
+                gameData.setTimeTaken(timeTakenSeconds);
+
+                int seconds = (int) timeTakenSeconds;
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+                System.out.println("Time challenge completed in " + minutes + ":" + String.format("%02d", seconds));
+            } else {
+                // For other modes, calculate time spent
+                long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
+                timeTakenSeconds = elapsedMillis / 1000.0;
                 gameData.setTimeTaken(timeTakenSeconds);
 
                 int seconds = (int) timeTakenSeconds;
                 int minutes = seconds / 60;
                 seconds = seconds % 60;
                 System.out.println("Game completed in " + minutes + ":" + String.format("%02d", seconds));
-            } else {
-                System.out.println("Endless mode text completed.");
-                gameData.setTimeTaken(0); // No time limit for endless
             }
 
-            // Calculate accuracy
-            int totalChars = targetText.length();
-            double accuracy = (correctChars / (double) totalChars) * 100;
-            gameData.setAccuracy(accuracy);
-            gameData.setTotalCharacters(totalChars);
-            gameData.setCorrectCharacters(correctChars);
+            // Calculate accuracy: accounts for all incorrect keystrokes (even if corrected)
+            // Total keystrokes = correct keystrokes + incorrect keystrokes
+            int totalKeystrokesTyped = totalCharsTyped + totalIncorrectKeystrokes;
+            double accuracy = totalKeystrokesTyped > 0 ?
+                ((double)totalCharsTyped / totalKeystrokesTyped) * 100 : 0;
+            if (accuracy < 0) accuracy = 0; // Ensure non-negative
 
-            // Calculate WPM (Words Per Minute)
-            // Standard: 1 word = 5 characters
-            double words = totalChars / 5.0;
-            double minutes = gameData.getTimeTaken() / 60.0;
-            double wpm = minutes > 0 ? words / minutes : 0;
+            gameData.setAccuracy(accuracy);
+            gameData.setTotalCharacters(targetText.length());
+            gameData.setCorrectCharacters(correctChars);
+            gameData.setCharactersTyped(totalCharsTyped);
+            gameData.setErrors(totalIncorrectKeystrokes); // Use cumulative errors
+
+            // Calculate WPM = (total characters typed / 5) / time in minutes
+            // For time calculation, use actual time spent (not time remaining)
+            double timeForWpm;
+            if (timeChallengeMode) {
+                long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
+                timeForWpm = elapsedMillis / 1000.0;
+            } else {
+                timeForWpm = timeTakenSeconds;
+            }
+
+            double minutes = timeForWpm / 60.0;
+            double wpm = minutes > 0 ? (totalCharsTyped / 5.0) / minutes : 0;
             gameData.setWpm(wpm);
 
             System.out.println("Accuracy: " + String.format("%.2f", accuracy) + "%");
             System.out.println("WPM: " + String.format("%.2f", wpm));
+            System.out.println("Characters Typed: " + totalCharsTyped);
+            System.out.println("Total Incorrect Keystrokes: " + totalIncorrectKeystrokes);
 
             // Navigate to loading screen
             try {

@@ -17,6 +17,8 @@ public class GameData {
     private double wpm; // words per minute
     private int totalCharacters;
     private int correctCharacters;
+    private int charactersTyped; // total characters typed by user
+    private int errors; // incorrect characters typed
 
     private GameData() {
         // Private constructor for singleton
@@ -101,6 +103,22 @@ public class GameData {
         this.correctCharacters = correctCharacters;
     }
 
+    public int getCharactersTyped() {
+        return charactersTyped;
+    }
+
+    public void setCharactersTyped(int charactersTyped) {
+        this.charactersTyped = charactersTyped;
+    }
+
+    public int getErrors() {
+        return errors;
+    }
+
+    public void setErrors(int errors) {
+        this.errors = errors;
+    }
+
     public void reset() {
         playerName = null;
         mode = null;
@@ -111,6 +129,8 @@ public class GameData {
         wpm = 0;
         totalCharacters = 0;
         correctCharacters = 0;
+        charactersTyped = 0;
+        errors = 0;
     }
 }
 
