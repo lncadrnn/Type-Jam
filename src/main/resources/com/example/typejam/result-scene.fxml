@@ -37,6 +37,77 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Text>
+            <StackPane prefHeight="161.0" prefWidth="670.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f0f0f0" height="163.0" stroke="#cccccc" strokeType="INSIDE" strokeWidth="2.0" style="-fx-arc-height: 40; -fx-arc-width: 40;" width="375.0" />
+                  <VBox prefHeight="172.0" prefWidth="412.0" spacing="10.0">
+                     <children>
+                        <HBox alignment="CENTER" prefWidth="295.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Words per Minute:" HBox.hgrow="NEVER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="accuracyValue1" strokeType="OUTSIDE" strokeWidth="0.0" text="{WPM}" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefWidth="295.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Accuracy:" HBox.hgrow="NEVER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="accuracyValue" strokeType="OUTSIDE" strokeWidth="0.0" text="{Accuracy}" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefWidth="295.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time Consumed:" HBox.hgrow="NEVER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="timeValue" strokeType="OUTSIDE" strokeWidth="0.0" text="{Time Left}" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefWidth="295.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Characters Typed:" HBox.hgrow="NEVER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="charactersValue" strokeType="OUTSIDE" strokeWidth="0.0" text="{Characters}" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </StackPane>
          </children>
       </VBox>
       <HBox alignment="CENTER" layoutX="51.0" layoutY="361.0" prefHeight="107.0" prefWidth="670.0" spacing="100.0">
