@@ -42,6 +42,77 @@ How difficulty affects gameplay and scoring
 - Error tolerance: higher difficulties apply stricter checks and may penalize errors more heavily when computing accuracy.
 - Scoring normalization: WPM and accuracy expectations are normalized per difficulty so star thresholds can be meaningful across levels (for example, 50 WPM on Easy may map to higher normalized value than 50 WPM on Hard).
 
+## Calculations
+
+Type-Jam uses specific formulas to measure your typing performance. Here are the detailed calculations:
+
+### Words Per Minute (WPM)
+WPM measures your typing speed. The formula is:
+
+```
+WPM = (Total Characters Typed / 5) / Time in Minutes
+```
+
+- **Total Characters Typed**: The number of characters you successfully typed (visible in the text field)
+- **5**: Standard divisor (represents average word length in English)
+- **Time in Minutes**: The time you spent typing, converted to minutes
+
+**Example:**
+- If you type 250 characters in 2 minutes:
+  - WPM = (250 / 5) / 2 = 50 / 2 = **25 WPM**
+
+**Note:** WPM is rounded to the nearest whole number. For example, 46.66 WPM displays as **47 WPM**.
+
+### Accuracy
+Accuracy measures your typing precision, accounting for all incorrect keystrokes (even if later corrected).
+
+```
+Accuracy = (Total Characters Typed / (Total Characters Typed + Total Incorrect Keystrokes)) × 100
+```
+
+- **Total Characters Typed**: Final number of characters in your completed text
+- **Total Incorrect Keystrokes**: Cumulative count of every incorrect character typed (red characters)
+- Even if you backspace and correct an error, the initial mistake still counts against accuracy
+
+**Example:**
+- You type "hello" but first type "heklo", then backspace and fix it:
+  - Total Characters Typed: 5 (h-e-l-l-o)
+  - Incorrect Keystrokes: 1 (the "k" was wrong)
+  - Accuracy = (5 / (5 + 1)) × 100 = (5 / 6) × 100 = **83.33%**
+
+### Time Consumed
+
+Time consumed is calculated differently based on the game mode:
+
+#### Time Challenge Mode
+Shows the actual time you spent typing:
+```
+Time Consumed = Time Spent (in seconds)
+```
+
+**Example:**
+- Time Limit: 1 minute (60 seconds)
+- You finish in 50 seconds
+- Time Consumed = **50 seconds**
+
+#### Endless Mode
+Shows how long it took you to complete the passage:
+```
+Time Consumed = Elapsed Time (in seconds)
+```
+
+**Example:**
+- You complete an Easy passage in 12 seconds
+- Time Consumed = **12 seconds**
+
+### Characters Typed
+Simply counts the total number of characters you typed in the text field:
+```
+Characters Typed = Length of Typed Text
+```
+
+This represents the final character count, not including deleted/backspaced characters.
+
 ## Scoring and stars
 - Results are summarized with a star rating from 1 to 5, where 5 stars is the best and 1 star is the lowest.
 - The star rating is calculated from a combination of metrics:
