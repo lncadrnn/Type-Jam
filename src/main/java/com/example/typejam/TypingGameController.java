@@ -1,5 +1,7 @@
 package com.example.typejam;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,11 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Map;
 
 public class TypingGameController {
 
@@ -55,27 +62,14 @@ public class TypingGameController {
     private int totalIncorrectKeystrokes = 0; // Track all incorrect keystrokes (cumulative)
     private String previousTypedText = ""; // Track previous state to detect changes
 
-    // Sample texts based on difficulty
-    private static final String[] EASY_TEXTS = {
-        "The",
-        "A",
-        "To"
-    };
-
-    private static final String[] MEDIUM_TEXTS = {
-        "In the midst of chaos, there is also opportunity. The wise warrior avoids the battle.",
-        "Success is not final, failure is not fatal: it is the courage to continue that counts.",
-        "The only impossible journey is the one you never begin. Believe in yourself always."
-    };
-
-    private static final String[] HARD_TEXTS = {
-        "Programming is the art of telling another human what one wants the computer to do. It requires precision, logic, and creativity in equal measure.",
-        "The difference between theory and practice is that in theory there is no difference, but in practice there is. This paradox applies to many areas of life.",
-        "Innovation distinguishes between a leader and a follower. Those who dare to think differently often change the world in profound ways."
-    };
+    // Text data loaded from JSON file
+    private Map<String, List<String>> typingTexts;
 
     @FXML
     public void initialize() {
+        // Load typing texts from JSON file
+        loadTypingTexts();
+
         // Get data from GameData singleton
         GameData gameData = GameData.getInstance();
         String playerName = gameData.getPlayerName() != null ? gameData.getPlayerName() : "Player";
@@ -144,23 +138,61 @@ public class TypingGameController {
         typingField.requestFocus();
     }
 
-    private String selectTextByDifficulty(String difficulty) {
-        String[] texts;
-        switch (difficulty.toLowerCase()) {
-            case "easy":
-                texts = EASY_TEXTS;
-                break;
-            case "medium":
-                texts = MEDIUM_TEXTS;
-                break;
-            case "hard":
-                texts = HARD_TEXTS;
-                break;
-            default:
-                texts = EASY_TEXTS;
+    private void loadTypingTexts() {
+        try {
+            InputStream inputStream = getClass().getResourceAsStream("/data/typing-texts.json");
+            if (inputStream == null) {
+                System.err.println("Could not find typing-texts.json file!");
+                // Fallback to default texts
+                typingTexts = Map.of(
+                    "easy", List.of("The", "A", "To"),
+                    "medium", List.of("Practice makes perfect."),
+                    "hard", List.of("Programming requires precision and creativity.")
+                );
+                return;
+            }
+
+            InputStreamReader reader = new InputStreamReader(inputStream);
+            Gson gson = new Gson();
+            Type type = new TypeToken<Map<String, List<String>>>(){}.getType();
+            typingTexts = gson.fromJson(reader, type);
+
+            System.out.println("Successfully loaded typing texts from JSON file");
+            System.out.println("Easy texts: " + typingTexts.get("easy").size());
+            System.out.println("Medium texts: " + typingTexts.get("medium").size());
+            System.out.println("Hard texts: " + typingTexts.get("hard").size());
+
+            reader.close();
+        } catch (IOException e) {
+            System.err.println("Error loading typing texts: " + e.getMessage());
+            e.printStackTrace();
+            // Fallback to default texts
+            typingTexts = Map.of(
+                "easy", List.of("The", "A", "To"),
+                "medium", List.of("Practice makes perfect."),
+                "hard", List.of("Programming requires precision and creativity.")
+            );
         }
-        // Select a random text from the array
-        return texts[(int) (Math.random() * texts.length)];
+    }
+
+    private String selectTextByDifficulty(String difficulty) {
+        if (typingTexts == null || typingTexts.isEmpty()) {
+            System.err.println("Typing texts not loaded! Using fallback.");
+            return "Type this text.";
+        }
+
+        List<String> texts = typingTexts.get(difficulty.toLowerCase());
+        if (texts == null || texts.isEmpty()) {
+            System.err.println("No texts found for difficulty: " + difficulty);
+            // Fallback to easy texts
+            texts = typingTexts.get("easy");
+            if (texts == null || texts.isEmpty()) {
+                return "Type this text.";
+            }
+        }
+
+        // Select a random text from the list
+        return texts.get((int) (Math.random() * texts.size()));
     }
 
     private int parseTimeLimit(String timeLimit) {

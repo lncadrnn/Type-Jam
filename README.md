@@ -168,9 +168,39 @@ If you use a system-wide Maven installation, replace `./mvnw.cmd` with `mvn`.
 java -jar target\Type-Jam-1.0.jar
 ```
 
+## Customizing Typing Texts
+
+Type-Jam loads typing practice texts from a JSON file, making it easy to add or edit sentences without modifying code.
+
+**Location:** `src/main/resources/data/typing-texts.json`
+
+The file contains text arrays for three difficulty levels:
+- **Easy** - Short, simple texts for beginners
+- **Medium** - Moderate length texts with mixed vocabulary
+- **Hard** - Long, complex texts with punctuation and special characters
+
+### Quick Edit Example:
+```json
+{
+  "easy": [
+    "The quick brown fox.",
+    "Your custom sentence here!"
+  ],
+  "medium": [
+    "Add your medium difficulty texts here."
+  ],
+  "hard": [
+    "Complex paragraphs with punctuation, numbers, and symbols go here."
+  ]
+}
+```
+
+**📖 For detailed instructions, see:** [TYPING-TEXTS-GUIDE.md](TYPING-TEXTS-GUIDE.md)
+
 ## Project structure (high level)
 - `src/main/java` — Java source files and controllers
 - `src/main/resources` — FXML views, images, fonts, and CSS
+  - `data/typing-texts.json` — Customizable typing practice texts
 - `pom.xml` — Maven build configuration
 
 ## Contributing

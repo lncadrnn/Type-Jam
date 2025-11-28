@@ -1,0 +1,22 @@
+{
+  "easy": [
+    "The quick brown fox jumps over the lazy dog.",
+    "Hello world, this is a simple typing test.",
+    "Practice makes perfect when learning to type."
+  ],
+  "medium": [
+    "In the midst of chaos, there is also opportunity. The wise warrior avoids the battle.",
+    "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+    "The only impossible journey is the one you never begin. Believe in yourself always.",
+    "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.",
+    "Life is what happens when you're busy making other plans. Always stay present in the moment."
+  ],
+  "hard": [
+    "Programming is the art of telling another human what one wants the computer to do. It requires precision, logic, and creativity in equal measure.",
+    "The difference between theory and practice is that in theory there is no difference, but in practice there is. This paradox applies to many areas of life.",
+    "Innovation distinguishes between a leader and a follower. Those who dare to think differently often change the world in profound ways.",
+    "The greatest glory in living lies not in never falling, but in rising every time we fall. Resilience, determination, and perseverance are the keys to success.",
+    "Education is the most powerful weapon which you can use to change the world. Knowledge empowers individuals and transforms societies for the better."
+  ]
+}
+
