@@ -49,6 +49,8 @@ public class TypingGameController {
     private boolean timeChallengeMode = false;
     private int timeLimitSeconds = 0;
     private long countdownStartTime = 0;
+    private int correctChars = 0;
+    private int totalCharsTyped = 0;
 
     // Sample texts based on difficulty
     private static final String[] EASY_TEXTS = {
@@ -234,6 +236,27 @@ public class TypingGameController {
             }
             typingField.setDisable(true);
             System.out.println("Time's up! Game over.");
+
+            // Calculate partial results
+            GameData gameData = GameData.getInstance();
+            gameData.setTimeTaken(timeLimitSeconds); // Used full time
+
+            // Calculate accuracy based on what was typed
+            int totalChars = targetText.length();
+            double accuracy = totalCharsTyped > 0 ? (correctChars / (double) totalCharsTyped) * 100 : 0;
+            gameData.setAccuracy(accuracy);
+            gameData.setTotalCharacters(totalChars);
+            gameData.setCorrectCharacters(correctChars);
+
+            // Calculate WPM based on correct characters typed
+            double words = correctChars / 5.0;
+            double minutes = timeLimitSeconds / 60.0;
+            double wpm = minutes > 0 ? words / minutes : 0;
+            gameData.setWpm(wpm);
+
+            System.out.println("Accuracy: " + String.format("%.2f", accuracy) + "%");
+            System.out.println("WPM: " + String.format("%.2f", wpm));
+
             // Navigate to loading screen
             try {
                 loadLoadingScreen();
@@ -277,16 +300,41 @@ public class TypingGameController {
             }
             typingField.setDisable(true);
 
+            // Calculate game results
+            GameData gameData = GameData.getInstance();
+
             if (!endlessMode) {
                 // Calculate final time only for timed modes
                 long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
-                int seconds = (int) (elapsedMillis / 1000);
+                double timeTakenSeconds = elapsedMillis / 1000.0;
+                gameData.setTimeTaken(timeTakenSeconds);
+
+                int seconds = (int) timeTakenSeconds;
                 int minutes = seconds / 60;
                 seconds = seconds % 60;
                 System.out.println("Game completed in " + minutes + ":" + String.format("%02d", seconds));
             } else {
                 System.out.println("Endless mode text completed.");
+                gameData.setTimeTaken(0); // No time limit for endless
             }
+
+            // Calculate accuracy
+            int totalChars = targetText.length();
+            double accuracy = (correctChars / (double) totalChars) * 100;
+            gameData.setAccuracy(accuracy);
+            gameData.setTotalCharacters(totalChars);
+            gameData.setCorrectCharacters(correctChars);
+
+            // Calculate WPM (Words Per Minute)
+            // Standard: 1 word = 5 characters
+            double words = totalChars / 5.0;
+            double minutes = gameData.getTimeTaken() / 60.0;
+            double wpm = minutes > 0 ? words / minutes : 0;
+            gameData.setWpm(wpm);
+
+            System.out.println("Accuracy: " + String.format("%.2f", accuracy) + "%");
+            System.out.println("WPM: " + String.format("%.2f", wpm));
+
             // Navigate to loading screen
             try {
                 loadLoadingScreen();

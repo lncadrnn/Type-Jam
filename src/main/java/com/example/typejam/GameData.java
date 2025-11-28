@@ -11,6 +11,13 @@ public class GameData {
     private String difficulty;
     private String time;
 
+    // Game results
+    private double timeTaken; // in seconds
+    private double accuracy; // percentage (0-100)
+    private double wpm; // words per minute
+    private int totalCharacters;
+    private int correctCharacters;
+
     private GameData() {
         // Private constructor for singleton
     }
@@ -54,11 +61,56 @@ public class GameData {
         this.time = time;
     }
 
+    public double getTimeTaken() {
+        return timeTaken;
+    }
+
+    public void setTimeTaken(double timeTaken) {
+        this.timeTaken = timeTaken;
+    }
+
+    public double getAccuracy() {
+        return accuracy;
+    }
+
+    public void setAccuracy(double accuracy) {
+        this.accuracy = accuracy;
+    }
+
+    public double getWpm() {
+        return wpm;
+    }
+
+    public void setWpm(double wpm) {
+        this.wpm = wpm;
+    }
+
+    public int getTotalCharacters() {
+        return totalCharacters;
+    }
+
+    public void setTotalCharacters(int totalCharacters) {
+        this.totalCharacters = totalCharacters;
+    }
+
+    public int getCorrectCharacters() {
+        return correctCharacters;
+    }
+
+    public void setCorrectCharacters(int correctCharacters) {
+        this.correctCharacters = correctCharacters;
+    }
+
     public void reset() {
         playerName = null;
         mode = null;
         difficulty = null;
         time = null;
+        timeTaken = 0;
+        accuracy = 0;
+        wpm = 0;
+        totalCharacters = 0;
+        correctCharacters = 0;
     }
 }
 

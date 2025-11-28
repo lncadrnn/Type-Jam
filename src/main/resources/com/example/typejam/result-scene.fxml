@@ -20,36 +20,47 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="670.0" />
          </children>
       </StackPane>
-      <VBox alignment="TOP_CENTER" layoutX="45.0" layoutY="48.0" prefHeight="400.0" prefWidth="670.0" spacing="20.0">
+      <VBox alignment="TOP_CENTER" layoutX="45.0" layoutY="48.0" prefHeight="400.0" prefWidth="670.0" spacing="15.0">
          <children>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Result" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Bold" size="48.0" />
-               </font>
+            <HBox fx:id="starsContainer" alignment="CENTER" spacing="15.0">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Game Completed!" textAlignment="CENTER">
+            </HBox>
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Good Effort! Practice makes perfect!" textAlignment="CENTER">
                <font>
-                  <Font name="Arial" size="24.0" />
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Text>
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Keep it up! Each star marks a step closer to mastery." textAlignment="CENTER">
+               <font>
+                  <Font name="Arial" size="20.0" />
                </font>
             </Text>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="44.0" layoutY="50.0" prefHeight="70.0" prefWidth="94.0">
+      <HBox alignment="CENTER" layoutX="51.0" layoutY="361.0" prefHeight="107.0" prefWidth="670.0" spacing="100.0">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBack" prefHeight="52.0" style="-fx-background-color: white; -fx-background-radius: 100;">
+            <Button fx:id="mainMenuButton" mnemonicParsing="false" onAction="#onMainMenu" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;" text="MAIN MENU" textFill="#f6b539">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="leaderboardButton" mnemonicParsing="false" onAction="#onLeaderboard" prefHeight="42.0" prefWidth="42.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;">
                <graphic>
-                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="false">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../assets/back.png" />
+                        <Image url="@../../../assets/leaderboard.png" />
                      </image>
                   </ImageView>
                </graphic>
+            </Button>
+            <Button fx:id="letsTypeButton" mnemonicParsing="false" onAction="#onLetsType" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;" text="TRY AGAIN?" textFill="#f6b539">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
             </Button>
          </children>
       </HBox>
    </children>
 </AnchorPane>
-
