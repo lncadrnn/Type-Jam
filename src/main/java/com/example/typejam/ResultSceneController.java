@@ -111,9 +111,9 @@ public class ResultSceneController {
             star.setStroke(Color.BLACK);
             star.setStrokeWidth(1);
 
-            // Make stars a little bigger
-            star.setScaleX(1.4);
-            star.setScaleY(1.4);
+            // Make stars bigger
+            star.setScaleX(1.9);
+            star.setScaleY(1.9);
 
             starsContainer.getChildren().add(star);
         }

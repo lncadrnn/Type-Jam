@@ -20,11 +20,11 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="670.0" />
          </children>
       </StackPane>
-      <VBox alignment="TOP_CENTER" layoutX="45.0" layoutY="48.0" prefHeight="400.0" prefWidth="670.0" spacing="15.0">
+      <VBox alignment="TOP_CENTER" layoutX="45.0" layoutY="48.0" prefHeight="400.0" prefWidth="670.0">
          <children>
-            <HBox fx:id="starsContainer" alignment="CENTER" spacing="15.0">
+            <HBox fx:id="starsContainer" alignment="CENTER" prefWidth="670.0" spacing="40.0">
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets bottom="30.0" top="40.0" />
                </VBox.margin>
             </HBox>
             <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Good Effort! Practice makes perfect!" textAlignment="CENTER">
