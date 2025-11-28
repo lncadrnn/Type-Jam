@@ -3,14 +3,21 @@ package com.example.typejam;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LeaderboardsController {
 
@@ -183,18 +190,143 @@ public class LeaderboardsController {
 
         System.out.println("Loading leaderboard data for: " + filterDescription);
 
-        // TODO: Implement actual leaderboard data loading based on the filters
-        // You can add logic here to:
-        // 1. Query a database or JSON file for leaderboard entries
-        // 2. Filter entries based on selectedMode and/or selectedDifficulty
-        // 3. Display the filtered entries in the leaderboardContent VBox
+        // TODO: Replace this with actual database/JSON data loading
+        // For now, load sample data
+        List<LeaderboardEntry> entries = getSampleLeaderboardData();
 
-        // Example filter logic:
-        // - If selectedMode is "Time Challenge" and selectedDifficulty is "Easy"
-        //   -> Show only Time Challenge + Easy entries
-        // - If only selectedMode is set -> Show all entries for that mode
-        // - If only selectedDifficulty is set -> Show all entries for that difficulty
-        // - If neither is set -> Show all entries
+        // Populate the leaderboard UI
+        populateLeaderboard(entries);
+    }
+
+    /**
+     * Creates a visual leaderboard entry HBox
+     */
+    private HBox createLeaderboardEntryUI(int rank, String playerName, int stars) {
+        HBox entryBox = new HBox();
+        entryBox.setAlignment(Pos.CENTER_LEFT);
+        entryBox.setPrefHeight(35.0);
+        entryBox.setPrefWidth(600.0);
+        entryBox.setSpacing(15.0);
+        entryBox.setStyle("-fx-background-color: white; -fx-background-radius: 15; " +
+                         "-fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; " +
+                         "-fx-padding: 5 15 5 15;");
+
+        // Rank text
+        Text rankText = new Text(String.valueOf(rank));
+        rankText.setFill(javafx.scene.paint.Color.web("#2b5237"));
+        rankText.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        rankText.setWrappingWidth(30.0);
+        rankText.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+
+        // Player name text
+        Text nameText = new Text(playerName);
+        nameText.setFill(javafx.scene.paint.Color.web("#2b5237"));
+        nameText.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        nameText.setWrappingWidth(350.0);
+
+        // Star rating text
+        String starString = getStarString(stars);
+        Text starsText = new Text(starString);
+        starsText.setFill(javafx.scene.paint.Color.web("#f6b539"));
+        starsText.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        starsText.setTextAlignment(javafx.scene.text.TextAlignment.RIGHT);
+
+        entryBox.getChildren().addAll(rankText, nameText, starsText);
+
+        return entryBox;
+    }
+
+    /**
+     * Converts a star rating (1-5) to a star string
+     */
+    private String getStarString(int stars) {
+        if (stars < 1) stars = 1;
+        if (stars > 5) stars = 5;
+
+        StringBuilder starString = new StringBuilder();
+        for (int i = 0; i < 5; i++) {
+            if (i < stars) {
+                starString.append("★"); // Filled star
+            } else {
+                starString.append("☆"); // Empty star
+            }
+        }
+        return starString.toString();
+    }
+
+    /**
+     * Populates the leaderboard with entries
+     */
+    private void populateLeaderboard(List<LeaderboardEntry> entries) {
+        leaderboardContent.getChildren().clear();
+
+        int rank = 1;
+        for (LeaderboardEntry entry : entries) {
+            HBox entryUI = createLeaderboardEntryUI(rank, entry.playerName, entry.stars);
+            leaderboardContent.getChildren().add(entryUI);
+            rank++;
+
+            // Limit to top 7 entries
+            if (rank > 7) break;
+        }
+
+        // If no entries, show a message
+        if (entries.isEmpty()) {
+            Text noDataText = new Text("No leaderboard data available");
+            noDataText.setFill(javafx.scene.paint.Color.web("#2b5237"));
+            noDataText.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+            leaderboardContent.getChildren().add(noDataText);
+        }
+    }
+
+    /**
+     * TODO: Replace with actual data loading from database/JSON
+     * Sample data for demonstration
+     */
+    private List<LeaderboardEntry> getSampleLeaderboardData() {
+        List<LeaderboardEntry> entries = new ArrayList<>();
+
+        // Sample data - replace with actual data loading logic
+        entries.add(new LeaderboardEntry("PlayerName1", 5, "Time Challenge", "Easy"));
+        entries.add(new LeaderboardEntry("PlayerName2", 4, "Endless Mode", "Medium"));
+        entries.add(new LeaderboardEntry("PlayerName3", 4, "Time Challenge", "Hard"));
+        entries.add(new LeaderboardEntry("PlayerName4", 3, "Endless Mode", "Easy"));
+        entries.add(new LeaderboardEntry("PlayerName5", 3, "Time Challenge", "Medium"));
+        entries.add(new LeaderboardEntry("PlayerName6", 2, "Endless Mode", "Hard"));
+        entries.add(new LeaderboardEntry("PlayerName7", 2, "Time Challenge", "Easy"));
+        entries.add(new LeaderboardEntry("PlayerName8", 1, "Endless Mode", "Medium"));
+        entries.add(new LeaderboardEntry("PlayerName9", 1, "Time Challenge", "Hard"));
+        entries.add(new LeaderboardEntry("PlayerName10", 1, "Endless Mode", "Easy"));
+
+        // Filter entries based on selected mode and difficulty
+        List<LeaderboardEntry> filteredEntries = new ArrayList<>();
+        for (LeaderboardEntry entry : entries) {
+            boolean matchesMode = selectedMode == null || entry.mode.equals(selectedMode);
+            boolean matchesDifficulty = selectedDifficulty == null || entry.difficulty.equals(selectedDifficulty);
+
+            if (matchesMode && matchesDifficulty) {
+                filteredEntries.add(entry);
+            }
+        }
+
+        return filteredEntries;
+    }
+
+    /**
+     * Inner class to represent a leaderboard entry
+     */
+    private static class LeaderboardEntry {
+        String playerName;
+        int stars;
+        String mode;
+        String difficulty;
+
+        public LeaderboardEntry(String playerName, int stars, String mode, String difficulty) {
+            this.playerName = playerName;
+            this.stars = stars;
+            this.mode = mode;
+            this.difficulty = difficulty;
+        }
     }
 
     private void switchTo(ActionEvent event, String fxmlName) throws IOException {
