@@ -227,48 +227,60 @@ public class ResultSceneController {
         GameData gameData = GameData.getInstance();
         double accuracy = gameData.getAccuracy();
         double wpm = gameData.getWpm();
-        double timeTaken = gameData.getTimeTaken();
 
         System.out.println("=== Star Rating Calculation ===");
         System.out.println("Accuracy: " + String.format("%.2f", accuracy) + "%");
-        System.out.println("WPM: " + String.format("%.2f", wpm));
-        System.out.println("Time Taken: " + String.format("%.2f", timeTaken) + "s");
+        System.out.println("WPM: " + String.format("%.0f", wpm));
 
-        // Calculate score based on weighted criteria
-        // Accuracy: 40%, WPM: 40%, Time: 20%
-        double accuracyScore = (accuracy / 100.0) * 40; // Max 40 points
+        // Star rating thresholds based on WPM and Accuracy
+        // Both criteria must be met for each star level
 
-        // WPM scoring: Excellent (60+), Good (40-60), Average (20-40), Poor (<20)
-        double wpmScore;
-        if (wpm >= 60) wpmScore = 40;
-        else if (wpm >= 40) wpmScore = 30;
-        else if (wpm >= 20) wpmScore = 20;
-        else wpmScore = wpm / 2; // Scale for low WPM
+        int stars = 0;
 
-        // Time scoring: Faster is better (based on difficulty)
-        // For now, if completed quickly relative to text length, give bonus
-        double timeScore = 20; // Default full score for completion
-        if (timeTaken > 120) timeScore = 15; // Longer than 2 minutes
-        if (timeTaken > 180) timeScore = 10; // Longer than 3 minutes
-
-        double totalScore = accuracyScore + wpmScore + timeScore;
-
-        System.out.println("Accuracy Score: " + String.format("%.2f", accuracyScore));
-        System.out.println("WPM Score: " + String.format("%.2f", wpmScore));
-        System.out.println("Time Score: " + String.format("%.2f", timeScore));
-        System.out.println("Total Score: " + String.format("%.2f", totalScore));
-
-        // Convert to star rating (0-5 stars)
-        // 80-100: 5 stars, 60-79: 4 stars, 40-59: 3 stars, 20-39: 2 stars, 1-19: 1 star
-        int stars;
-        if (totalScore >= 80) stars = 5;
-        else if (totalScore >= 60) stars = 4;
-        else if (totalScore >= 40) stars = 3;
-        else if (totalScore >= 20) stars = 2;
-        else if (totalScore >= 1) stars = 1;
-        else stars = 0;
+        // 5 Stars: Expert Level
+        // WPM >= 60 AND Accuracy >= 95%
+        if (wpm >= 60 && accuracy >= 95.0) {
+            stars = 5;
+        }
+        // 4 Stars: Advanced Level
+        // WPM >= 45 AND Accuracy >= 90%
+        else if (wpm >= 45 && accuracy >= 90.0) {
+            stars = 4;
+        }
+        // 3 Stars: Intermediate Level
+        // WPM >= 30 AND Accuracy >= 80%
+        else if (wpm >= 30 && accuracy >= 80.0) {
+            stars = 3;
+        }
+        // 2 Stars: Beginner Level
+        // WPM >= 15 AND Accuracy >= 70%
+        else if (wpm >= 15 && accuracy >= 70.0) {
+            stars = 2;
+        }
+        // 1 Star: Needs Practice
+        // WPM >= 5 AND Accuracy >= 50%
+        else if (wpm >= 5 && accuracy >= 50.0) {
+            stars = 1;
+        }
+        // 0 Stars: Try again
+        else {
+            stars = 0;
+        }
 
         System.out.println("Stars Awarded: " + stars);
+        System.out.println("Criteria for next star:");
+        if (stars < 5) {
+            String[] nextThresholds = {
+                "1 Star: WPM >= 5, Accuracy >= 50%",
+                "2 Stars: WPM >= 15, Accuracy >= 70%",
+                "3 Stars: WPM >= 30, Accuracy >= 80%",
+                "4 Stars: WPM >= 45, Accuracy >= 90%",
+                "5 Stars: WPM >= 60, Accuracy >= 95%"
+            };
+            System.out.println(nextThresholds[stars]);
+        } else {
+            System.out.println("Perfect! Maximum stars achieved!");
+        }
         System.out.println("===============================");
 
         return stars;

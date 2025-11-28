@@ -114,23 +114,27 @@ Characters Typed = Length of Typed Text
 This represents the final character count, not including deleted/backspaced characters.
 
 ## Scoring and stars
-- Results are summarized with a star rating from 1 to 5, where 5 stars is the best and 1 star is the lowest.
-- The star rating is calculated from a combination of metrics:
-  - Words per minute (WPM) — how fast you typed.
-  - Accuracy — percentage of correctly typed characters.
-  - Remaining time / completion (for time challenge or endless completion) — helps reward finishing a passage or using time efficiently.
-- Leaderboards display players ranked by their highest star ratings. When multiple players have the same star rating, the leaderboard can break ties using WPM and accuracy.
+Results are summarized with a star rating from 0 to 5 stars. The star rating is based on clear thresholds for **both WPM and Accuracy** - you must meet both criteria to achieve each star level.
 
-Example scoring logic (conceptual)
-- A simple weighted score might look like: score = 0.6 * normalized(WPM) + 0.3 * accuracy + 0.1 * timeFactor
-- The normalized score is converted into stars:
-  - 5 stars: top tier (excellent WPM and accuracy)
-  - 4 stars: very good
-  - 3 stars: average
-  - 2 stars: below average
-  - 1 star: needs improvement
+### Star Rating Thresholds
 
-Note: The exact weighting and thresholds are implementation details and can be adjusted to better reflect classroom goals and difficulty levels.
+| Stars | Level | WPM Required | Accuracy Required |
+|-------|-------|--------------|-------------------|
+| ⭐⭐⭐⭐⭐ | **5 Stars - Expert** | 60+ WPM | 95%+ |
+| ⭐⭐⭐⭐ | **4 Stars - Advanced** | 45+ WPM | 90%+ |
+| ⭐⭐⭐ | **3 Stars - Intermediate** | 30+ WPM | 80%+ |
+| ⭐⭐ | **2 Stars - Beginner** | 15+ WPM | 70%+ |
+| ⭐ | **1 Star - Needs Practice** | 5+ WPM | 50%+ |
+| ☆ | **0 Stars - Try Again** | Below thresholds | Below thresholds |
+
+### How Star Ratings Work
+
+Both WPM **AND** Accuracy thresholds must be met to earn each star level. For example:
+- If you type at 65 WPM but only have 85% accuracy, you get **3 stars** (not 5)
+- If you have 98% accuracy but only 40 WPM, you get **4 stars** (not 5)
+- To get 5 stars, you need **both** 60+ WPM **and** 95%+ accuracy
+
+This system encourages balanced improvement in both speed and precision.
 
 ## Leaderboards
 - Leaderboards show entries sorted by stars (highest to lowest), then by finer metrics like WPM and accuracy to break ties.
