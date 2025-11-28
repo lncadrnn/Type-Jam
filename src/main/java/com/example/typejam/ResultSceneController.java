@@ -1,5 +1,7 @@
 package com.example.typejam;
 
+import javafx.animation.AnimationTimer;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,12 +9,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class ResultSceneController {
 
@@ -47,6 +56,14 @@ public class ResultSceneController {
     private javafx.scene.text.Text charactersValue;
 
     @FXML
+    private AnchorPane rootPane;
+
+    private Pane confettiPane;
+    private List<ConfettiParticle> confettiParticles;
+    private AnimationTimer confettiTimer;
+    private Random random = new Random();
+
+    @FXML
     public void initialize() {
         // Get game data
         GameData gameData = GameData.getInstance();
@@ -75,6 +92,135 @@ public class ResultSceneController {
         // Calculate star rating based on game results
         int stars = calculateStarRating();
         displayStars(stars);
+
+        // Start confetti animation
+        startConfetti();
+    }
+
+    private void startConfetti() {
+        // Create confetti pane overlay
+        confettiPane = new Pane();
+        confettiPane.setMouseTransparent(true);
+        confettiPane.setPrefSize(760, 495);
+
+        // Add confetti pane on top of root pane
+        if (rootPane != null) {
+            rootPane.getChildren().add(confettiPane);
+        }
+
+        // Initialize confetti particles
+        confettiParticles = new ArrayList<>();
+        Color[] colors = {
+            Color.web("#F6B539"), // Gold
+            Color.web("#2B5237"), // Green
+            Color.web("#FF6B6B"), // Red
+            Color.web("#4ECDC4"), // Cyan
+            Color.web("#FFE66D"), // Yellow
+            Color.web("#A8E6CF"), // Light green
+            Color.web("#FF8B94"), // Pink
+            Color.web("#C7CEEA")  // Purple
+        };
+
+        // Create confetti particles
+        for (int i = 0; i < 150; i++) {
+            double x = random.nextDouble() * 760;
+            double y = -random.nextDouble() * 200 - 50; // Start above screen
+            Circle circle = new Circle(random.nextDouble() * 4 + 2); // Random size 2-6
+            circle.setFill(colors[random.nextInt(colors.length)]);
+            circle.setOpacity(0.8);
+
+            ConfettiParticle particle = new ConfettiParticle(
+                circle, x, y,
+                random.nextDouble() * 2 + 1, // Falling speed
+                random.nextDouble() * 4 - 2, // Horizontal drift
+                random.nextDouble() * 360     // Rotation
+            );
+
+            confettiParticles.add(particle);
+            confettiPane.getChildren().add(circle);
+        }
+
+        // Start animation
+        confettiTimer = new AnimationTimer() {
+            private long lastUpdate = 0;
+
+            @Override
+            public void handle(long now) {
+                if (lastUpdate == 0) {
+                    lastUpdate = now;
+                    return;
+                }
+
+                double deltaTime = (now - lastUpdate) / 1_000_000_000.0;
+                lastUpdate = now;
+
+                boolean allDone = true;
+                for (ConfettiParticle particle : confettiParticles) {
+                    if (particle.update(deltaTime)) {
+                        allDone = false;
+                    }
+                }
+
+                // Stop animation when all particles are done
+                if (allDone) {
+                    this.stop();
+                    // Fade out confetti pane
+                    FadeTransition fade = new FadeTransition(Duration.seconds(1), confettiPane);
+                    fade.setFromValue(1.0);
+                    fade.setToValue(0.0);
+                    fade.setOnFinished(e -> {
+                        if (confettiPane.getParent() instanceof AnchorPane) {
+                            ((AnchorPane) confettiPane.getParent()).getChildren().remove(confettiPane);
+                        }
+                    });
+                    fade.play();
+                }
+            }
+        };
+        confettiTimer.start();
+    }
+
+    // Confetti particle class
+    private class ConfettiParticle {
+        private Circle circle;
+        private double x, y;
+        private double velocityY;
+        private double velocityX;
+        private double rotation;
+        private double rotationSpeed;
+
+        public ConfettiParticle(Circle circle, double x, double y, double velocityY, double velocityX, double rotation) {
+            this.circle = circle;
+            this.x = x;
+            this.y = y;
+            this.velocityY = velocityY;
+            this.velocityX = velocityX;
+            this.rotation = rotation;
+            this.rotationSpeed = random.nextDouble() * 360 - 180;
+            updatePosition();
+        }
+
+        public boolean update(double deltaTime) {
+            // Update position
+            y += velocityY * 60 * deltaTime;
+            x += velocityX * 60 * deltaTime;
+            rotation += rotationSpeed * deltaTime;
+
+            // Add gravity
+            velocityY += 2 * deltaTime;
+
+            // Update visual position
+            updatePosition();
+
+            // Return true if still visible
+            return y < 550; // Keep animating until below screen
+        }
+
+        private void updatePosition() {
+            circle.setCenterX(x);
+            circle.setCenterY(y);
+            circle.setRotate(rotation);
+        }
     }
 
     private int calculateStarRating() {
