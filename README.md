@@ -195,8 +195,6 @@ The file contains text arrays for three difficulty levels:
 }
 ```
 
-**📖 For detailed instructions, see:** [TYPING-TEXTS-GUIDE.md](TYPING-TEXTS-GUIDE.md)
-
 ## Project structure (high level)
 - `src/main/java` — Java source files and controllers
 - `src/main/resources` — FXML views, images, fonts, and CSS
