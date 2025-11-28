@@ -52,9 +52,9 @@ public class TypingGameController {
 
     // Sample texts based on difficulty
     private static final String[] EASY_TEXTS = {
-        "The quick brown fox jumps over the lazy dog.",
-        "A journey of a thousand miles begins with a single step.",
-        "To be or not to be, that is the question."
+        "The",
+        "A",
+        "To"
     };
 
     private static final String[] MEDIUM_TEXTS = {
@@ -234,7 +234,13 @@ public class TypingGameController {
             }
             typingField.setDisable(true);
             System.out.println("Time's up! Game over.");
-            // You can add a dialog or message here to show time's up
+            // Navigate to loading screen
+            try {
+                loadLoadingScreen();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.err.println("Error loading loading-screen.fxml: " + e.getMessage());
+            }
         }
     }
 
@@ -281,7 +287,13 @@ public class TypingGameController {
             } else {
                 System.out.println("Endless mode text completed.");
             }
-            // You can add a completion dialog or transition here
+            // Navigate to loading screen
+            try {
+                loadLoadingScreen();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.err.println("Error loading loading-screen.fxml: " + e.getMessage());
+            }
         }
     }
 
@@ -303,6 +315,15 @@ public class TypingGameController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 760, 495);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void loadLoadingScreen() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("loading-screen.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) typingField.getScene().getWindow();
         Scene scene = new Scene(root, 760, 495);
         stage.setScene(scene);
         stage.show();
