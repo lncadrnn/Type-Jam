@@ -27,11 +27,11 @@ public class EnterNameController {
     @FXML
     private void onBack(ActionEvent event) {
         try {
-            System.out.println("Back button clicked - navigating to main-menu.fxml");
-            switchTo(event, "main-menu.fxml");
+            System.out.println("Back button clicked - navigating back");
+            NavigationHelper.navigateBack(event);
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error navigating to main menu: " + e.getMessage());
+            System.err.println("Error navigating back: " + e.getMessage());
         }
     }
 
@@ -53,20 +53,11 @@ public class EnterNameController {
 
         try {
             System.out.println("Next button clicked - navigating to select-mode.fxml");
-            switchTo(event, "select-mode.fxml");
+            NavigationHelper.navigateTo(event, "enter-name.fxml", "select-mode.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Error navigating to select mode: " + e.getMessage());
         }
-    }
-
-    private void switchTo(ActionEvent event, String fxmlName) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 760, 495);
-        stage.setScene(scene);
-        stage.show();
     }
 }
 

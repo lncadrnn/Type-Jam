@@ -27,31 +27,22 @@ public class MainMenuController {
 
     @FXML
     private void onPlay(ActionEvent event) throws IOException {
-        switchTo(event, "enter-name.fxml");
+        NavigationHelper.navigateTo(event, "main-menu.fxml", "enter-name.fxml");
     }
 
     @FXML
     private void onLeaderboard(ActionEvent event) throws IOException {
-        switchTo(event, "leaderboards.fxml");
+        NavigationHelper.navigateTo(event, "main-menu.fxml", "leaderboards.fxml");
     }
 
     @FXML
     private void onAbout(ActionEvent event) throws IOException {
-        switchTo(event, "about-us.fxml");
+        NavigationHelper.navigateTo(event, "main-menu.fxml", "about-us.fxml");
     }
 
     @FXML
     private void onSettings(ActionEvent event) throws IOException {
-        switchTo(event, "settings.fxml");
-    }
-
-    private void switchTo(ActionEvent event, String fxmlName) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 760, 495);
-        stage.setScene(scene);
-        stage.show();
+        NavigationHelper.navigateTo(event, "main-menu.fxml", "settings.fxml");
     }
 }
 

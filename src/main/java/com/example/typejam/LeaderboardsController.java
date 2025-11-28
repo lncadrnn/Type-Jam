@@ -72,10 +72,10 @@ public class LeaderboardsController {
     @FXML
     private void onBack(ActionEvent event) {
         try {
-            switchTo(event, "main-menu.fxml");
+            NavigationHelper.navigateBack(event);
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error navigating to main menu: " + e.getMessage());
+            System.err.println("Error navigating back: " + e.getMessage());
         }
     }
 

@@ -324,7 +324,8 @@ public class ResultSceneController {
     @FXML
     public void onMainMenu(ActionEvent event) {
         try {
-            switchTo(event, "main-menu.fxml");
+            GameData.getInstance().clearNavigationHistory();
+            NavigationHelper.switchToScene(event, "main-menu.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Error loading main-menu.fxml: " + e.getMessage());
@@ -334,7 +335,7 @@ public class ResultSceneController {
     @FXML
     public void onLeaderboard(ActionEvent event) {
         try {
-            switchTo(event, "leaderboards.fxml");
+            NavigationHelper.navigateTo(event, "result-scene.fxml", "leaderboards.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Error loading leaderboards.fxml: " + e.getMessage());
@@ -344,7 +345,7 @@ public class ResultSceneController {
     @FXML
     public void onSettings(ActionEvent event) {
         try {
-            switchTo(event, "settings.fxml");
+            NavigationHelper.navigateTo(event, "result-scene.fxml", "settings.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Error loading settings.fxml: " + e.getMessage());
@@ -354,7 +355,7 @@ public class ResultSceneController {
     @FXML
     public void onAbout(ActionEvent event) {
         try {
-            switchTo(event, "about-us.fxml");
+            NavigationHelper.navigateTo(event, "result-scene.fxml", "about-us.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Error loading about-us.fxml: " + e.getMessage());
@@ -364,19 +365,11 @@ public class ResultSceneController {
     @FXML
     public void onLetsType(ActionEvent event) {
         try {
-            switchTo(event, "enter-name.fxml");
+            GameData.getInstance().clearNavigationHistory();
+            NavigationHelper.switchToScene(event, "enter-name.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Error loading enter-name.fxml: " + e.getMessage());
         }
-    }
-
-    private void switchTo(ActionEvent event, String fxmlName) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 760, 495);
-        stage.setScene(scene);
-        stage.show();
     }
 }

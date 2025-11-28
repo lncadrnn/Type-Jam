@@ -475,20 +475,11 @@ public class TypingGameController {
             timer.stop();
         }
         try {
-            switchTo(event, "ready-scene.fxml");
+            NavigationHelper.navigateBack(event);
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error loading ready-scene.fxml: " + e.getMessage());
+            System.err.println("Error navigating back: " + e.getMessage());
         }
-    }
-
-    private void switchTo(ActionEvent event, String fxmlName) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 760, 495);
-        stage.setScene(scene);
-        stage.show();
     }
 
     private void loadLoadingScreen() throws IOException {

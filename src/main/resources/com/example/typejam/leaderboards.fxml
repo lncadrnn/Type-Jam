@@ -21,22 +21,6 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="419.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 70; -fx-arc-height: 70;" width="678.0" />
          </children>
       </StackPane>
-      <HBox alignment="CENTER_LEFT" layoutX="47.0" layoutY="20.0" prefHeight="105.0" prefWidth="93.0" style="-fx-background-radius: 100;">
-         <children>
-            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="63.0" prefWidth="69.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
-               <graphic>
-                  <ImageView fitHeight="52.0" fitWidth="52.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/back.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="15.0" top="10.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
       <VBox alignment="TOP_CENTER" layoutX="74.0" layoutY="65.0" prefHeight="397.0" prefWidth="611.0">
          <children>
             <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="LEADERBOARDS" wrappingWidth="270.234375">
@@ -335,5 +319,21 @@
             </ScrollPane>
          </children>
       </VBox>
+      <HBox alignment="CENTER_LEFT" layoutX="47.0" layoutY="35.0" prefHeight="90.0" prefWidth="93.0" style="-fx-background-radius: 100;">
+         <children>
+            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="63.0" prefWidth="69.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
+               <graphic>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

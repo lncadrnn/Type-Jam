@@ -75,11 +75,11 @@ public class SelectTimeController {
     @FXML
     private void onBack(ActionEvent event) {
         try {
-            System.out.println("Back button clicked - navigating to select-mode.fxml");
-            switchTo(event, "select-mode.fxml");
+            System.out.println("Back button clicked - navigating back");
+            NavigationHelper.navigateBack(event);
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error navigating back to select mode: " + e.getMessage());
+            System.err.println("Error navigating back: " + e.getMessage());
         }
     }
 
@@ -100,19 +100,10 @@ public class SelectTimeController {
 
         try {
             System.out.println("Next button clicked - navigating to select-difficulty.fxml");
-            switchTo(event, "select-difficulty.fxml");
+            NavigationHelper.navigateTo(event, "select-time.fxml", "select-difficulty.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Error navigating to select difficulty: " + e.getMessage());
         }
-    }
-
-    private void switchTo(ActionEvent event, String fxmlName) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 760, 495);
-        stage.setScene(scene);
-        stage.show();
     }
 }

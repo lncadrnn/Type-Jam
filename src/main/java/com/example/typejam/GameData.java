@@ -1,5 +1,7 @@
 package com.example.typejam;
 
+import java.util.Stack;
+
 /**
  * Singleton class to hold game session data across scenes
  */
@@ -19,6 +21,9 @@ public class GameData {
     private int correctCharacters;
     private int charactersTyped; // total characters typed by user
     private int errors; // incorrect characters typed
+
+    // Navigation history
+    private Stack<String> navigationHistory = new Stack<>();
 
     private GameData() {
         // Private constructor for singleton
@@ -131,6 +136,29 @@ public class GameData {
         correctCharacters = 0;
         charactersTyped = 0;
         errors = 0;
+    }
+
+    // Navigation history methods
+    public void pushScene(String sceneName) {
+        navigationHistory.push(sceneName);
+    }
+
+    public String popScene() {
+        if (!navigationHistory.isEmpty()) {
+            return navigationHistory.pop();
+        }
+        return "main-menu.fxml"; // Default fallback
+    }
+
+    public String peekPreviousScene() {
+        if (!navigationHistory.isEmpty()) {
+            return navigationHistory.peek();
+        }
+        return "main-menu.fxml"; // Default fallback
+    }
+
+    public void clearNavigationHistory() {
+        navigationHistory.clear();
     }
 }
 
