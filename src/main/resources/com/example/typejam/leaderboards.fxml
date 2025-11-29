@@ -7,13 +7,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="495.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.LeaderboardsController">
+<AnchorPane fx:id="rootPane" prefHeight="495.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.LeaderboardsController">
    <children>
       <StackPane prefHeight="495.0" prefWidth="760.0" style="-fx-background-radius: 50;">
          <children>
@@ -113,19 +114,19 @@
          </children>
       </HBox>
 
-      <!-- Overlay Dropdowns (Absolute Positioned) -->
-      <VBox fx:id="modeDropdown" layoutX="145.0" layoutY="176.0" alignment="BOTTOM_CENTER" managed="false" spacing="8.0" visible="false" prefHeight="150.0" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 2);">
+      <!-- Overlay Dropdowns (Positioned Dynamically) -->
+      <VBox fx:id="modeDropdown" alignment="CENTER" managed="false" spacing="6.0" visible="false" prefWidth="260.0" minWidth="260.0" maxWidth="260.0" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 2);">
          <children>
-            <Button fx:id="timeChallengeBtn" mnemonicParsing="false" onAction="#onTimeChallengeFilter" prefHeight="35.0" prefWidth="260.0" minWidth="260.0" maxWidth="260.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Time Challenge" />
-            <Button fx:id="endlessModeBtn" mnemonicParsing="false" onAction="#onEndlessModeFilter" prefHeight="35.0" prefWidth="260.0" minWidth="260.0" maxWidth="260.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Endless Mode" />
+            <Button fx:id="timeChallengeBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onTimeChallengeFilter" prefHeight="35.0" prefWidth="240.0" minWidth="240.0" maxWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Time Challenge" />
+            <Button fx:id="endlessModeBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onEndlessModeFilter" prefHeight="35.0" prefWidth="240.0" minWidth="240.0" maxWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Endless Mode" />
          </children>
       </VBox>
 
-      <VBox fx:id="difficultyDropdown" layoutX="390.0" layoutY="176.0" alignment="BOTTOM_CENTER" managed="false" spacing="8.0" visible="false" prefHeight="175.0" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 2);">
+      <VBox fx:id="difficultyDropdown" alignment="CENTER" managed="false" spacing="6.0" visible="false" prefWidth="260.0" minWidth="260.0" maxWidth="260.0" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 2);">
          <children>
-            <Button fx:id="easyBtn" mnemonicParsing="false" onAction="#onEasyFilter" prefHeight="35.0" prefWidth="260.0" minWidth="260.0" maxWidth="260.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Easy" />
-            <Button fx:id="mediumBtn" mnemonicParsing="false" onAction="#onMediumFilter" prefHeight="35.0" prefWidth="260.0" minWidth="260.0" maxWidth="260.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Medium" />
-            <Button fx:id="hardBtn" mnemonicParsing="false" onAction="#onHardFilter" prefHeight="35.0" prefWidth="260.0" minWidth="260.0" maxWidth="260.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Hard" />
+            <Button fx:id="easyBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onEasyFilter" prefHeight="35.0" prefWidth="240.0" minWidth="240.0" maxWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Easy" />
+            <Button fx:id="mediumBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onMediumFilter" prefHeight="35.0" prefWidth="240.0" minWidth="240.0" maxWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Medium" />
+            <Button fx:id="hardBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onHardFilter" prefHeight="35.0" prefWidth="240.0" minWidth="240.0" maxWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Hard" />
          </children>
       </VBox>
    </children>

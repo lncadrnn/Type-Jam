@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -66,8 +67,13 @@ public class LeaderboardsController {
     @FXML
     private VBox leaderboardContent;
 
+    @FXML
+    private AnchorPane rootPane;
+
     private String selectedMode = null;
     private String selectedDifficulty = null;
+
+    private static final double DROPDOWN_VERTICAL_GAP = 34; // increased gap below trigger button
 
     @FXML
     public void initialize() {
@@ -90,6 +96,7 @@ public class LeaderboardsController {
         boolean isVisible = modeDropdown.isVisible();
         hideAllDropdowns();
         if (!isVisible) {
+            positionDropdownBelow(modeBtn, modeDropdown);
             modeDropdown.setVisible(true);
             modeDropdown.toFront();
         }
@@ -100,6 +107,7 @@ public class LeaderboardsController {
         boolean isVisible = difficultyDropdown.isVisible();
         hideAllDropdowns();
         if (!isVisible) {
+            positionDropdownBelow(difficultyBtn, difficultyDropdown);
             difficultyDropdown.setVisible(true);
             difficultyDropdown.toFront();
         }
@@ -297,5 +305,29 @@ public class LeaderboardsController {
         Scene scene = new Scene(root, 760, 495);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void positionDropdownBelow(Button trigger, VBox dropdown) {
+        double sceneX = trigger.localToScene(0, 0).getX();
+        double sceneY = trigger.localToScene(0, 0).getY();
+        double buttonHeight = trigger.getHeight();
+        double rootOffsetX = rootPane.sceneToLocal(sceneX, sceneY).getX();
+        double rootOffsetY = rootPane.sceneToLocal(sceneX, sceneY).getY();
+        // Provisional Y with larger gap
+        double desiredY = rootOffsetY + buttonHeight + DROPDOWN_VERTICAL_GAP;
+        dropdown.setLayoutY(desiredY);
+        dropdown.setLayoutX(rootOffsetX); // will center after layout pass
+        Platform.runLater(() -> {
+            // Center horizontally under trigger
+            double adjustedX = rootOffsetX + (trigger.getWidth() - dropdown.getWidth()) / 2.0;
+            dropdown.setLayoutX(adjustedX);
+            // Clamp vertical if overflowing bottom
+            double bottom = dropdown.getLayoutY() + dropdown.getHeight();
+            double maxBottom = rootPane.getHeight() - 10; // 10px padding from bottom
+            if (bottom > maxBottom) {
+                double newY = Math.max(rootOffsetY + buttonHeight + 4, maxBottom - dropdown.getHeight());
+                dropdown.setLayoutY(newY);
+            }
+        });
     }
 }
