@@ -84,6 +84,18 @@ public final class LeaderboardStorage {
         return filtered;
     }
 
+    /**
+     * Clears all leaderboard data by deleting the storage file.
+     * @return true if data was successfully cleared, false otherwise
+     */
+    public static synchronized boolean clearAllData() {
+        File file = getStorageFile();
+        if (file.exists()) {
+            return file.delete();
+        }
+        return true; // No file to delete means data is already clear
+    }
+
     /** Entry data model. */
     public static class LeaderboardEntry {
         private String playerName;

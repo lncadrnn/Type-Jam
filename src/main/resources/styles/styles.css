@@ -49,6 +49,33 @@
     -fx-padding: 12 10 12 10;
 }
 
+/* Toggle Switch Styling */
+.toggle-switch {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 20;
+    -fx-text-fill: #666666;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-border-color: #999999;
+    -fx-border-radius: 20;
+    -fx-border-width: 2;
+}
+
+.toggle-switch:selected {
+    -fx-background-color: #2b5237;
+    -fx-text-fill: white;
+    -fx-border-color: #2b5237;
+}
+
+.toggle-switch:hover {
+    -fx-opacity: 0.8;
+}
+
+.toggle-switch:selected:hover {
+    -fx-background-color: #366b48;
+    -fx-border-color: #366b48;
+}
+
 /* Dropdown option buttons */
 .dropdown-option {
     -fx-background-color: white;
