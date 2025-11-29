@@ -8,14 +8,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -204,36 +209,57 @@ public class LeaderboardsController {
     private HBox createLeaderboardEntryUI(int rank, String playerName, int stars) {
         HBox entryBox = new HBox();
         entryBox.setAlignment(Pos.CENTER_LEFT);
-        entryBox.setPrefHeight(35.0);
+        entryBox.setPrefHeight(40.0);
         entryBox.setPrefWidth(600.0);
         entryBox.setSpacing(15.0);
         entryBox.setStyle("-fx-background-color: white; -fx-background-radius: 15; " +
                          "-fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; " +
                          "-fx-padding: 5 15 5 15;");
 
-        // Rank text
-        Text rankText = new Text(String.valueOf(rank));
-        rankText.setFill(javafx.scene.paint.Color.web("#2b5237"));
-        rankText.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        rankText.setWrappingWidth(30.0);
-        rankText.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        // Rank as image view
+        Node rankNode = createRankGraphic(rank);
 
-        // Player name text
         Text nameText = new Text(playerName);
         nameText.setFill(javafx.scene.paint.Color.web("#2b5237"));
         nameText.setFont(Font.font("Arial", FontWeight.BOLD, 16));
-        nameText.setWrappingWidth(350.0);
 
-        // Star rating text
         String starString = getStarString(stars);
         Text starsText = new Text(starString);
         starsText.setFill(javafx.scene.paint.Color.web("#f6b539"));
         starsText.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         starsText.setTextAlignment(javafx.scene.text.TextAlignment.RIGHT);
 
-        entryBox.getChildren().addAll(rankText, nameText, starsText);
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
 
+        entryBox.getChildren().addAll(rankNode, nameText, spacer, starsText);
         return entryBox;
+    }
+
+    private Node createRankGraphic(int rank) {
+        String fileName = getRankImageFileName(rank);
+        URL url = getClass().getResource("/assets/" + fileName);
+        if (url != null) {
+            ImageView iv = new ImageView(new Image(url.toExternalForm()));
+            iv.setFitHeight(32);
+            iv.setFitWidth(32);
+            iv.setPreserveRatio(true);
+            return iv;
+        }
+        // Fallback to text if image not found
+        Text fallback = new Text(String.valueOf(rank));
+        fallback.setFill(javafx.scene.paint.Color.web("#2b5237"));
+        fallback.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        return fallback;
+    }
+
+    private String getRankImageFileName(int rank) {
+        switch (rank) {
+            case 1: return "1st-place.png";
+            case 2: return "2nd-place.png";
+            case 3: return "3rd-place.png";
+            default: return "4th-below-place.png"; // ranks 4-10
+        }
     }
 
     /**
@@ -266,8 +292,8 @@ public class LeaderboardsController {
             leaderboardContent.getChildren().add(entryUI);
             rank++;
 
-            // Limit to top 7 entries
-            if (rank > 7) break;
+            // Limit to top 10 entries now
+            if (rank > 10) break;
         }
 
         // If no entries, show a message
@@ -338,4 +364,3 @@ public class LeaderboardsController {
         stage.show();
     }
 }
-
