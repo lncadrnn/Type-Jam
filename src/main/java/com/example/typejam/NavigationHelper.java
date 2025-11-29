@@ -44,8 +44,10 @@ public class NavigationHelper {
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 760, 495);
+        // Attach global stylesheet
+        String css = NavigationHelper.class.getResource("/styles/styles.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
     }
 }
-
