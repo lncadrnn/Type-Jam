@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -24,6 +26,7 @@ public final class LeaderboardStorage {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final Type LIST_TYPE = new TypeToken<List<LeaderboardEntry>>(){}.getType();
+    private static final long ONE_YEAR_MILLIS = Duration.ofDays(365).toMillis();
 
     private LeaderboardStorage() {}
 
@@ -39,12 +42,44 @@ public final class LeaderboardStorage {
         }
         try (FileReader reader = new FileReader(file)) {
             List<LeaderboardEntry> entries = GSON.fromJson(reader, LIST_TYPE);
-            if (entries == null) return new ArrayList<>();
-            return entries;
+            if (entries == null) entries = new ArrayList<>();
+            // Auto-purge entries older than one year
+            long now = Instant.now().toEpochMilli();
+            List<LeaderboardEntry> fresh = new ArrayList<>();
+            for (LeaderboardEntry e : entries) {
+                if (e != null && (now - e.getTimestamp()) <= ONE_YEAR_MILLIS) {
+                    fresh.add(e);
+                }
+            }
+            if (fresh.size() != entries.size()) {
+                // Write back purged list if any removals happened
+                writeEntries(fresh);
+            }
+            return fresh;
         } catch (IOException e) {
             System.err.println("Failed to read leaderboard file: " + e.getMessage());
             return new ArrayList<>();
         }
+    }
+
+    /**
+     * Explicitly purge entries older than one year.
+     * @return number of entries removed
+     */
+    public static synchronized int purgeEntriesOlderThanOneYear() {
+        List<LeaderboardEntry> entries = loadEntries();
+        long now = Instant.now().toEpochMilli();
+        int before = entries.size();
+        List<LeaderboardEntry> fresh = new ArrayList<>();
+        for (LeaderboardEntry e : entries) {
+            if ((now - e.getTimestamp()) <= ONE_YEAR_MILLIS) {
+                fresh.add(e);
+            }
+        }
+        if (fresh.size() != before) {
+            writeEntries(fresh);
+        }
+        return before - fresh.size();
     }
 
     public static synchronized void saveEntry(LeaderboardEntry newEntry) {
@@ -125,4 +160,3 @@ public final class LeaderboardStorage {
         public long getTimestamp() { return timestamp; }
     }
 }
-
