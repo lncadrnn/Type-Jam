@@ -108,213 +108,89 @@
                   <Insets top="15.0" />
                </VBox.margin>
                <content>
-                  <VBox fx:id="leaderboardContent" alignment="TOP_CENTER" spacing="8.0" style="-fx-background-color: transparent;">
+                  <VBox fx:id="leaderboardContent" alignment="TOP_CENTER" prefHeight="246.0" prefWidth="607.0" spacing="1.0" style="-fx-background-color: transparent;">
                      <children>
-                  <!-- Sample Leaderboard Entry 1 -->
-                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 5 15 5 15;">
-                     <children>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="30.0">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayerName1" wrappingWidth="350.0">
-                           <font>
-                              <Font name="Arial Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="★★★★★" textAlignment="RIGHT">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-
-                  <!-- Sample Leaderboard Entry 2 -->
-                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 5 15 5 15;">
-                     <children>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="30.0">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayerName2" wrappingWidth="350.0">
-                           <font>
-                              <Font name="Arial Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="★★★★☆" textAlignment="RIGHT">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-
-                  <!-- Sample Leaderboard Entry 3 -->
-                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 5 15 5 15;">
-                     <children>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="30.0">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayerName3" wrappingWidth="350.0">
-                           <font>
-                              <Font name="Arial Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="★★★★☆" textAlignment="RIGHT">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-
-                  <!-- Sample Leaderboard Entry 4 -->
-                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 5 15 5 15;">
-                     <children>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="30.0">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayerName4" wrappingWidth="350.0">
-                           <font>
-                              <Font name="Arial Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="★★★☆☆" textAlignment="RIGHT">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-
-                  <!-- Sample Leaderboard Entry 5 -->
-                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 5 15 5 15;">
-                     <children>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" wrappingWidth="30.0">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayerName5" wrappingWidth="350.0">
-                           <font>
-                              <Font name="Arial Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="★★★☆☆" textAlignment="RIGHT">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-
-                  <!-- Sample Leaderboard Entry 6 -->
-                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 5 15 5 15;">
-                     <children>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="6" textAlignment="CENTER" wrappingWidth="30.0">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayerName6" wrappingWidth="350.0">
-                           <font>
-                              <Font name="Arial Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="★★☆☆☆" textAlignment="RIGHT">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-
-                  <!-- Sample Leaderboard Entry 7 -->
-                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 5 15 5 15;">
-                     <children>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="7" textAlignment="CENTER" wrappingWidth="30.0">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayerName7" wrappingWidth="350.0">
-                           <font>
-                              <Font name="Arial Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="★★☆☆☆" textAlignment="RIGHT">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 5 15 5 15;">
+                        <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="594.0" spacing="20.0" style="-fx-border-width: 3; -fx-border-color: #2b5237; -fx-border-radius: 10;">
                            <children>
-                              <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="8" textAlignment="CENTER" wrappingWidth="30.0">
-                                 <font>
-                                    <Font name="Arial Bold" size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayerName8" wrappingWidth="350.0">
-                                 <font>
-                                    <Font name="Arial Bold" size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="★★☆☆☆" textAlignment="RIGHT">
+                              <ImageView fitHeight="42.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/1st-place.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
                                  <font>
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 5 15 5 15;">
+                        <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="594.0" spacing="20.0" style="-fx-border-width: 3; -fx-border-color: #2b5237; -fx-border-radius: 10;">
                            <children>
-                              <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="9" textAlignment="CENTER" wrappingWidth="30.0">
-                                 <font>
-                                    <Font name="Arial Bold" size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayerName9" wrappingWidth="350.0">
-                                 <font>
-                                    <Font name="Arial Bold" size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="★★☆☆☆" textAlignment="RIGHT">
+                              <ImageView fitHeight="42.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/2nd-place.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
                                  <font>
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 5 15 5 15;">
+                        <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="594.0" spacing="20.0" style="-fx-border-width: 3; -fx-border-color: #2b5237; -fx-border-radius: 10;">
                            <children>
-                              <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="30.0">
-                                 <font>
-                                    <Font name="Arial Bold" size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="PlayerName10" wrappingWidth="350.0">
-                                 <font>
-                                    <Font name="Arial Bold" size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="★★☆☆☆" textAlignment="RIGHT">
+                              <ImageView fitHeight="42.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/3rd-place.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
                                  <font>
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
                            </children>
                         </HBox>
-                     </children>
-                  </VBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="594.0" spacing="20.0" style="-fx-border-width: 3; -fx-border-color: #2b5237; -fx-border-radius: 10;">
+                           <children>
+                              <ImageView fitHeight="42.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/4th&amp;below-place.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="12.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children></VBox>
                </content>
             </ScrollPane>
          </children>
