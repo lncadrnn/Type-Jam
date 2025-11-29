@@ -7,3 +7,74 @@
     -fx-font-family: 'Lilita One';
 }
 
+/* Filter buttons */
+.filter-button {
+    -fx-background-color: #2b5237;
+    -fx-background-radius: 20;
+    -fx-text-fill: #f6b539;
+    -fx-font-weight: bold;
+}
+.filter-button:hover {
+    -fx-background-color: #366b48;
+}
+
+/* Reset buttons */
+.reset-button {
+    -fx-background-color: #BE1F1F;
+    -fx-background-radius: 15;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.reset-button:hover {
+    -fx-background-color: #d83535;
+}
+
+/* Shared dropdown base */
+.mode-dropdown, .difficulty-dropdown {
+    -fx-background-color: rgba(255,255,255,0.95);
+    -fx-background-radius: 15;
+    -fx-border-color: #2b5237;
+    -fx-border-radius: 15;
+    -fx-border-width: 2;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 2);
+}
+
+/* Specific tweaks if needed */
+.mode-dropdown {
+    /* Mode dropdown styling (currently same) */
+}
+.difficulty-dropdown {
+    /* Difficulty dropdown could have extra spacing/padding adjustments */
+    -fx-padding: 12 10 12 10;
+}
+
+/* Dropdown option buttons */
+.dropdown-option {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #2b5237;
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+    -fx-text-fill: #2b5237;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+.dropdown-option:hover {
+    -fx-background-color: #f6f6f6;
+}
+.dropdown-option:pressed {
+    -fx-background-color: #e2e2e2;
+}
+
+/* Tag style for about-us section headers */
+.tag-label {
+    -fx-background-color: #e8f3ec;
+    -fx-text-fill: #2b5237;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12;
+    -fx-border-color: #2b5237;
+    -fx-border-radius: 12;
+    -fx-border-width: 1.5;
+    -fx-font-weight: bold;
+}
