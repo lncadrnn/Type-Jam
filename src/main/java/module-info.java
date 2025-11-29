@@ -3,6 +3,6 @@ module com.example.typejam {
     requires javafx.fxml;
     requires com.google.gson;
 
-    opens com.example.typejam to javafx.fxml;
+    opens com.example.typejam to javafx.fxml, com.google.gson;
     exports com.example.typejam;
 }

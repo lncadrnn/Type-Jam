@@ -4,10 +4,6 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -15,7 +11,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -92,6 +87,16 @@ public class ResultSceneController {
         // Calculate star rating based on game results
         int stars = calculateStarRating();
         displayStars(stars);
+        // Save leaderboard entry locally
+        LeaderboardStorage.saveEntry(new LeaderboardStorage.LeaderboardEntry(
+                safeString(gameData.getPlayerName(), "Player"),
+                safeString(gameData.getMode(), "Unknown"),
+                safeString(gameData.getDifficulty(), "Easy"),
+                stars,
+                gameData.getWpm(),
+                gameData.getAccuracy(),
+                System.currentTimeMillis()
+        ));
 
         // Start confetti animation
         startConfetti();
@@ -327,7 +332,6 @@ public class ResultSceneController {
             GameData.getInstance().clearNavigationHistory();
             NavigationHelper.switchToScene(event, "main-menu.fxml");
         } catch (IOException e) {
-            e.printStackTrace();
             System.err.println("Error loading main-menu.fxml: " + e.getMessage());
         }
     }
@@ -337,7 +341,6 @@ public class ResultSceneController {
         try {
             NavigationHelper.navigateTo(event, "result-scene.fxml", "leaderboards.fxml");
         } catch (IOException e) {
-            e.printStackTrace();
             System.err.println("Error loading leaderboards.fxml: " + e.getMessage());
         }
     }
@@ -347,7 +350,6 @@ public class ResultSceneController {
         try {
             NavigationHelper.navigateTo(event, "result-scene.fxml", "settings.fxml");
         } catch (IOException e) {
-            e.printStackTrace();
             System.err.println("Error loading settings.fxml: " + e.getMessage());
         }
     }
@@ -357,7 +359,6 @@ public class ResultSceneController {
         try {
             NavigationHelper.navigateTo(event, "result-scene.fxml", "about-us.fxml");
         } catch (IOException e) {
-            e.printStackTrace();
             System.err.println("Error loading about-us.fxml: " + e.getMessage());
         }
     }
@@ -368,8 +369,11 @@ public class ResultSceneController {
             GameData.getInstance().clearNavigationHistory();
             NavigationHelper.switchToScene(event, "enter-name.fxml");
         } catch (IOException e) {
-            e.printStackTrace();
             System.err.println("Error loading enter-name.fxml: " + e.getMessage());
         }
+    }
+
+    private String safeString(String value, String fallback) {
+        return (value == null || value.trim().isEmpty()) ? fallback : value;
     }
 }

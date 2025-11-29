@@ -32,7 +32,13 @@ public class LoadingScreenController {
     }
 
     private void loadResultScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("result-scene.fxml"));
+        java.net.URL url = getClass().getResource("result-scene.fxml");
+        if (url == null) {
+            System.err.println("result-scene.fxml not found relative to " + getClass().getName());
+            return;
+        }
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(url);
         Parent root = loader.load();
         Stage stage = (Stage) loadingSpinner.getScene().getWindow();
         Scene scene = new Scene(root, 760, 495);
@@ -40,4 +46,3 @@ public class LoadingScreenController {
         stage.show();
     }
 }
-
