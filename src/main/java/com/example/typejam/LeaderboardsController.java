@@ -73,7 +73,8 @@ public class LeaderboardsController {
     private String selectedMode = null;
     private String selectedDifficulty = null;
 
-    private static final double DROPDOWN_VERTICAL_GAP = 34; // increased gap below trigger button
+    private static final double MODE_DROPDOWN_GAP = 38; // mode directly beneath
+    private static final double DIFFICULTY_DROPDOWN_GAP = 58; // move difficulty dropdown further down
 
     @FXML
     public void initialize() {
@@ -308,22 +309,20 @@ public class LeaderboardsController {
     }
 
     private void positionDropdownBelow(Button trigger, VBox dropdown) {
+        double gap = (trigger == difficultyBtn ? DIFFICULTY_DROPDOWN_GAP : MODE_DROPDOWN_GAP);
         double sceneX = trigger.localToScene(0, 0).getX();
         double sceneY = trigger.localToScene(0, 0).getY();
         double buttonHeight = trigger.getHeight();
         double rootOffsetX = rootPane.sceneToLocal(sceneX, sceneY).getX();
         double rootOffsetY = rootPane.sceneToLocal(sceneX, sceneY).getY();
-        // Provisional Y with larger gap
-        double desiredY = rootOffsetY + buttonHeight + DROPDOWN_VERTICAL_GAP;
+        double desiredY = rootOffsetY + buttonHeight + gap;
         dropdown.setLayoutY(desiredY);
-        dropdown.setLayoutX(rootOffsetX); // will center after layout pass
+        dropdown.setLayoutX(rootOffsetX);
         Platform.runLater(() -> {
-            // Center horizontally under trigger
             double adjustedX = rootOffsetX + (trigger.getWidth() - dropdown.getWidth()) / 2.0;
             dropdown.setLayoutX(adjustedX);
-            // Clamp vertical if overflowing bottom
             double bottom = dropdown.getLayoutY() + dropdown.getHeight();
-            double maxBottom = rootPane.getHeight() - 10; // 10px padding from bottom
+            double maxBottom = rootPane.getHeight() - 10;
             if (bottom > maxBottom) {
                 double newY = Math.max(rootOffsetY + buttonHeight + 4, maxBottom - dropdown.getHeight());
                 dropdown.setLayoutY(newY);
