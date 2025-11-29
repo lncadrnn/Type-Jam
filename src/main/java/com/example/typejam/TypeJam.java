@@ -16,7 +16,7 @@ public class TypeJam extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(TypeJam.class.getResource("main-menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 760, 495);
-        // Attach global stylesheet
+            // Attach global stylesheet
         String css = TypeJam.class.getResource("/styles/styles.css").toExternalForm();
         scene.getStylesheets().add(css);
         // Disable maximize/minimize: use UTILITY style (close only) and prevent resizing
