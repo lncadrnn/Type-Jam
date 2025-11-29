@@ -18,6 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.application.Platform;
 
 import java.io.IOException;
 import java.net.URL;
@@ -90,7 +91,7 @@ public class LeaderboardsController {
         hideAllDropdowns();
         if (!isVisible) {
             modeDropdown.setVisible(true);
-            modeDropdown.setManaged(true);
+            modeDropdown.toFront();
         }
     }
 
@@ -100,7 +101,7 @@ public class LeaderboardsController {
         hideAllDropdowns();
         if (!isVisible) {
             difficultyDropdown.setVisible(true);
-            difficultyDropdown.setManaged(true);
+            difficultyDropdown.toFront();
         }
     }
 
@@ -174,9 +175,7 @@ public class LeaderboardsController {
 
     private void hideAllDropdowns() {
         modeDropdown.setVisible(false);
-        modeDropdown.setManaged(false);
         difficultyDropdown.setVisible(false);
-        difficultyDropdown.setManaged(false);
     }
 
     private void loadLeaderboardData() {
@@ -216,12 +215,20 @@ public class LeaderboardsController {
                          "-fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; " +
                          "-fx-padding: 5 15 5 15;");
 
-        // Rank as image view
         Node rankNode = createRankGraphic(rank);
-
         Text nameText = new Text(playerName);
         nameText.setFill(javafx.scene.paint.Color.web("#2b5237"));
         nameText.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+
+        // Mode & Difficulty labels (if filters applied show selected else placeholder)
+        String modeLabel = selectedMode != null ? selectedMode : "Any Mode";
+        String diffLabel = selectedDifficulty != null ? selectedDifficulty : "Any Diff";
+        Text modeText = new Text(modeLabel);
+        modeText.setFill(javafx.scene.paint.Color.web("#2b5237"));
+        modeText.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
+        Text diffText = new Text(diffLabel);
+        diffText.setFill(javafx.scene.paint.Color.web("#2b5237"));
+        diffText.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
 
         String starString = getStarString(stars);
         Text starsText = new Text(starString);
@@ -232,7 +239,7 @@ public class LeaderboardsController {
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        entryBox.getChildren().addAll(rankNode, nameText, spacer, starsText);
+        entryBox.getChildren().addAll(rankNode, nameText, modeText, diffText, spacer, starsText);
         return entryBox;
     }
 
