@@ -58,7 +58,7 @@ public class LeaderboardsController {
     @FXML
     private AnchorPane rootPane;
 
-    private String selectedMode = "Time Challenge"; // Always filter for Time Challenge
+    private String selectedMode = "Challenge Mode"; // Always filter for Challenge Mode
     private String selectedDifficulty = null;
 
     private static final double MODE_DROPDOWN_GAP = 19; // mode directly beneath
@@ -67,6 +67,9 @@ public class LeaderboardsController {
     @FXML
     public void initialize() {
         // Load all leaderboard data by default (no filters applied)
+        System.out.println("DEBUG: LeaderboardsController initialized");
+        System.out.println("DEBUG: Selected mode filter = '" + selectedMode + "'");
+        System.out.println("DEBUG: Selected difficulty filter = '" + selectedDifficulty + "'");
         loadLeaderboardData();
     }
 
@@ -139,7 +142,15 @@ public class LeaderboardsController {
 
     private void loadLeaderboardData() {
         leaderboardContent.getChildren().clear();
+        System.out.println("DEBUG: Loading leaderboard data with mode='" + selectedMode + "', difficulty='" + selectedDifficulty + "'");
         List<LeaderboardStorage.LeaderboardEntry> entries = LeaderboardStorage.getRankedEntries(selectedMode, selectedDifficulty);
+        System.out.println("DEBUG: Found " + entries.size() + " entries after filtering");
+        for (int i = 0; i < Math.min(5, entries.size()); i++) {
+            LeaderboardStorage.LeaderboardEntry e = entries.get(i);
+            System.out.println("DEBUG: Entry " + (i+1) + " - Name: " + e.getPlayerName() +
+                             ", Mode: '" + e.getMode() + "', Difficulty: " + e.getDifficulty() +
+                             ", Stars: " + e.getStars() + ", WPM: " + e.getWpm());
+        }
         populateLeaderboard(entries);
     }
 

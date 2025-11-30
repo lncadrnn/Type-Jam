@@ -103,14 +103,22 @@ public final class LeaderboardStorage {
      */
     public static List<LeaderboardEntry> getRankedEntries(String modeFilter, String difficultyFilter) {
         List<LeaderboardEntry> entries = loadEntries();
+        System.out.println("DEBUG: LeaderboardStorage.getRankedEntries - Total entries loaded: " + entries.size());
+        System.out.println("DEBUG: Mode filter: '" + modeFilter + "', Difficulty filter: '" + difficultyFilter + "'");
+
         List<LeaderboardEntry> filtered = new ArrayList<>();
         for (LeaderboardEntry e : entries) {
             boolean modeOk = (modeFilter == null) || e.mode.equals(modeFilter);
             boolean diffOk = (difficultyFilter == null) || e.difficulty.equals(difficultyFilter);
+            System.out.println("DEBUG: Entry - Mode: '" + e.mode + "' (match: " + modeOk + "), " +
+                             "Difficulty: '" + e.difficulty + "' (match: " + diffOk + "), " +
+                             "Player: " + e.playerName);
             if (modeOk && diffOk) {
                 filtered.add(e);
             }
         }
+        System.out.println("DEBUG: After filtering: " + filtered.size() + " entries");
+
         filtered.sort(Comparator
                 .comparingInt(LeaderboardEntry::getStars).reversed()
                 .thenComparingDouble(LeaderboardEntry::getWpm).reversed()

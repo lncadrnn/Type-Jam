@@ -98,18 +98,28 @@ public class ResultSceneController {
             displayStars(stars);
         }
 
-        // Save leaderboard entry locally ONLY for Time Challenge mode (not for Practice Mode)
+        // Save leaderboard entry locally ONLY for Challenge Mode (not for Practice Mode)
         String mode = gameData.getMode();
+        System.out.println("DEBUG: Current mode = '" + mode + "'");
         if (mode != null && mode.equalsIgnoreCase("Challenge Mode")) {
+            String playerName = safeString(gameData.getPlayerName(), "Player");
+            String difficulty = safeString(gameData.getDifficulty(), "Easy");
+            System.out.println("DEBUG: Saving leaderboard entry - Name: " + playerName +
+                             ", Mode: Challenge Mode, Difficulty: " + difficulty +
+                             ", Stars: " + stars + ", WPM: " + gameData.getWpm() +
+                             ", Accuracy: " + gameData.getAccuracy());
             LeaderboardStorage.saveEntry(new LeaderboardStorage.LeaderboardEntry(
-                    safeString(gameData.getPlayerName(), "Player"),
-                    safeString(gameData.getMode(), "Unknown"),
-                    safeString(gameData.getDifficulty(), "Easy"),
+                    playerName,
+                    "Challenge Mode",
+                    difficulty,
                     stars,
                     gameData.getWpm(),
                     gameData.getAccuracy(),
                     System.currentTimeMillis()
             ));
+            System.out.println("DEBUG: Leaderboard entry saved successfully");
+        } else {
+            System.out.println("DEBUG: Not saving to leaderboard (mode is not Challenge Mode)");
         }
 
         // Start confetti animation
