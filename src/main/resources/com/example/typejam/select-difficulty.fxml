@@ -21,9 +21,9 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="419.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 70; -fx-arc-height: 70;" width="678.0" />
          </children>
       </StackPane>
-      <VBox alignment="TOP_CENTER" layoutX="37.0" layoutY="96.0" prefHeight="363.0" prefWidth="684.0">
+      <VBox alignment="TOP_CENTER" layoutX="37.0" layoutY="112.0" prefHeight="347.0" prefWidth="684.0" spacing="3.0">
          <children>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT DIFFICULTY" wrappingWidth="321.765625">
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT DIFFICULTY" textAlignment="CENTER" wrappingWidth="321.765625">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -31,9 +31,9 @@
                   <Font name="Arial Bold" size="32.0" />
                </font>
             </Text>
-            <StackPane prefHeight="63.0" prefWidth="684.0">
+            <StackPane prefHeight="70.0" prefWidth="522.0">
                <children>
-                  <Button fx:id="easyBtn" mnemonicParsing="false" onAction="#onEasyClick" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="easyBtn" mnemonicParsing="false" onAction="#onEasyClick" prefHeight="70.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Easy" wrappingWidth="323.4700516462326">
@@ -50,12 +50,12 @@
                   </VBox>
                </children>
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
             </StackPane>
-            <StackPane prefHeight="63.0" prefWidth="684.0">
+            <StackPane prefHeight="70.0" prefWidth="684.0">
                <children>
-                  <Button fx:id="averageBtn" mnemonicParsing="false" onAction="#onAverageClick" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="averageBtn" mnemonicParsing="false" onAction="#onAverageClick" prefHeight="70.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Medium" wrappingWidth="323.4700516462326">
@@ -72,12 +72,12 @@
                   </VBox>
                </children>
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
             </StackPane>
-            <StackPane prefHeight="63.0" prefWidth="684.0">
+            <StackPane prefHeight="70.0" prefWidth="684.0">
                <children>
-                  <Button fx:id="difficultBtn" mnemonicParsing="false" onAction="#onDifficultClick" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="difficultBtn" mnemonicParsing="false" onAction="#onDifficultClick" prefHeight="70.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="684.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hard" wrappingWidth="323.4700516462326">
@@ -94,7 +94,7 @@
                   </VBox>
                </children>
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
             </StackPane>
          </children>
