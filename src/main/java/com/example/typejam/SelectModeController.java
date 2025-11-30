@@ -10,34 +10,30 @@ public class SelectModeController {
 
     @FXML
     private Button back_btn;
-
     @FXML
     private Button timeChallengeBtn;
-
     @FXML
     private Button endlessModeBtn;
 
     @FXML
     private void onTimeChallengeClick(ActionEvent event) {
-        // Save the mode and navigate to select-time.fxml
+        // Set challenge mode and go to name entry (new flow).
         GameData.getInstance().setMode("Challenge Mode");
-
         try {
-            System.out.println("Challenge Mode button clicked - navigating to select-time.fxml");
-            NavigationHelper.navigateTo(event, "select-mode.fxml", "select-time.fxml");
+            System.out.println("Challenge Mode selected - navigating to enter-name.fxml");
+            NavigationHelper.navigateTo(event, "select-mode.fxml", "enter-name.fxml");
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error navigating to select time: " + e.getMessage());
+            System.err.println("Error navigating to enter name: " + e.getMessage());
         }
     }
 
     @FXML
     private void onEndlessModeClick(ActionEvent event) {
-        // Save the mode and navigate to select-difficulty.fxml
+        // Practice mode skips name & time selection; goes straight to difficulty.
         GameData.getInstance().setMode("Practice Mode");
-
         try {
-            System.out.println("Practice Mode button clicked - navigating to select-difficulty.fxml");
+            System.out.println("Practice Mode selected - navigating to select-difficulty.fxml");
             NavigationHelper.navigateTo(event, "select-mode.fxml", "select-difficulty.fxml");
         } catch (IOException e) {
             e.printStackTrace();

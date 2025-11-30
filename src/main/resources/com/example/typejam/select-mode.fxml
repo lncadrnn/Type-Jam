@@ -74,7 +74,7 @@
       <TilePane alignment="CENTER" hgap="10.0" layoutX="43.0" layoutY="37.0" mouseTransparent="true" prefHeight="78.0" prefWidth="678.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 10;" width="140.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 10;" width="140.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 10;" width="140.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 10;" width="140.0" />
          </children>
       </TilePane>

@@ -2,12 +2,7 @@ package com.example.typejam;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -27,7 +22,7 @@ public class MainMenuController {
 
     @FXML
     private void onPlay(ActionEvent event) throws IOException {
-        NavigationHelper.navigateTo(event, "main-menu.fxml", "enter-name.fxml");
+        NavigationHelper.navigateTo(event, "main-menu.fxml", "select-mode.fxml");
     }
 
     @FXML
@@ -45,4 +40,3 @@ public class MainMenuController {
         NavigationHelper.navigateTo(event, "main-menu.fxml", "settings.fxml");
     }
 }
-
