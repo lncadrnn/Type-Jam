@@ -27,12 +27,12 @@
                   <Insets bottom="30.0" top="40.0" />
                </VBox.margin>
             </HBox>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Good Effort! Practice makes perfect!" textAlignment="CENTER">
+            <Text fx:id="congratsTitle" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Good Effort! Practice makes perfect!" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Keep it up! Each star marks a step closer to mastery." textAlignment="CENTER">
+            <Text fx:id="congratsSubtitle" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Keep it up! Each star marks a step closer to mastery." textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>

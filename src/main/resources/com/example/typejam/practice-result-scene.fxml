@@ -22,12 +22,12 @@
       </StackPane>
       <VBox alignment="TOP_CENTER" layoutX="45.0" layoutY="89.0" prefHeight="359.0" prefWidth="670.0">
          <children>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Practice Complete! Nice work!" textAlignment="CENTER">
+            <Text fx:id="congratsTitle" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Practice Complete! Nice work!" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Keep going—consistent practice builds speed and accuracy." textAlignment="CENTER">
+            <Text fx:id="congratsSubtitle" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Keep going, consistent practice builds speed and accuracy." textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>

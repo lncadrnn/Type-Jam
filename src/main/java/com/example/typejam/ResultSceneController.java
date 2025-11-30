@@ -51,6 +51,12 @@ public class ResultSceneController {
     private javafx.scene.text.Text charactersValue;
 
     @FXML
+    private javafx.scene.text.Text congratsTitle;
+
+    @FXML
+    private javafx.scene.text.Text congratsSubtitle;
+
+    @FXML
     private AnchorPane rootPane;
 
     private Pane confettiPane;
@@ -98,8 +104,11 @@ public class ResultSceneController {
             displayStars(stars);
         }
 
-        // Save leaderboard entry locally ONLY for Challenge Mode (not for Practice Mode)
+        // Set dynamic congratulatory messages based on mode
         String mode = gameData.getMode();
+        updateCongratulatoryMessages(mode, stars);
+
+        // Save leaderboard entry locally ONLY for Challenge Mode (not for Practice Mode)
         System.out.println("DEBUG: Current mode = '" + mode + "'");
         if (mode != null && mode.equalsIgnoreCase("Challenge Mode")) {
             String playerName = safeString(gameData.getPlayerName(), "Player");
@@ -446,5 +455,117 @@ public class ResultSceneController {
 
     private String safeString(String value, String fallback) {
         return (value == null || value.trim().isEmpty()) ? fallback : value;
+    }
+
+    // Message pool for Challenge Mode (keyed by star rating 0-5)
+    private static final java.util.Map<Integer, List<MessagePair>> challengeModeMessages = new java.util.HashMap<>();
+
+    // Message pool for Practice Mode
+    private static final List<MessagePair> practiceModeMessages = new ArrayList<>();
+
+    // Static initializer to populate message pools
+    static {
+        // Challenge Mode: 0 Stars (Encouraging)
+        challengeModeMessages.put(0, java.util.Arrays.asList(
+            new MessagePair("Keep Trying!", "Every expert was once a beginner."),
+            new MessagePair("Don't Give Up!", "Progress takes time and practice."),
+            new MessagePair("You've Got This!", "Small steps lead to big improvements."),
+            new MessagePair("Stay Positive!", "Learning is a journey, not a race.")
+        ));
+
+        // Challenge Mode: 1 Star (Supportive)
+        challengeModeMessages.put(1, java.util.Arrays.asList(
+            new MessagePair("Good Start!", "You're on the right track."),
+            new MessagePair("Nice Effort!", "Keep practicing to improve your skills."),
+            new MessagePair("You're Learning!", "Every attempt makes you better."),
+            new MessagePair("Keep Going!", "Consistency is the key to success.")
+        ));
+
+        // Challenge Mode: 2 Stars (Supportive)
+        challengeModeMessages.put(2, java.util.Arrays.asList(
+            new MessagePair("Well Done!", "You're making steady progress."),
+            new MessagePair("Great Effort!", "Your skills are developing nicely."),
+            new MessagePair("Keep It Up!", "You're getting better with each try."),
+            new MessagePair("Nice Work!", "Practice is paying off.")
+        ));
+
+        // Challenge Mode: 3 Stars (Motivational)
+        challengeModeMessages.put(3, java.util.Arrays.asList(
+            new MessagePair("Good Job!", "You're hitting your stride now."),
+            new MessagePair("Impressive!", "You're showing real improvement."),
+            new MessagePair("Great Progress!", "You're mastering the basics well."),
+            new MessagePair("Solid Performance!", "Keep pushing to reach the next level."),
+            new MessagePair("Nice Achievement!", "Your dedication is showing results.")
+        ));
+
+        // Challenge Mode: 4 Stars (Celebratory)
+        challengeModeMessages.put(4, java.util.Arrays.asList(
+            new MessagePair("Excellent Work!", "You're almost at the top!"),
+            new MessagePair("Outstanding!", "Your typing skills are impressive."),
+            new MessagePair("Fantastic Job!", "You're very close to perfection."),
+            new MessagePair("Amazing Performance!", "Just one more push to five stars."),
+            new MessagePair("Superb Typing!", "You're in the expert range now.")
+        ));
+
+        // Challenge Mode: 5 Stars (Celebratory)
+        challengeModeMessages.put(5, java.util.Arrays.asList(
+            new MessagePair("Perfect Score!", "You've achieved typing mastery!"),
+            new MessagePair("Flawless!", "Your typing skills are exceptional."),
+            new MessagePair("Incredible!", "You've reached the pinnacle of typing."),
+            new MessagePair("Phenomenal!", "You're a true typing champion!"),
+            new MessagePair("Masterful!", "Five stars, absolute perfection!")
+        ));
+
+        // Practice Mode: General Motivational (7 variations)
+        practiceModeMessages.add(new MessagePair("Practice Complete!", "Consistency builds speed and accuracy."));
+        practiceModeMessages.add(new MessagePair("Great Session!", "Every practice session sharpens your skills."));
+        practiceModeMessages.add(new MessagePair("Nice Work!", "Regular practice leads to mastery."));
+        practiceModeMessages.add(new MessagePair("Keep Practicing!", "Your dedication will pay off."));
+        practiceModeMessages.add(new MessagePair("Well Done!", "Each session makes you stronger."));
+        practiceModeMessages.add(new MessagePair("Good Effort!", "Progress happens one practice at a time."));
+        practiceModeMessages.add(new MessagePair("Excellent Practice!", "You're building valuable skills today."));
+    }
+
+    // Inner class to hold message pairs
+    private static class MessagePair {
+        final String title;
+        final String subtitle;
+
+        MessagePair(String title, String subtitle) {
+            this.title = title;
+            this.subtitle = subtitle;
+        }
+    }
+
+    private void updateCongratulatoryMessages(String mode, int stars) {
+        // Null safety checks for Text elements
+        if (congratsTitle == null || congratsSubtitle == null) {
+            return;
+        }
+
+        MessagePair selectedMessage;
+
+        if (mode != null && mode.equalsIgnoreCase("Challenge Mode")) {
+            // Challenge Mode: select message based on star rating
+            List<MessagePair> messages = challengeModeMessages.get(stars);
+            if (messages != null && !messages.isEmpty()) {
+                selectedMessage = messages.get(random.nextInt(messages.size()));
+            } else {
+                // Fallback message if star rating not found
+                selectedMessage = new MessagePair("Great Effort!", "Keep practicing to improve.");
+            }
+        } else {
+            // Practice Mode: select from general motivational messages
+            if (!practiceModeMessages.isEmpty()) {
+                selectedMessage = practiceModeMessages.get(random.nextInt(practiceModeMessages.size()));
+            } else {
+                // Fallback message if list is empty
+                selectedMessage = new MessagePair("Practice Complete!", "Keep going to build your skills.");
+            }
+        }
+
+        // Update the Text elements
+        congratsTitle.setText(selectedMessage.title);
+        congratsSubtitle.setText(selectedMessage.subtitle);
     }
 }
