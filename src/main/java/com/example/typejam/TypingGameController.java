@@ -575,9 +575,14 @@ public class TypingGameController {
             typingField.setDisable(true);
 
             GameData gameData = GameData.getInstance();
-            // Time taken = elapsed time
-            long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
-            double timeTakenSeconds = elapsedMillis / 1000.0;
+            // Time taken = elapsed time; if game never started, force 0
+            double timeTakenSeconds;
+            if (!gameStarted || startTime <= 0) {
+                timeTakenSeconds = 0.0;
+            } else {
+                long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
+                timeTakenSeconds = elapsedMillis / 1000.0;
+            }
             gameData.setTimeTaken(timeTakenSeconds);
 
             // Include current field into cumulative count
