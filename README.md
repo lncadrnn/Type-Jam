@@ -22,9 +22,19 @@ A JavaFX typing practice game to help students build speed and accuracy. Include
 - Persistence: preferences saved to `%USERPROFILE%/typejam-settings.json`
 
 ## How Scoring Works
-- WPM = (Total Characters Typed / 5) / Time in Minutes
-- Accuracy = (Total Characters Typed / (Total Characters Typed + Total Incorrect Keystrokes)) × 100
-- Stars (0–5) require meeting both WPM and Accuracy thresholds (examples: 5★ = 60+ WPM and 95%+ accuracy; 3★ = 30+ WPM and 80%+ accuracy)
+- **WPM** = (Total Characters Typed / 5) / Time in Minutes
+- **Accuracy** = (Total Characters Typed / (Total Characters Typed + Total Incorrect Keystrokes)) × 100
+- **Star Rating (0–5)** uses a weighted composite score:
+  - **40% WPM Score**: Based on 0-80 WPM range (80+ WPM = 100 score)
+  - **40% Accuracy Score**: Direct percentage (0-100)
+  - **20% Characters Typed Score**: Scaled based on volume (800+ chars = 100 score)
+  - **Composite Score** determines stars:
+    - 5★ Expert: 85-100
+    - 4★ Advanced: 70-84
+    - 3★ Intermediate: 55-69
+    - 2★ Beginner: 40-54
+    - 1★ Needs Practice: 20-39
+    - 0★ Try Again: 0-19
 
 ## Quick Start (Windows PowerShell)
 ```powershell
