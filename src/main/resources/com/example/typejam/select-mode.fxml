@@ -44,12 +44,12 @@
                   <Button fx:id="timeChallengeBtn" mnemonicParsing="false" onAction="#onTimeChallengeClick" prefHeight="78.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="123.0" prefWidth="684.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time Challenge" wrappingWidth="368.1367392539978">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Challenge Mode" wrappingWidth="368.1367392539978">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Race against the clock" wrappingWidth="363.4700826704502">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beat the clock. Climb the leaderboards." wrappingWidth="363.4700826704502">
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin>
@@ -63,12 +63,12 @@
                   <Button fx:id="endlessModeBtn" mnemonicParsing="false" onAction="#onEndlessModeClick" prefHeight="78.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="107.0" prefWidth="684.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Endless Mode" wrappingWidth="368.1367392539978">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Practice Mode" wrappingWidth="368.1367392539978">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type until you finish all text" wrappingWidth="363.4700826704502">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="No pressure. Just improve. Train at your own pace." wrappingWidth="363.4700826704502">
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin>
