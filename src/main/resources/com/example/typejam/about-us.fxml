@@ -57,17 +57,17 @@
                         </Text>
                         <VBox spacing="4.0">
                            <children>
-                              <Text fill="#2b5237" text="To provide SHS students with a platform to practice and improve typing skills." textAlignment="JUSTIFY" wrappingWidth="600.0">
+                              <Text fill="#2b5237" text="- To provide SHS students with a platform to practice and improve typing skills." textAlignment="JUSTIFY" wrappingWidth="600.0">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
                               </Text>
-                              <Text fill="#2b5237" text="To prepare learners for academic tasks such as research, reports, and presentations." textAlignment="JUSTIFY" wrappingWidth="600.0">
+                              <Text fill="#2b5237" text="- To prepare learners for academic tasks such as research, reports, and presentations." textAlignment="JUSTIFY" wrappingWidth="600.0">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
                               </Text>
-                              <Text fill="#2b5237" text="To encourage discipline, accuracy, and confidence in digital literacy." textAlignment="JUSTIFY" wrappingWidth="600.0">
+                              <Text fill="#2b5237" text="- To encourage discipline, accuracy, and confidence in digital literacy." textAlignment="JUSTIFY" wrappingWidth="600.0">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
@@ -82,7 +82,7 @@
                         </Text>
                         <VBox spacing="4.0">
                            <children>
-                              <Text fill="#2b5237" text="Multiple Modes: Timed tests, practice sessions, and challenges." wrappingWidth="600.0">
+                              <Text fill="#2b5237" text="Multiple Modes: Challenge Mode and Practice Mode." wrappingWidth="600.0">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
@@ -92,14 +92,9 @@
                                     <Font name="Arial" size="15.0" />
                                  </font>
                               </Text>
-                              <Text fill="#2b5237" text="Leaderboards: Fair competition with filters for mode and difficulty, so students can compare scores equally." wrappingWidth="600.0">
+                              <Text fill="#2b5237" text="Leaderboards: Fair competition with filters for difficulty, so students can compare scores equally." wrappingWidth="600.0">
                                  <font>
                                     <Font name="Arial" size="15.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#2b5237" text="• Progress Tracking: Monitor WPM, accuracy, and growth over time." wrappingWidth="600.0">
-                                 <font>
-                                    <Font name="Arial" size="17.0" />
                                  </font>
                               </Text>
                            </children>
