@@ -264,84 +264,96 @@ public class ResultSceneController {
         }
     }
 
+    // --- New scoring utility methods ---
+    private double calculateWPM(int charsTyped, double timeSeconds) {
+        // WPM = (charsTyped / 5) / (timeSeconds / 60)
+        if (timeSeconds <= 0) return 0.0;
+        return (charsTyped / 5.0) / (timeSeconds / 60.0);
+    }
+
+    private double calculateAccuracy(int correctChars, int totalChars) {
+        // accuracy = (correctChars / totalChars) * 100
+        if (totalChars <= 0) return 0.0;
+        return (correctChars / (double) totalChars) * 100.0;
+    }
+
+    private int calculateStars(double wpm, double accuracy, int charsTyped) {
+        // First tier: character-based cap
+        int maxStars;
+        if (charsTyped < 30) {
+            maxStars = 0; // 0-star edge case
+        } else if (charsTyped < 50) {
+            maxStars = 1;
+        } else if (charsTyped < 100) {
+            maxStars = 2;
+        } else if (charsTyped < 150) {
+            maxStars = 3;
+        } else if (charsTyped < 200) {
+            maxStars = 4;
+        } else {
+            maxStars = 5;
+        }
+
+        // Second tier: WPM + Accuracy thresholds
+        int earnedStars;
+        if (wpm >= 55 && accuracy >= 95) {
+            earnedStars = 5;
+        } else if (wpm >= 45 && accuracy >= 90) {
+            earnedStars = 4;
+        } else if (wpm >= 30 && accuracy >= 85) {
+            earnedStars = 3;
+        } else if (wpm >= 15 && accuracy >= 80) {
+            earnedStars = 2;
+        } else {
+            earnedStars = 1;
+        }
+
+        int finalStars = Math.min(maxStars, earnedStars);
+
+        // Debug output
+        System.out.println("--- Two-Tier Star Calculation ---");
+        System.out.println("Characters Typed: " + charsTyped + " -> Max Stars Allowed: " + maxStars);
+        System.out.println("WPM: " + String.format("%.2f", wpm) + ", Accuracy: " + String.format("%.2f", accuracy) + "% -> Earned Stars: " + earnedStars);
+        if (finalStars < earnedStars) {
+            System.out.println("Note: Star rating capped by characters typed.");
+        }
+        System.out.println("Final Stars Awarded: " + finalStars + " / 5");
+        System.out.println("----------------------------------");
+        return finalStars;
+    }
+
+    private double getFinalScore(double wpm, double accuracy) {
+        // score = (wpm * 0.6) + (accuracy * 0.4), capped at 100
+        double score = (wpm * 0.6) + (accuracy * 0.4);
+        return Math.min(100.0, score);
+    }
+
     private int calculateStarRating() {
         GameData gameData = GameData.getInstance();
         double accuracy = gameData.getAccuracy();
         double wpm = gameData.getWpm();
         int charactersTyped = gameData.getCharactersTyped();
 
-        System.out.println("=== Star Rating Calculation ===");
+        // If WPM/Accuracy were not set (defensive), compute from raw data
+        if (Double.isNaN(wpm) || wpm <= 0) {
+            wpm = calculateWPM(charactersTyped, gameData.getTimeTaken());
+        }
+        if (Double.isNaN(accuracy) || accuracy <= 0) {
+            accuracy = calculateAccuracy(gameData.getCorrectCharacters(), gameData.getTotalCharacters());
+        }
+
+        System.out.println("=== Star Rating Calculation (Two-Tier) ===");
         System.out.println("Accuracy: " + String.format("%.2f", accuracy) + "%");
         System.out.println("WPM: " + String.format("%.2f", wpm));
         System.out.println("Characters Typed: " + charactersTyped);
 
-        // Enhanced star rating using weighted composite score
-        // Formula: 40% WPM + 40% Accuracy + 20% Characters Typed
+        // Use two-tier star calculation
+        int stars = calculateStars(wpm, accuracy, charactersTyped);
 
-        // 1. Calculate WPM Score (0-100 scale)
-        // Based on 0-80 WPM range (80+ WPM = max score)
-        double wpmScore = Math.min(100.0, (wpm / 80.0) * 100.0);
-
-        // 2. Calculate Accuracy Score (already 0-100)
-        double accuracyScore = accuracy;
-
-        // 3. Calculate Characters Typed Score (0-100 scale)
-        // Thresholds: 0-50 chars (poor), 50-150 (fair), 150-300 (good), 300-500 (great), 500-800 (excellent), 800+ (perfect)
-        double charsScore;
-        if (charactersTyped >= 800) {
-            charsScore = 100.0;
-        } else if (charactersTyped >= 500) {
-            charsScore = 80.0 + ((charactersTyped - 500) / 300.0) * 20.0; // 80-100
-        } else if (charactersTyped >= 300) {
-            charsScore = 65.0 + ((charactersTyped - 300) / 200.0) * 15.0; // 65-80
-        } else if (charactersTyped >= 150) {
-            charsScore = 50.0 + ((charactersTyped - 150) / 150.0) * 15.0; // 50-65
-        } else if (charactersTyped >= 50) {
-            charsScore = 25.0 + ((charactersTyped - 50) / 100.0) * 25.0; // 25-50
-        } else {
-            charsScore = (charactersTyped / 50.0) * 25.0; // 0-25
-        }
-
-        // 4. Calculate weighted composite score
-        double compositeScore = (wpmScore * 0.40) + (accuracyScore * 0.40) + (charsScore * 0.20);
-
-        // 5. Map composite score to star rating
-        int stars;
-        if (compositeScore >= 85.0) {
-            stars = 5; // Expert: 85-100
-        } else if (compositeScore >= 70.0) {
-            stars = 4; // Advanced: 70-84
-        } else if (compositeScore >= 55.0) {
-            stars = 3; // Intermediate: 55-69
-        } else if (compositeScore >= 40.0) {
-            stars = 2; // Beginner: 40-54
-        } else if (compositeScore >= 20.0) {
-            stars = 1; // Needs Practice: 20-39
-        } else {
-            stars = 0; // Try Again: 0-19
-        }
-
-        // Debug output
-        System.out.println("--- Score Breakdown ---");
-        System.out.println("WPM Score (40%): " + String.format("%.2f", wpmScore) + " -> Weighted: " + String.format("%.2f", wpmScore * 0.40));
-        System.out.println("Accuracy Score (40%): " + String.format("%.2f", accuracyScore) + " -> Weighted: " + String.format("%.2f", accuracyScore * 0.40));
-        System.out.println("Characters Score (20%): " + String.format("%.2f", charsScore) + " -> Weighted: " + String.format("%.2f", charsScore * 0.20));
-        System.out.println("Composite Score: " + String.format("%.2f", compositeScore));
-        System.out.println("Stars Awarded: " + stars + " / 5");
-
-        if (stars < 5) {
-            String[] nextThresholds = {
-                "1 Star: Composite Score >= 20 (Needs Practice)",
-                "2 Stars: Composite Score >= 40 (Beginner)",
-                "3 Stars: Composite Score >= 55 (Intermediate)",
-                "4 Stars: Composite Score >= 70 (Advanced)",
-                "5 Stars: Composite Score >= 85 (Expert)"
-            };
-            System.out.println("Next Level: " + nextThresholds[stars]);
-        } else {
-            System.out.println("Perfect! Maximum stars achieved!");
-        }
-        System.out.println("===============================");
+        // Optional: compute final score for display or future use
+        double finalScore = getFinalScore(wpm, accuracy);
+        System.out.println("Final Weighted Score (0-100): " + String.format("%.2f", finalScore));
+        System.out.println("=========================================");
 
         return stars;
     }
