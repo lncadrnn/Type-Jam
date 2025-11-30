@@ -556,6 +556,16 @@ public class TypingGameController {
         stage.show();
     }
 
+    // New: Load practice result scene
+    private void loadPracticeResultScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("practice-result-scene.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) typingField.getScene().getWindow();
+        Scene scene = new Scene(root, 760, 495);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @FXML
     private void onEndPractice(ActionEvent event) {
         // Allows user to end Practice Mode manually and show results
@@ -587,7 +597,7 @@ public class TypingGameController {
 
             // Navigate directly to result scene
             try {
-                loadResultScene();
+                loadPracticeResultScene();
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -64,8 +64,12 @@ public class ResultSceneController {
         GameData gameData = GameData.getInstance();
 
         // Display statistics
-        wpmValue.setText(String.valueOf(Math.round(gameData.getWpm())));
-        accuracyValue.setText(String.format("%.2f%%", gameData.getAccuracy()));
+        if (wpmValue != null) {
+            wpmValue.setText(String.valueOf(Math.round(gameData.getWpm())));
+        }
+        if (accuracyValue != null) {
+            accuracyValue.setText(String.format("%.2f%%", gameData.getAccuracy()));
+        }
 
         // Format time consumed in words
         double timeConsumed = gameData.getTimeTaken();
@@ -80,13 +84,19 @@ public class ResultSceneController {
         } else {
             timeText = seconds + (seconds == 1 ? " second" : " seconds");
         }
-        timeValue.setText(timeText);
+        if (this.timeValue != null) {
+            this.timeValue.setText(timeText);
+        }
 
-        charactersValue.setText(String.valueOf(gameData.getCharactersTyped()));
+        if (charactersValue != null) {
+            charactersValue.setText(String.valueOf(gameData.getCharactersTyped()));
+        }
 
         // Calculate star rating based on game results
         int stars = calculateStarRating();
-        displayStars(stars);
+        if (starsContainer != null) {
+            displayStars(stars);
+        }
 
         // Save leaderboard entry locally ONLY for Time Challenge mode (not for Practice Mode)
         String mode = gameData.getMode();
@@ -296,6 +306,9 @@ public class ResultSceneController {
     }
 
     private void displayStars(int filledStars) {
+        if (starsContainer == null) {
+            return; // Scene does not include stars; skip
+        }
         starsContainer.getChildren().clear();
 
         // Create 5 stars
@@ -374,6 +387,16 @@ public class ResultSceneController {
             NavigationHelper.switchToScene(event, "enter-name.fxml");
         } catch (IOException e) {
             System.err.println("Error loading enter-name.fxml: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    public void onPracticeAgain(ActionEvent event) {
+        try {
+            GameData.getInstance().clearNavigationHistory();
+            NavigationHelper.switchToScene(event, "select-mode.fxml");
+        } catch (IOException e) {
+            System.err.println("Error loading select-mode.fxml: " + e.getMessage());
         }
     }
 
