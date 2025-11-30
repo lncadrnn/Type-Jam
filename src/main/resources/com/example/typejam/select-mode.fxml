@@ -31,14 +31,6 @@
                   <Font name="Arial Bold" size="32.0" />
                </font>
             </Text>
-            <Text fx:id="errorText" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a mode first!" visible="false">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Text>
             <StackPane prefHeight="108.0" prefWidth="684.0">
                <children>
                   <Button fx:id="timeChallengeBtn" mnemonicParsing="false" onAction="#onTimeChallengeClick" prefHeight="78.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
@@ -49,7 +41,7 @@
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beat the clock. Climb the leaderboards." wrappingWidth="363.4700826704502">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beat the clock and Climb the leaderboards!" wrappingWidth="363.4700826704502">
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin>
@@ -77,15 +69,6 @@
                   </VBox>
                </children>
             </StackPane>
-            <Button fx:id="next_btn" mnemonicParsing="false" onAction="#onNext" prefHeight="45.0" prefWidth="199.0" style="-fx-background-color: #2B5237; -fx-background-radius: 50;" text="NEXT" textFill="#f6b539">
-               <font>
-                  <Font name="Arial Bold" size="25.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
-            <!-- Add your mode selection buttons here -->
          </children>
       </VBox>
       <TilePane alignment="CENTER" hgap="10.0" layoutX="43.0" layoutY="37.0" mouseTransparent="true" prefHeight="78.0" prefWidth="678.0">

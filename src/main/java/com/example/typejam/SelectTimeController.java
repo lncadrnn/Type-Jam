@@ -2,12 +2,7 @@ package com.example.typejam;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -26,42 +21,45 @@ public class SelectTimeController {
     private Button fiveMinuteBtn;
 
     @FXML
-    private Button next_btn;
-
-    @FXML
-    private javafx.scene.text.Text errorText;
-
-    private Button selectedTimeButton = null;
-    private String selectedTime = null;
-
-    @FXML
     private void onOneMinuteClick(ActionEvent event) {
-        selectTime(oneMinuteBtn, "1 Minute");
+        // Save the time and navigate to select-difficulty.fxml
+        GameData.getInstance().setTime("1 Minute");
+
+        try {
+            System.out.println("1 Minute button clicked - navigating to select-difficulty.fxml");
+            NavigationHelper.navigateTo(event, "select-time.fxml", "select-difficulty.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error navigating to select difficulty: " + e.getMessage());
+        }
     }
 
     @FXML
     private void onThreeMinuteClick(ActionEvent event) {
-        selectTime(threeMinuteBtn, "3 Minutes");
+        // Save the time and navigate to select-difficulty.fxml
+        GameData.getInstance().setTime("3 Minutes");
+
+        try {
+            System.out.println("3 Minutes button clicked - navigating to select-difficulty.fxml");
+            NavigationHelper.navigateTo(event, "select-time.fxml", "select-difficulty.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error navigating to select difficulty: " + e.getMessage());
+        }
     }
 
     @FXML
     private void onFiveMinuteClick(ActionEvent event) {
-        selectTime(fiveMinuteBtn, "5 Minutes");
-    }
+        // Save the time and navigate to select-difficulty.fxml
+        GameData.getInstance().setTime("5 Minutes");
 
-    private void selectTime(Button selectedButton, String time) {
-        // Reset previously selected button
-        if (selectedTimeButton != null) {
-            selectedTimeButton.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;");
+        try {
+            System.out.println("5 Minutes button clicked - navigating to select-difficulty.fxml");
+            NavigationHelper.navigateTo(event, "select-time.fxml", "select-difficulty.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error navigating to select difficulty: " + e.getMessage());
         }
-
-        // Apply selected style to the new button
-        selectedTimeButton = selectedButton;
-        selectedTime = time;
-        selectedTimeButton.setStyle("-fx-background-color: rgba(43, 82, 55, 0.37); -fx-border-color: #2B5237; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;");
-
-        // Hide error message if it was showing
-        errorText.setVisible(false);
     }
 
     // Ensure the back button is front-most at runtime so it can receive mouse events
@@ -83,27 +81,4 @@ public class SelectTimeController {
         }
     }
 
-    @FXML
-    private void onNext(ActionEvent event) {
-        // Check if a time is selected
-        if (selectedTimeButton == null) {
-            // Show error message
-            errorText.setVisible(true);
-            return;
-        }
-
-        // Hide error message if it was showing
-        errorText.setVisible(false);
-
-        // Save the selected time to GameData
-        GameData.getInstance().setTime(selectedTime);
-
-        try {
-            System.out.println("Next button clicked - navigating to select-difficulty.fxml");
-            NavigationHelper.navigateTo(event, "select-time.fxml", "select-difficulty.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("Error navigating to select difficulty: " + e.getMessage());
-        }
-    }
 }

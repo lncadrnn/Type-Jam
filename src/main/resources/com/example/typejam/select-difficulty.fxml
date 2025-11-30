@@ -31,14 +31,6 @@
                   <Font name="Arial Bold" size="32.0" />
                </font>
             </Text>
-            <Text fx:id="errorText" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a difficulty first!" visible="false">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Text>
             <StackPane prefHeight="63.0" prefWidth="684.0">
                <children>
                   <Button fx:id="easyBtn" mnemonicParsing="false" onAction="#onEasyClick" prefHeight="61.0" prefWidth="351.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
@@ -105,14 +97,6 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </StackPane>
-            <Button fx:id="next_btn" mnemonicParsing="false" onAction="#onNext" prefHeight="37.0" prefWidth="199.0" style="-fx-background-color: #2B5237; -fx-background-radius: 50;" text="NEXT" textFill="#f6b539">
-               <font>
-                  <Font name="Arial Bold" size="22.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="27.0" />
-               </VBox.margin>
-            </Button>
          </children>
       </VBox>
       <TilePane alignment="CENTER" hgap="10.0" layoutX="43.0" layoutY="37.0" mouseTransparent="true" prefHeight="78.0" prefWidth="678.0">
