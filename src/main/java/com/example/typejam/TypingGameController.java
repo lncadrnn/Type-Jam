@@ -65,6 +65,7 @@ public class TypingGameController {
     private String previousTypedText = ""; // Track previous state to detect changes
     private int totalCharactersShown = 0; // Track total characters across all passages
     private int cumulativeCharsTyped = 0; // Cumulative characters typed across all passages
+    private int cumulativeCorrectChars = 0; // Track correct characters across passages
     private javafx.beans.value.ChangeListener<String> typingFieldListener; // Store listener to remove/add it
     private boolean isLoadingNewText = false; // Flag to prevent listener execution during text reload
     private String lastUsedText = null; // Track last text to avoid immediate repetition
@@ -340,6 +341,7 @@ public class TypingGameController {
 
             // In Time Challenge mode, add current typing field chars to cumulative total
             int finalTotalCharsTyped = cumulativeCharsTyped + totalCharsTyped;
+            int finalCorrectChars = cumulativeCorrectChars + correctChars;
 
             // Calculate accuracy: accounts for all incorrect keystrokes (even if corrected)
             // Total keystrokes = correct keystrokes + incorrect keystrokes
@@ -351,7 +353,7 @@ public class TypingGameController {
             gameData.setAccuracy(accuracy);
             // In Time Challenge mode, use totalCharactersShown which includes all passages
             gameData.setTotalCharacters(totalCharactersShown);
-            gameData.setCorrectCharacters(correctChars);
+            gameData.setCorrectCharacters(finalCorrectChars);
             gameData.setCharactersTyped(finalTotalCharsTyped);
             gameData.setErrors(totalIncorrectKeystrokes); // Use cumulative errors
 
@@ -441,6 +443,7 @@ public class TypingGameController {
             if (endlessMode && !gameFinished) {
                 isLoadingNewText = true;
                 cumulativeCharsTyped += totalCharsTyped; // add finished passage typed chars
+                cumulativeCorrectChars += correctChars; // accumulate correct chars
                 GameData gameData = GameData.getInstance();
                 String difficulty = gameData.getDifficulty() != null ? gameData.getDifficulty() : "Easy";
                 // Select new text, avoid repeating last one
@@ -457,7 +460,32 @@ public class TypingGameController {
                 return;
             }
 
-            // Challenge Mode completion previously handled; now only finish on time up.
+            // Challenge Mode: load next text and continue until timer ends
+            if (timeChallengeMode && !gameFinished) {
+                isLoadingNewText = true;
+                cumulativeCharsTyped += totalCharsTyped;
+                cumulativeCorrectChars += correctChars; // accumulate correct chars
+                GameData gameData = GameData.getInstance();
+                String difficulty = gameData.getDifficulty() != null ? gameData.getDifficulty() : "Easy";
+                // Select new text, avoid repeating last one
+                targetText = selectTextByDifficulty(difficulty, true);
+                // Track total characters shown across passages
+                totalCharactersShown += targetText.length();
+                // Reset state for new passage
+                previousTypedText = "";
+                correctChars = 0;
+                errors = 0;
+                totalCharsTyped = 0;
+                javafx.application.Platform.runLater(() -> {
+                    typingField.clear();
+                    updateTextDisplay("");
+                    isLoadingNewText = false;
+                    typingField.requestFocus();
+                });
+                System.out.println("Challenge Mode: Loaded new text, continuing until time is up...");
+                return;
+            }
+
             // For any other mode, finish and compute results
             gameFinished = true;
             if (timer != null) {
@@ -587,12 +615,13 @@ public class TypingGameController {
 
             // Include current field into cumulative count
             int finalTotalCharsTyped = cumulativeCharsTyped + totalCharsTyped;
+            int finalCorrectChars = cumulativeCorrectChars + correctChars;
             int totalKeystrokesTyped = finalTotalCharsTyped + totalIncorrectKeystrokes;
             double accuracy = totalKeystrokesTyped > 0 ? ((double) finalTotalCharsTyped / totalKeystrokesTyped) * 100 : 0;
             if (accuracy < 0) accuracy = 0;
             gameData.setAccuracy(accuracy);
             gameData.setTotalCharacters(totalCharactersShown);
-            gameData.setCorrectCharacters(correctChars);
+            gameData.setCorrectCharacters(finalCorrectChars);
             gameData.setCharactersTyped(finalTotalCharsTyped);
             gameData.setErrors(totalIncorrectKeystrokes);
 
