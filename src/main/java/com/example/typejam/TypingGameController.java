@@ -61,6 +61,11 @@ public class TypingGameController {
     private int errors = 0;
     private int totalIncorrectKeystrokes = 0; // Track all incorrect keystrokes (cumulative)
     private String previousTypedText = ""; // Track previous state to detect changes
+    private int totalCharactersShown = 0; // Track total characters across all passages (for Time Challenge)
+    private int cumulativeCharsTyped = 0; // Cumulative characters typed across all passages (for Time Challenge)
+    private javafx.beans.value.ChangeListener<String> typingFieldListener; // Store listener to remove/add it
+    private boolean isLoadingNewText = false; // Flag to prevent listener execution during text reload
+    private String lastUsedText = null; // Track last text to avoid immediate repetition
 
     // Text data loaded from JSON file
     private Map<String, List<String>> typingTexts;
@@ -119,12 +124,21 @@ public class TypingGameController {
 
         // Select text based on difficulty
         targetText = selectTextByDifficulty(difficulty);
+        lastUsedText = targetText; // Track the initial text
+
+        // Initialize total characters shown (for tracking across multiple passages)
+        totalCharactersShown = targetText.length();
 
         // Display the target text
         updateTextDisplay("");
 
-        // Add listener to typing field
-        typingField.textProperty().addListener((observable, oldValue, newValue) -> {
+        // Create and store the listener for typing field
+        typingFieldListener = (observable, oldValue, newValue) -> {
+            // Skip listener execution if we're loading new text
+            if (isLoadingNewText) {
+                return;
+            }
+
             if (!gameStarted && !newValue.isEmpty()) {
                 startGame();
             }
@@ -132,7 +146,10 @@ public class TypingGameController {
                 updateTextDisplay(newValue);
                 checkCompletion(newValue);
             }
-        });
+        };
+
+        // Add listener to typing field
+        typingField.textProperty().addListener(typingFieldListener);
 
         // Focus on typing field
         typingField.requestFocus();
@@ -176,6 +193,10 @@ public class TypingGameController {
     }
 
     private String selectTextByDifficulty(String difficulty) {
+        return selectTextByDifficulty(difficulty, false);
+    }
+
+    private String selectTextByDifficulty(String difficulty, boolean avoidLastText) {
         if (typingTexts == null || typingTexts.isEmpty()) {
             System.err.println("Typing texts not loaded! Using fallback.");
             return "Type this text.";
@@ -191,8 +212,24 @@ public class TypingGameController {
             }
         }
 
-        // Select a random text from the list
-        return texts.get((int) (Math.random() * texts.size()));
+        // If we need to avoid the last text and there's more than one option
+        if (avoidLastText && lastUsedText != null && texts.size() > 1) {
+            // Create a list without the last used text
+            List<String> availableTexts = new java.util.ArrayList<>(texts);
+            availableTexts.remove(lastUsedText);
+
+            // If removal was successful, select from the filtered list
+            if (!availableTexts.isEmpty()) {
+                String selectedText = availableTexts.get((int) (Math.random() * availableTexts.size()));
+                lastUsedText = selectedText;
+                return selectedText;
+            }
+        }
+
+        // Select a random text from the full list
+        String selectedText = texts.get((int) (Math.random() * texts.size()));
+        lastUsedText = selectedText;
+        return selectedText;
     }
 
     private int parseTimeLimit(String timeLimit) {
@@ -289,27 +326,31 @@ public class TypingGameController {
             GameData gameData = GameData.getInstance();
             gameData.setTimeTaken(timeLimitSeconds); // Used full time
 
+            // In Time Challenge mode, add current typing field chars to cumulative total
+            int finalTotalCharsTyped = cumulativeCharsTyped + totalCharsTyped;
+
             // Calculate accuracy: accounts for all incorrect keystrokes (even if corrected)
             // Total keystrokes = correct keystrokes + incorrect keystrokes
-            int totalKeystrokesTyped = totalCharsTyped + totalIncorrectKeystrokes;
+            int totalKeystrokesTyped = finalTotalCharsTyped + totalIncorrectKeystrokes;
             double accuracy = totalKeystrokesTyped > 0 ?
-                ((double)totalCharsTyped / totalKeystrokesTyped) * 100 : 0;
+                ((double)finalTotalCharsTyped / totalKeystrokesTyped) * 100 : 0;
             if (accuracy < 0) accuracy = 0; // Ensure non-negative
 
             gameData.setAccuracy(accuracy);
-            gameData.setTotalCharacters(targetText.length());
+            // In Time Challenge mode, use totalCharactersShown which includes all passages
+            gameData.setTotalCharacters(totalCharactersShown);
             gameData.setCorrectCharacters(correctChars);
-            gameData.setCharactersTyped(totalCharsTyped);
+            gameData.setCharactersTyped(finalTotalCharsTyped);
             gameData.setErrors(totalIncorrectKeystrokes); // Use cumulative errors
 
             // Calculate WPM = (total characters typed / 5) / time in minutes
             double minutes = timeLimitSeconds / 60.0;
-            double wpm = minutes > 0 ? (totalCharsTyped / 5.0) / minutes : 0;
+            double wpm = minutes > 0 ? (finalTotalCharsTyped / 5.0) / minutes : 0;
             gameData.setWpm(wpm);
 
             System.out.println("Accuracy: " + String.format("%.2f", accuracy) + "%");
             System.out.println("WPM: " + String.format("%.2f", wpm));
-            System.out.println("Characters Typed: " + totalCharsTyped);
+            System.out.println("Characters Typed: " + finalTotalCharsTyped);
             System.out.println("Total Incorrect Keystrokes: " + totalIncorrectKeystrokes);
 
             // Navigate to loading screen
@@ -384,6 +425,44 @@ public class TypingGameController {
 
     private void checkCompletion(String typedText) {
         if (typedText.equals(targetText)) {
+            // In Time Challenge mode, load new text and continue
+            if (timeChallengeMode && !gameFinished) {
+                // Set flag to prevent listener from firing during text reload
+                isLoadingNewText = true;
+
+                // Accumulate characters typed from the completed passage
+                cumulativeCharsTyped += totalCharsTyped;
+
+                // Get the difficulty for selecting new text
+                GameData gameData = GameData.getInstance();
+                String difficulty = gameData.getDifficulty() != null ? gameData.getDifficulty() : "Easy";
+
+                // Select new text with the same difficulty, avoiding the last one
+                targetText = selectTextByDifficulty(difficulty, true);
+
+                // Accumulate total characters shown across all passages
+                totalCharactersShown += targetText.length();
+
+                // Reset the previous typed text before clearing field
+                previousTypedText = "";
+
+                // Clear the typing field safely
+                javafx.application.Platform.runLater(() -> {
+                    typingField.clear();
+                    // Update display with new text
+                    updateTextDisplay("");
+                    // Re-enable listener
+                    isLoadingNewText = false;
+                    // Set focus back to typing field
+                    typingField.requestFocus();
+                });
+
+                System.out.println("Time Challenge: Loading new text, continuing...");
+                System.out.println("Cumulative chars typed so far: " + cumulativeCharsTyped);
+                return;
+            }
+
+            // For non-Time Challenge modes (Endless Mode), end the game normally
             gameFinished = true;
             if (timer != null) {
                 timer.stop();
@@ -404,16 +483,6 @@ public class TypingGameController {
                 int minutes = seconds / 60;
                 seconds = seconds % 60;
                 System.out.println("Endless mode completed in " + minutes + ":" + String.format("%02d", seconds));
-            } else if (timeChallengeMode) {
-                // For timed challenge: time consumed = time spent
-                long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
-                timeTakenSeconds = elapsedMillis / 1000.0; // Time consumed (time spent)
-                gameData.setTimeTaken(timeTakenSeconds);
-
-                int seconds = (int) timeTakenSeconds;
-                int minutes = seconds / 60;
-                seconds = seconds % 60;
-                System.out.println("Time challenge completed in " + minutes + ":" + String.format("%02d", seconds));
             } else {
                 // For other modes, calculate time spent
                 long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
@@ -440,16 +509,7 @@ public class TypingGameController {
             gameData.setErrors(totalIncorrectKeystrokes); // Use cumulative errors
 
             // Calculate WPM = (total characters typed / 5) / time in minutes
-            // For time calculation, use actual time spent (not time remaining)
-            double timeForWpm;
-            if (timeChallengeMode) {
-                long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
-                timeForWpm = elapsedMillis / 1000.0;
-            } else {
-                timeForWpm = timeTakenSeconds;
-            }
-
-            double minutes = timeForWpm / 60.0;
+            double minutes = timeTakenSeconds / 60.0;
             double wpm = minutes > 0 ? (totalCharsTyped / 5.0) / minutes : 0;
             gameData.setWpm(wpm);
 
