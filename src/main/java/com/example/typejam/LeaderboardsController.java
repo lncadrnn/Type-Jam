@@ -46,8 +46,6 @@ public class LeaderboardsController {
     @FXML
     private Button timeChallengeBtn;
 
-    @FXML
-    private Button endlessModeBtn;
 
     @FXML
     private Button easyBtn;
@@ -73,7 +71,7 @@ public class LeaderboardsController {
     private String selectedMode = null;
     private String selectedDifficulty = null;
 
-    private static final double MODE_DROPDOWN_GAP = 38; // mode directly beneath
+    private static final double MODE_DROPDOWN_GAP = 19; // mode directly beneath
     private static final double DIFFICULTY_DROPDOWN_GAP = 58; // move difficulty dropdown further down
 
     @FXML
@@ -118,16 +116,6 @@ public class LeaderboardsController {
     private void onTimeChallengeFilter(ActionEvent event) {
         selectedMode = "Time Challenge";
         modeBtn.setText("Time Challenge");
-        modeResetBtn.setVisible(true);
-        modeResetBtn.setManaged(true);
-        hideAllDropdowns();
-        loadLeaderboardData();
-    }
-
-    @FXML
-    private void onEndlessModeFilter(ActionEvent event) {
-        selectedMode = "Endless Mode";
-        modeBtn.setText("Endless Mode");
         modeResetBtn.setVisible(true);
         modeResetBtn.setManaged(true);
         hideAllDropdowns();

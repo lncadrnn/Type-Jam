@@ -118,7 +118,6 @@
       <VBox fx:id="modeDropdown" alignment="CENTER" managed="false" spacing="6.0" visible="false" prefWidth="260.0" minWidth="260.0" maxWidth="260.0" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 15; -fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 2);">
          <children>
             <Button fx:id="timeChallengeBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onTimeChallengeFilter" prefHeight="35.0" prefWidth="240.0" minWidth="240.0" maxWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Time Challenge" />
-            <Button fx:id="endlessModeBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onEndlessModeFilter" prefHeight="35.0" prefWidth="240.0" minWidth="240.0" maxWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #2b5237; -fx-border-radius: 10; -fx-border-width: 2; -fx-text-fill: #2b5237; -fx-font-weight: bold; -fx-font-size: 14px;" text="Endless Mode" />
          </children>
       </VBox>
 

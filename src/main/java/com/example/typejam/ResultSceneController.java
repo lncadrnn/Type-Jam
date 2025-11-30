@@ -87,16 +87,20 @@ public class ResultSceneController {
         // Calculate star rating based on game results
         int stars = calculateStarRating();
         displayStars(stars);
-        // Save leaderboard entry locally
-        LeaderboardStorage.saveEntry(new LeaderboardStorage.LeaderboardEntry(
-                safeString(gameData.getPlayerName(), "Player"),
-                safeString(gameData.getMode(), "Unknown"),
-                safeString(gameData.getDifficulty(), "Easy"),
-                stars,
-                gameData.getWpm(),
-                gameData.getAccuracy(),
-                System.currentTimeMillis()
-        ));
+
+        // Save leaderboard entry locally ONLY for Time Challenge mode (not for Practice Mode)
+        String mode = gameData.getMode();
+        if (mode != null && mode.equalsIgnoreCase("Time Challenge")) {
+            LeaderboardStorage.saveEntry(new LeaderboardStorage.LeaderboardEntry(
+                    safeString(gameData.getPlayerName(), "Player"),
+                    safeString(gameData.getMode(), "Unknown"),
+                    safeString(gameData.getDifficulty(), "Easy"),
+                    stars,
+                    gameData.getWpm(),
+                    gameData.getAccuracy(),
+                    System.currentTimeMillis()
+            ));
+        }
 
         // Start confetti animation
         startConfetti();
