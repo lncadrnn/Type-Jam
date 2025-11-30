@@ -35,17 +35,10 @@ public class LeaderboardsController {
     private Button modeBtn;
 
     @FXML
-    private Button modeResetBtn;
-
-    @FXML
     private Button difficultyBtn;
 
     @FXML
     private Button difficultyResetBtn;
-
-    @FXML
-    private Button timeChallengeBtn;
-
 
     @FXML
     private Button easyBtn;
@@ -57,9 +50,6 @@ public class LeaderboardsController {
     private Button hardBtn;
 
     @FXML
-    private VBox modeDropdown;
-
-    @FXML
     private VBox difficultyDropdown;
 
     @FXML
@@ -68,7 +58,7 @@ public class LeaderboardsController {
     @FXML
     private AnchorPane rootPane;
 
-    private String selectedMode = null;
+    private String selectedMode = "Time Challenge"; // Always filter for Time Challenge
     private String selectedDifficulty = null;
 
     private static final double MODE_DROPDOWN_GAP = 19; // mode directly beneath
@@ -91,17 +81,6 @@ public class LeaderboardsController {
     }
 
     @FXML
-    private void toggleModeDropdown(ActionEvent event) {
-        boolean isVisible = modeDropdown.isVisible();
-        hideAllDropdowns();
-        if (!isVisible) {
-            positionDropdownBelow(modeBtn, modeDropdown);
-            modeDropdown.setVisible(true);
-            modeDropdown.toFront();
-        }
-    }
-
-    @FXML
     private void toggleDifficultyDropdown(ActionEvent event) {
         boolean isVisible = difficultyDropdown.isVisible();
         hideAllDropdowns();
@@ -112,15 +91,6 @@ public class LeaderboardsController {
         }
     }
 
-    @FXML
-    private void onTimeChallengeFilter(ActionEvent event) {
-        selectedMode = "Time Challenge";
-        modeBtn.setText("Time Challenge");
-        modeResetBtn.setVisible(true);
-        modeResetBtn.setManaged(true);
-        hideAllDropdowns();
-        loadLeaderboardData();
-    }
 
     @FXML
     private void onEasyFilter(ActionEvent event) {
@@ -153,15 +123,6 @@ public class LeaderboardsController {
     }
 
     @FXML
-    private void resetModeFilter(ActionEvent event) {
-        selectedMode = null;
-        modeBtn.setText("MODE ▼");
-        modeResetBtn.setVisible(false);
-        modeResetBtn.setManaged(false);
-        loadLeaderboardData();
-    }
-
-    @FXML
     private void resetDifficultyFilter(ActionEvent event) {
         selectedDifficulty = null;
         difficultyBtn.setText("DIFFICULTY ▼");
@@ -171,7 +132,6 @@ public class LeaderboardsController {
     }
 
     private void hideAllDropdowns() {
-        modeDropdown.setVisible(false);
         difficultyDropdown.setVisible(false);
     }
 
