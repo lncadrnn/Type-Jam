@@ -73,10 +73,12 @@ public class LeaderboardsController {
     @FXML
     private void onBack(ActionEvent event) {
         try {
-            NavigationHelper.navigateBack(event);
+            // From leaderboards, always go to main menu and ignore history
+            GameData.getInstance().clearNavigationHistory();
+            NavigationHelper.switchToScene(event, "main-menu.fxml");
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error navigating back: " + e.getMessage());
+            System.err.println("Error navigating to main menu: " + e.getMessage());
         }
     }
 
