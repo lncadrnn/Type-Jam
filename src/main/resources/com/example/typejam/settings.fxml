@@ -22,6 +22,52 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="419.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 70; -fx-arc-width: 70;" width="678.0" />
          </children>
       </StackPane>
+      <VBox alignment="TOP_CENTER" layoutX="132.0" layoutY="35.0" prefHeight="425.0" prefWidth="517.0" spacing="25.0">
+         <children>
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTINGS">
+               <font>
+                  <Font name="Arial Bold" size="32.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="50.0" />
+               </VBox.margin>
+            </Text>
+
+            <!-- Sound Settings Section -->
+            <VBox alignment="CENTER_LEFT" prefHeight="158.0" prefWidth="631.0" spacing="15.0" style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 15;">
+               <!-- Sound Effects -->
+               <javafx.scene.control.CheckBox fx:id="soundEffectsCheckBox" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Sound Effects">
+                  <font>
+                     <Font name="Arial Bold" size="14.0" />
+                  </font>
+               </javafx.scene.control.CheckBox>
+               <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <Text style="-fx-font-size: 12px;" text="SFX Volume:" />
+                  <javafx.scene.control.Slider fx:id="sfxVolumeSlider" max="100" min="0" prefWidth="200.0" showTickLabels="false" showTickMarks="false" value="50" />
+                  <Text fx:id="sfxVolumeLabel" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="50%" />
+               </HBox>
+
+               <!-- Background Music -->
+               <javafx.scene.control.CheckBox fx:id="backgroundMusicCheckBox" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Background Music">
+                  <font>
+                     <Font name="Arial Bold" size="14.0" />
+                  </font>
+               </javafx.scene.control.CheckBox>
+               <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <Text style="-fx-font-size: 12px;" text="Music Volume:" />
+                  <javafx.scene.control.Slider fx:id="musicVolumeSlider" max="100" min="0" prefWidth="200.0" showTickLabels="false" showTickMarks="false" value="50" />
+                  <Text fx:id="musicVolumeLabel" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="50%" />
+               </HBox>
+            </VBox>
+
+            <!-- Reset Data Button -->
+            <Button fx:id="resetDataBtn" mnemonicParsing="false" onAction="#onResetData" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #dc3545; -fx-background-radius: 25; -fx-cursor: hand;" text="RESET ALL DATA" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
       <HBox alignment="CENTER" layoutX="41.0" layoutY="30.0" prefHeight="102.0" prefWidth="106.0">
          <children>
             <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" style="-fx-background-color: #fff;" textFill="WHITE">
@@ -35,54 +81,5 @@
             </Button>
          </children>
       </HBox>
-      <VBox alignment="TOP_CENTER" layoutX="116.0" layoutY="66.0" prefHeight="394.0" prefWidth="525.0" spacing="25.0">
-         <children>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTINGS">
-               <font>
-                  <Font name="Arial Bold" size="32.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </Text>
-
-            <!-- Sound Settings Section -->
-            <VBox spacing="15.0" style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 15;" prefWidth="400.0">
-               <!-- Sound Effects -->
-               <javafx.scene.control.CheckBox fx:id="soundEffectsCheckBox" text="Sound Effects" style="-fx-font-size: 14px; -fx-font-weight: bold;">
-                  <font>
-                     <Font name="Arial Bold" size="14.0" />
-                  </font>
-               </javafx.scene.control.CheckBox>
-               <HBox alignment="CENTER_LEFT" spacing="10.0">
-                  <Text text="SFX Volume:" style="-fx-font-size: 12px;" />
-                  <javafx.scene.control.Slider fx:id="sfxVolumeSlider" min="0" max="100" value="50" prefWidth="200.0" showTickLabels="false" showTickMarks="false" />
-                  <Text fx:id="sfxVolumeLabel" text="50%" style="-fx-font-size: 12px; -fx-font-weight: bold;" />
-               </HBox>
-
-               <!-- Background Music -->
-               <javafx.scene.control.CheckBox fx:id="backgroundMusicCheckBox" text="Background Music" style="-fx-font-size: 14px; -fx-font-weight: bold;">
-                  <font>
-                     <Font name="Arial Bold" size="14.0" />
-                  </font>
-               </javafx.scene.control.CheckBox>
-               <HBox alignment="CENTER_LEFT" spacing="10.0">
-                  <Text text="Music Volume:" style="-fx-font-size: 12px;" />
-                  <javafx.scene.control.Slider fx:id="musicVolumeSlider" min="0" max="100" value="50" prefWidth="200.0" showTickLabels="false" showTickMarks="false" />
-                  <Text fx:id="musicVolumeLabel" text="50%" style="-fx-font-size: 12px; -fx-font-weight: bold;" />
-               </HBox>
-            </VBox>
-
-            <!-- Spacer -->
-            <VBox prefHeight="20.0" />
-
-            <!-- Reset Data Button -->
-            <Button fx:id="resetDataBtn" mnemonicParsing="false" onAction="#onResetData" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #dc3545; -fx-background-radius: 25; -fx-cursor: hand;" text="RESET ALL DATA" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="16.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
    </children>
 </AnchorPane>
