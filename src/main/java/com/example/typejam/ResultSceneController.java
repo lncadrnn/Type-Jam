@@ -384,9 +384,9 @@ public class ResultSceneController {
     public void onLetsType(ActionEvent event) {
         try {
             GameData.getInstance().clearNavigationHistory();
-            NavigationHelper.switchToScene(event, "enter-name.fxml");
+            NavigationHelper.switchToScene(event, "select-mode.fxml");
         } catch (IOException e) {
-            System.err.println("Error loading enter-name.fxml: " + e.getMessage());
+            System.err.println("Error loading select-mode.fxml: " + e.getMessage());
         }
     }
 
