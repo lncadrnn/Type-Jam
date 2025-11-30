@@ -99,5 +99,16 @@
             </Button>
          </children>
       </HBox>
+
+      <!-- End Practice button -->
+      <HBox alignment="CENTER" layoutX="600.0" layoutY="430.0" prefHeight="52.0" prefWidth="140.0">
+         <children>
+            <Button fx:id="endPracticeButton" mnemonicParsing="false" onAction="#onEndPractice" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #BE1F1F; -fx-background-radius: 20;" text="End Practice" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

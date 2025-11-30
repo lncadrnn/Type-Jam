@@ -90,7 +90,7 @@ public class ResultSceneController {
 
         // Save leaderboard entry locally ONLY for Time Challenge mode (not for Practice Mode)
         String mode = gameData.getMode();
-        if (mode != null && mode.equalsIgnoreCase("Time Challenge")) {
+        if (mode != null && mode.equalsIgnoreCase("Challenge Mode")) {
             LeaderboardStorage.saveEntry(new LeaderboardStorage.LeaderboardEntry(
                     safeString(gameData.getPlayerName(), "Player"),
                     safeString(gameData.getMode(), "Unknown"),

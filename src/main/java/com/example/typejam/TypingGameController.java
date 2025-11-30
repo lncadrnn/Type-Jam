@@ -6,7 +6,6 @@ import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -47,13 +46,16 @@ public class TypingGameController {
     @FXML
     private ImageView infinityImage;
 
+    @FXML
+    private javafx.scene.control.Button endPracticeButton;
+
     private String targetText;
     private long startTime;
     private AnimationTimer timer;
     private boolean gameStarted = false;
     private boolean gameFinished = false;
-    private boolean endlessMode = false;
-    private boolean timeChallengeMode = false;
+    private boolean endlessMode = false; // will represent Practice Mode
+    private boolean timeChallengeMode = false; // will represent Challenge Mode
     private int timeLimitSeconds = 0;
     private long countdownStartTime = 0;
     private int correctChars = 0;
@@ -61,8 +63,8 @@ public class TypingGameController {
     private int errors = 0;
     private int totalIncorrectKeystrokes = 0; // Track all incorrect keystrokes (cumulative)
     private String previousTypedText = ""; // Track previous state to detect changes
-    private int totalCharactersShown = 0; // Track total characters across all passages (for Time Challenge)
-    private int cumulativeCharsTyped = 0; // Cumulative characters typed across all passages (for Time Challenge)
+    private int totalCharactersShown = 0; // Track total characters across all passages
+    private int cumulativeCharsTyped = 0; // Cumulative characters typed across all passages
     private javafx.beans.value.ChangeListener<String> typingFieldListener; // Store listener to remove/add it
     private boolean isLoadingNewText = false; // Flag to prevent listener execution during text reload
     private String lastUsedText = null; // Track last text to avoid immediate repetition
@@ -82,29 +84,39 @@ public class TypingGameController {
         String mode = gameData.getMode();
         String timeLimit = gameData.getTime();
 
-        // Determine game mode
-        endlessMode = mode != null && mode.equalsIgnoreCase("Endless Mode");
-        timeChallengeMode = mode != null && mode.equalsIgnoreCase("Time Challenge");
+        // Determine game mode with new names
+        endlessMode = mode != null && mode.equalsIgnoreCase("Practice Mode");
+        timeChallengeMode = mode != null && mode.equalsIgnoreCase("Challenge Mode");
 
-        // Parse time limit for Time Challenge mode
+        // Toggle End Practice button visibility for Practice Mode only
+        if (endPracticeButton != null) {
+            endPracticeButton.setVisible(endlessMode);
+            endPracticeButton.setManaged(endlessMode);
+        }
+
+        // Parse time limit for Challenge Mode
         if (timeChallengeMode && timeLimit != null) {
             timeLimitSeconds = parseTimeLimit(timeLimit);
         }
 
-        // Configure timer/infinity visuals based on mode
+        // Configure visuals
         if (endlessMode) {
-            // Endless mode: hide infinity image, show time counting up from 0:00
-            if (infinityImage != null) infinityImage.setVisible(false);
+            // Hide the infinity icon completely in Practice Mode
+            if (infinityImage != null) {
+                infinityImage.setVisible(false);
+                infinityImage.setManaged(false);
+            }
             if (timeText != null) {
                 timeText.setVisible(true);
                 timeText.setText("0:00");
             }
         } else {
-            // Time challenge or other mode: hide infinity image, show timer
-            if (infinityImage != null) infinityImage.setVisible(false);
+            if (infinityImage != null) {
+                infinityImage.setVisible(false);
+                infinityImage.setManaged(false);
+            }
             if (timeText != null) {
                 timeText.setVisible(true);
-                // Set initial countdown time for Time Challenge mode
                 if (timeChallengeMode && timeLimitSeconds > 0) {
                     int minutes = timeLimitSeconds / 60;
                     int seconds = timeLimitSeconds % 60;
@@ -256,7 +268,7 @@ public class TypingGameController {
         countdownStartTime = System.nanoTime();
 
         if (endlessMode) {
-            // Endless mode: count up timer starting from 0
+            // Practice Mode: count up timer
             timer = new AnimationTimer() {
                 @Override
                 public void handle(long now) {
@@ -425,44 +437,28 @@ public class TypingGameController {
 
     private void checkCompletion(String typedText) {
         if (typedText.equals(targetText)) {
-            // In Time Challenge mode, load new text and continue
-            if (timeChallengeMode && !gameFinished) {
-                // Set flag to prevent listener from firing during text reload
+            // Practice Mode: load next text instead of finishing
+            if (endlessMode && !gameFinished) {
                 isLoadingNewText = true;
-
-                // Accumulate characters typed from the completed passage
-                cumulativeCharsTyped += totalCharsTyped;
-
-                // Get the difficulty for selecting new text
+                cumulativeCharsTyped += totalCharsTyped; // add finished passage typed chars
                 GameData gameData = GameData.getInstance();
                 String difficulty = gameData.getDifficulty() != null ? gameData.getDifficulty() : "Easy";
-
-                // Select new text with the same difficulty, avoiding the last one
+                // Select new text, avoid repeating last one
                 targetText = selectTextByDifficulty(difficulty, true);
-
-                // Accumulate total characters shown across all passages
                 totalCharactersShown += targetText.length();
-
-                // Reset the previous typed text before clearing field
                 previousTypedText = "";
-
-                // Clear the typing field safely
                 javafx.application.Platform.runLater(() -> {
                     typingField.clear();
-                    // Update display with new text
                     updateTextDisplay("");
-                    // Re-enable listener
                     isLoadingNewText = false;
-                    // Set focus back to typing field
                     typingField.requestFocus();
                 });
-
-                System.out.println("Time Challenge: Loading new text, continuing...");
-                System.out.println("Cumulative chars typed so far: " + cumulativeCharsTyped);
+                System.out.println("Practice Mode: Loaded new text, continuing...");
                 return;
             }
 
-            // For non-Time Challenge modes (Endless Mode), end the game normally
+            // Challenge Mode completion previously handled; now only finish on time up.
+            // For any other mode, finish and compute results
             gameFinished = true;
             if (timer != null) {
                 timer.stop();
@@ -549,5 +545,52 @@ public class TypingGameController {
         Scene scene = new Scene(root, 760, 495);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void loadResultScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("result-scene.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) typingField.getScene().getWindow();
+        Scene scene = new Scene(root, 760, 495);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void onEndPractice(ActionEvent event) {
+        // Allows user to end Practice Mode manually and show results
+        if (endlessMode && !gameFinished) {
+            gameFinished = true;
+            if (timer != null) timer.stop();
+            typingField.setDisable(true);
+
+            GameData gameData = GameData.getInstance();
+            // Time taken = elapsed time
+            long elapsedMillis = (System.nanoTime() - startTime) / 1_000_000;
+            double timeTakenSeconds = elapsedMillis / 1000.0;
+            gameData.setTimeTaken(timeTakenSeconds);
+
+            // Include current field into cumulative count
+            int finalTotalCharsTyped = cumulativeCharsTyped + totalCharsTyped;
+            int totalKeystrokesTyped = finalTotalCharsTyped + totalIncorrectKeystrokes;
+            double accuracy = totalKeystrokesTyped > 0 ? ((double) finalTotalCharsTyped / totalKeystrokesTyped) * 100 : 0;
+            if (accuracy < 0) accuracy = 0;
+            gameData.setAccuracy(accuracy);
+            gameData.setTotalCharacters(totalCharactersShown);
+            gameData.setCorrectCharacters(correctChars);
+            gameData.setCharactersTyped(finalTotalCharsTyped);
+            gameData.setErrors(totalIncorrectKeystrokes);
+
+            double minutes = timeTakenSeconds / 60.0;
+            double wpm = minutes > 0 ? (finalTotalCharsTyped / 5.0) / minutes : 0;
+            gameData.setWpm(wpm);
+
+            // Navigate directly to result scene
+            try {
+                loadResultScene();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

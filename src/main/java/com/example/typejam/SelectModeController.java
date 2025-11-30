@@ -20,10 +20,10 @@ public class SelectModeController {
     @FXML
     private void onTimeChallengeClick(ActionEvent event) {
         // Save the mode and navigate to select-time.fxml
-        GameData.getInstance().setMode("Time Challenge");
+        GameData.getInstance().setMode("Challenge Mode");
 
         try {
-            System.out.println("Time Challenge button clicked - navigating to select-time.fxml");
+            System.out.println("Challenge Mode button clicked - navigating to select-time.fxml");
             NavigationHelper.navigateTo(event, "select-mode.fxml", "select-time.fxml");
         } catch (IOException e) {
             e.printStackTrace();
@@ -34,7 +34,7 @@ public class SelectModeController {
     @FXML
     private void onEndlessModeClick(ActionEvent event) {
         // Save the mode and navigate to select-difficulty.fxml
-        GameData.getInstance().setMode("Endless Mode");
+        GameData.getInstance().setMode("Practice Mode");
 
         try {
             System.out.println("Practice Mode button clicked - navigating to select-difficulty.fxml");
@@ -56,4 +56,3 @@ public class SelectModeController {
         }
     }
 }
-
