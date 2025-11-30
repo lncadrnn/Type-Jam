@@ -43,7 +43,7 @@
                </javafx.scene.control.CheckBox>
                <HBox alignment="CENTER_LEFT" spacing="10.0">
                   <Text style="-fx-font-size: 12px;" text="SFX Volume:" />
-                  <javafx.scene.control.Slider fx:id="sfxVolumeSlider" max="100" min="0" prefWidth="200.0" showTickLabels="false" showTickMarks="false" value="50" />
+                  <javafx.scene.control.Slider fx:id="sfxVolumeSlider" max="100" min="0" prefHeight="14.0" prefWidth="339.0" showTickLabels="false" showTickMarks="false" value="50" />
                   <Text fx:id="sfxVolumeLabel" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="50%" />
                </HBox>
 
@@ -55,7 +55,7 @@
                </javafx.scene.control.CheckBox>
                <HBox alignment="CENTER_LEFT" spacing="10.0">
                   <Text style="-fx-font-size: 12px;" text="Music Volume:" />
-                  <javafx.scene.control.Slider fx:id="musicVolumeSlider" max="100" min="0" prefWidth="200.0" showTickLabels="false" showTickMarks="false" value="50" />
+                  <javafx.scene.control.Slider fx:id="musicVolumeSlider" max="100" min="0" prefHeight="14.0" prefWidth="328.0" showTickLabels="false" showTickMarks="false" value="50" />
                   <Text fx:id="musicVolumeLabel" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="50%" />
                </HBox>
             </VBox>
