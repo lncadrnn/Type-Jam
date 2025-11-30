@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/QUICK-FIX.txt">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/QUICK-FIX.txt" />
+              <option name="updatedContent" value="# Quick Fix for IDE Errors&#10;&#10;The red errors in `SoundManager.java` are just IntelliJ's cache being out of date.&#10;&#10;## ⚡ Quick Fix (30 seconds)&#10;&#10;1. Click **Maven** tab (right side of IDE)&#10;2. Click  **Reload All Maven Projects** button (top-left of Maven panel)&#10;3. Wait 30 seconds&#10;4. Errors disappear ✅&#10;&#10;## Already Done ✅&#10;- pom.xml has javafx-media dependency&#10;- Maven downloaded javafx-media-21.0.6-win.jar&#10;- Project compiles successfully (BUILD SUCCESS)&#10;&#10;## Just Need&#10;- IntelliJ to refresh its cache&#10;&#10;That's it! Simple Maven reload fixes everything.&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

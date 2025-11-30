@@ -14,6 +14,9 @@ public class TypeJam extends Application {
         // Load custom font
         Font.loadFont(getClass().getResourceAsStream("/fonts/LilitaOne-Regular.ttf"), 12);
 
+        // Initialize sound system
+        SoundManager.getInstance();
+
         FXMLLoader fxmlLoader = new FXMLLoader(TypeJam.class.getResource("main-menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 760, 495);
             // Attach global stylesheet
@@ -24,5 +27,8 @@ public class TypeJam extends Application {
         stage.setTitle("Typing Test Application");
         stage.setScene(scene);
         stage.show();
+
+        // Start background music after stage is shown
+        SoundManager.getInstance().startBackgroundMusic();
     }
 }

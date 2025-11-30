@@ -5,8 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Slider;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -19,7 +20,24 @@ public class SettingsController {
     @FXML
     private Button resetDataBtn;
 
-    private static final String RESET_PASSWORD = "BESTypeJam"; // simple static password; can be externalized later
+    @FXML
+    private CheckBox soundEffectsCheckBox;
+
+    @FXML
+    private CheckBox backgroundMusicCheckBox;
+
+    @FXML
+    private Slider sfxVolumeSlider;
+
+    @FXML
+    private Slider musicVolumeSlider;
+
+    @FXML
+    private Text sfxVolumeLabel;
+
+    @FXML
+    private Text musicVolumeLabel;
+
 
     @FXML
     private void onBack(ActionEvent event) {
@@ -32,23 +50,6 @@ public class SettingsController {
 
     @FXML
     private void onResetData(ActionEvent event) {
-        // Ask for password before showing destructive confirmation
-        TextInputDialog pwdDialog = new TextInputDialog();
-        pwdDialog.setTitle("Reset Data - Password Required");
-        pwdDialog.setHeaderText("Enter the admin password to reset all data");
-        pwdDialog.setContentText("Password:");
-        pwdDialog.getDialogPane().setStyle("-fx-background-color: #ffffff;");
-
-        Optional<String> pwdResult = pwdDialog.showAndWait();
-        if (!pwdResult.isPresent() || !RESET_PASSWORD.equals(pwdResult.get())) {
-            Alert denied = new Alert(Alert.AlertType.ERROR);
-            denied.setTitle("Reset Data");
-            denied.setHeaderText(null);
-            denied.setContentText("Incorrect password. Reset canceled.");
-            denied.getDialogPane().setStyle("-fx-background-color: #ffffff;");
-            denied.showAndWait();
-            return;
-        }
 
         // Show confirmation dialog
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -79,6 +80,63 @@ public class SettingsController {
 
     @FXML
     private void initialize() {
+        // Load settings from SettingsManager
+        SettingsManager settings = SettingsManager.getInstance();
+        SoundManager soundManager = SoundManager.getInstance();
+
+        // Initialize checkboxes with current settings
+        if (soundEffectsCheckBox != null) {
+            soundEffectsCheckBox.setSelected(settings.isSoundEffectsEnabled());
+            soundEffectsCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
+                settings.setSoundEffectsEnabled(newVal);
+            });
+        }
+
+        if (backgroundMusicCheckBox != null) {
+            backgroundMusicCheckBox.setSelected(settings.isMusicEnabled());
+            backgroundMusicCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
+                settings.setMusicEnabled(newVal);
+                if (newVal) {
+                    soundManager.startBackgroundMusic();
+                } else {
+                    soundManager.stopBackgroundMusic();
+                }
+            });
+        }
+
+        // Initialize volume sliders
+        if (sfxVolumeSlider != null) {
+            sfxVolumeSlider.setValue(settings.getSfxVolume() * 100);
+            if (sfxVolumeLabel != null) {
+                sfxVolumeLabel.setText(String.format("%.0f%%", sfxVolumeSlider.getValue()));
+            }
+
+            sfxVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+                double volume = newVal.doubleValue() / 100.0;
+                settings.setSfxVolume(volume);
+                soundManager.setSfxVolume(volume);
+                if (sfxVolumeLabel != null) {
+                    sfxVolumeLabel.setText(String.format("%.0f%%", newVal.doubleValue()));
+                }
+            });
+        }
+
+        if (musicVolumeSlider != null) {
+            musicVolumeSlider.setValue(settings.getMusicVolume() * 100);
+            if (musicVolumeLabel != null) {
+                musicVolumeLabel.setText(String.format("%.0f%%", musicVolumeSlider.getValue()));
+            }
+
+            musicVolumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+                double volume = newVal.doubleValue() / 100.0;
+                settings.setMusicVolume(volume);
+                soundManager.setMusicVolume(volume);
+                if (musicVolumeLabel != null) {
+                    musicVolumeLabel.setText(String.format("%.0f%%", newVal.doubleValue()));
+                }
+            });
+        }
+
         // Optionally purge old entries upon opening settings
         try {
             int removed = LeaderboardStorage.purgeEntriesOlderThanOneYear();

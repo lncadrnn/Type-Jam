@@ -1,6 +1,7 @@
 module com.example.typejam {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
     requires com.google.gson;
 
     opens com.example.typejam to javafx.fxml, com.google.gson;

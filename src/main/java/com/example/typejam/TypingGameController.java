@@ -75,6 +75,10 @@ public class TypingGameController {
 
     @FXML
     public void initialize() {
+        // Stop background music during typing game
+        SoundManager.getInstance().stopBackgroundMusic();
+        SoundManager.getInstance().resetCountdown();
+
         // Load typing texts from JSON file
         loadTypingTexts();
 
@@ -150,6 +154,23 @@ public class TypingGameController {
             // Skip listener execution if we're loading new text
             if (isLoadingNewText) {
                 return;
+            }
+
+            // Play sound when new character is added
+            if (newValue.length() > oldValue.length()) {
+                int newCharIndex = newValue.length() - 1;
+                if (newCharIndex < targetText.length()) {
+                    char typedChar = newValue.charAt(newCharIndex);
+                    char expectedChar = targetText.charAt(newCharIndex);
+
+                    if (typedChar == expectedChar) {
+                        // Correct character - play typing sound
+                        SoundManager.getInstance().playTypingSound();
+                    } else {
+                        // Incorrect character - play error sound
+                        SoundManager.getInstance().playErrorSound();
+                    }
+                }
             }
 
             if (!gameStarted && !newValue.isEmpty()) {
@@ -299,6 +320,11 @@ public class TypingGameController {
                         }
                         handleTimeUp();
                         return;
+                    }
+
+                    // Play countdown timer sound when 4 seconds remain
+                    if (remainingSeconds == 4) {
+                        SoundManager.getInstance().playCountdownTimer();
                     }
 
                     int minutes = remainingSeconds / 60;
@@ -558,6 +584,10 @@ public class TypingGameController {
         if (timer != null) {
             timer.stop();
         }
+
+        // Restart background music when leaving typing game
+        SoundManager.getInstance().startBackgroundMusic();
+
         try {
             NavigationHelper.navigateBack(event);
         } catch (IOException e) {

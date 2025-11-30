@@ -21,6 +21,8 @@ public class SettingsManager {
 
     private boolean soundEffectsEnabled;
     private boolean musicEnabled;
+    private double sfxVolume; // 0.0 to 1.0
+    private double musicVolume; // 0.0 to 1.0
 
     private SettingsManager() {
         // Load settings from file or use defaults
@@ -45,6 +47,8 @@ public class SettingsManager {
             // Default settings
             soundEffectsEnabled = true;
             musicEnabled = true;
+            sfxVolume = 0.5;
+            musicVolume = 0.5;
             return;
         }
 
@@ -53,22 +57,28 @@ public class SettingsManager {
             if (data != null) {
                 this.soundEffectsEnabled = data.soundEffectsEnabled;
                 this.musicEnabled = data.musicEnabled;
+                this.sfxVolume = data.sfxVolume;
+                this.musicVolume = data.musicVolume;
             } else {
                 // Default settings if file is empty
                 soundEffectsEnabled = true;
                 musicEnabled = true;
+                sfxVolume = 0.5;
+                musicVolume = 0.5;
             }
         } catch (IOException e) {
             System.err.println("Failed to load settings: " + e.getMessage());
             // Use defaults
             soundEffectsEnabled = true;
             musicEnabled = true;
+            sfxVolume = 0.5;
+            musicVolume = 0.5;
         }
     }
 
     public void saveSettings() {
         File file = getSettingsFile();
-        SettingsData data = new SettingsData(soundEffectsEnabled, musicEnabled);
+        SettingsData data = new SettingsData(soundEffectsEnabled, musicEnabled, sfxVolume, musicVolume);
 
         try (FileWriter writer = new FileWriter(file)) {
             GSON.toJson(data, writer);
@@ -95,14 +105,36 @@ public class SettingsManager {
         saveSettings();
     }
 
+    public double getSfxVolume() {
+        return sfxVolume;
+    }
+
+    public void setSfxVolume(double volume) {
+        this.sfxVolume = Math.max(0.0, Math.min(1.0, volume)); // Clamp between 0 and 1
+        saveSettings();
+    }
+
+    public double getMusicVolume() {
+        return musicVolume;
+    }
+
+    public void setMusicVolume(double volume) {
+        this.musicVolume = Math.max(0.0, Math.min(1.0, volume)); // Clamp between 0 and 1
+        saveSettings();
+    }
+
     // Inner class for JSON serialization
     private static class SettingsData {
         private boolean soundEffectsEnabled;
         private boolean musicEnabled;
+        private double sfxVolume;
+        private double musicVolume;
 
-        public SettingsData(boolean soundEffectsEnabled, boolean musicEnabled) {
+        public SettingsData(boolean soundEffectsEnabled, boolean musicEnabled, double sfxVolume, double musicVolume) {
             this.soundEffectsEnabled = soundEffectsEnabled;
             this.musicEnabled = musicEnabled;
+            this.sfxVolume = sfxVolume;
+            this.musicVolume = musicVolume;
         }
     }
 }

@@ -127,6 +127,9 @@ public class ResultSceneController {
     }
 
     private void startConfetti() {
+        // Play congratulatory sound with confetti
+        SoundManager.getInstance().playCongratulatorySound();
+
         // Create confetti pane overlay
         confettiPane = new Pane();
         confettiPane.setMouseTransparent(true);
@@ -356,6 +359,8 @@ public class ResultSceneController {
     @FXML
     public void onMainMenu(ActionEvent event) {
         try {
+            // Restart background music when leaving result scene
+            SoundManager.getInstance().startBackgroundMusic();
             GameData.getInstance().clearNavigationHistory();
             NavigationHelper.switchToScene(event, "main-menu.fxml");
         } catch (IOException e) {
@@ -366,6 +371,8 @@ public class ResultSceneController {
     @FXML
     public void onLeaderboard(ActionEvent event) {
         try {
+            // Restart background music when leaving result scene
+            SoundManager.getInstance().startBackgroundMusic();
             NavigationHelper.navigateTo(event, "result-scene.fxml", "leaderboards.fxml");
         } catch (IOException e) {
             System.err.println("Error loading leaderboards.fxml: " + e.getMessage());
@@ -375,6 +382,8 @@ public class ResultSceneController {
     @FXML
     public void onSettings(ActionEvent event) {
         try {
+            // Restart background music when leaving result scene
+            SoundManager.getInstance().startBackgroundMusic();
             NavigationHelper.navigateTo(event, "result-scene.fxml", "settings.fxml");
         } catch (IOException e) {
             System.err.println("Error loading settings.fxml: " + e.getMessage());
@@ -384,6 +393,8 @@ public class ResultSceneController {
     @FXML
     public void onAbout(ActionEvent event) {
         try {
+            // Restart background music when leaving result scene
+            SoundManager.getInstance().startBackgroundMusic();
             NavigationHelper.navigateTo(event, "result-scene.fxml", "about-us.fxml");
         } catch (IOException e) {
             System.err.println("Error loading about-us.fxml: " + e.getMessage());
@@ -393,6 +404,8 @@ public class ResultSceneController {
     @FXML
     public void onLetsType(ActionEvent event) {
         try {
+            // Restart background music when leaving result scene
+            SoundManager.getInstance().startBackgroundMusic();
             GameData.getInstance().clearNavigationHistory();
             NavigationHelper.switchToScene(event, "select-mode.fxml");
         } catch (IOException e) {
@@ -403,6 +416,8 @@ public class ResultSceneController {
     @FXML
     public void onPracticeAgain(ActionEvent event) {
         try {
+            // Restart background music when leaving result scene
+            SoundManager.getInstance().startBackgroundMusic();
             GameData.getInstance().clearNavigationHistory();
             NavigationHelper.switchToScene(event, "select-mode.fxml");
         } catch (IOException e) {
