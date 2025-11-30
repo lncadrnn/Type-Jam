@@ -17,6 +17,7 @@ public class SoundManager {
     private MediaPlayer errorSoundPlayer;
     private MediaPlayer countdownTimerPlayer;
     private MediaPlayer congratulatorySoundPlayer;
+    private MediaPlayer buttonClickPlayer; // Added MediaPlayer for button click sound
 
     // MediaPlayer for background music
     private MediaPlayer backgroundMusicPlayer;
@@ -58,6 +59,10 @@ public class SoundManager {
             backgroundMusicPlayer = new MediaPlayer(musicMedia);
             backgroundMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop indefinitely
 
+            // Load button click sound
+            Media buttonClickMedia = new Media(getClass().getResource("/assets/sounds/button-click.mp3").toExternalForm());
+            buttonClickPlayer = new MediaPlayer(buttonClickMedia);
+
             // Apply initial volumes from settings
             updateVolumes();
 
@@ -81,6 +86,7 @@ public class SoundManager {
         if (countdownTimerPlayer != null) countdownTimerPlayer.setVolume(sfxVolume);
         if (congratulatorySoundPlayer != null) congratulatorySoundPlayer.setVolume(musicVolume);
         if (backgroundMusicPlayer != null) backgroundMusicPlayer.setVolume(musicVolume);
+        if (buttonClickPlayer != null) buttonClickPlayer.setVolume(sfxVolume); // Set volume for button click sound
     }
 
     /**
@@ -166,12 +172,25 @@ public class SoundManager {
     }
 
     /**
+     * Play button click sound
+     */
+    public void playButtonClick() {
+        if (!SettingsManager.getInstance().isSoundEffectsEnabled()) return;
+        if (buttonClickPlayer != null) {
+            buttonClickPlayer.stop();
+            buttonClickPlayer.seek(Duration.ZERO);
+            buttonClickPlayer.play();
+        }
+    }
+
+    /**
      * Set sound effects volume (0.0 to 1.0)
      */
     public void setSfxVolume(double volume) {
         if (typingSoundPlayer != null) typingSoundPlayer.setVolume(volume);
         if (errorSoundPlayer != null) errorSoundPlayer.setVolume(volume * 0.8);
         if (countdownTimerPlayer != null) countdownTimerPlayer.setVolume(volume);
+        if (buttonClickPlayer != null) buttonClickPlayer.setVolume(volume); // Set volume for button click sound
     }
 
     /**
@@ -190,7 +209,7 @@ public class SoundManager {
         if (errorSoundPlayer != null) errorSoundPlayer.stop();
         if (countdownTimerPlayer != null) countdownTimerPlayer.stop();
         if (congratulatorySoundPlayer != null) congratulatorySoundPlayer.stop();
+        if (buttonClickPlayer != null) buttonClickPlayer.stop(); // Stop button click sound if playing
         stopBackgroundMusic();
     }
 }
-

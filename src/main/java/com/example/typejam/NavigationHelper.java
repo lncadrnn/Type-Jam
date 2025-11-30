@@ -18,6 +18,9 @@ public class NavigationHelper {
      * Navigate to a new scene and save the current scene to history
      */
     public static void navigateTo(ActionEvent event, String currentScene, String targetScene) throws IOException {
+        // Play button click sound
+        SoundManager.getInstance().playButtonClick();
+
         // Push current scene to navigation history
         GameData.getInstance().pushScene(currentScene);
 
@@ -29,6 +32,9 @@ public class NavigationHelper {
      * Navigate back to the previous scene in history
      */
     public static void navigateBack(ActionEvent event) throws IOException {
+        // Play button click sound
+        SoundManager.getInstance().playButtonClick();
+
         // Pop the previous scene from history
         String previousScene = GameData.getInstance().popScene();
 
@@ -40,6 +46,9 @@ public class NavigationHelper {
      * Switch to a scene without affecting navigation history
      */
     public static void switchToScene(ActionEvent event, String fxmlName) throws IOException {
+        // Play button click sound
+        SoundManager.getInstance().playButtonClick();
+
         FXMLLoader loader = new FXMLLoader(NavigationHelper.class.getResource(fxmlName));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
