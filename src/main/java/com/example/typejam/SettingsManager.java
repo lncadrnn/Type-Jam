@@ -23,6 +23,7 @@ public class SettingsManager {
     private boolean musicEnabled;
     private double sfxVolume; // 0.0 to 1.0
     private double musicVolume; // 0.0 to 1.0
+    private boolean firstLaunch; // new: turn on SFX/music by default on first run
 
     private SettingsManager() {
         // Load settings from file or use defaults
@@ -44,11 +45,12 @@ public class SettingsManager {
     private void loadSettings() {
         File file = getSettingsFile();
         if (!file.exists()) {
-            // Default settings
+            // Default settings on first launch
             soundEffectsEnabled = true;
             musicEnabled = true;
             sfxVolume = 0.5;
             musicVolume = 0.5;
+            firstLaunch = true; // mark first launch until app starts
             return;
         }
 
@@ -59,12 +61,19 @@ public class SettingsManager {
                 this.musicEnabled = data.musicEnabled;
                 this.sfxVolume = data.sfxVolume;
                 this.musicVolume = data.musicVolume;
+                this.firstLaunch = data.firstLaunch;
+                // Ensure defaults enabled on first launch
+                if (this.firstLaunch) {
+                    this.soundEffectsEnabled = true;
+                    this.musicEnabled = true;
+                }
             } else {
                 // Default settings if file is empty
                 soundEffectsEnabled = true;
                 musicEnabled = true;
                 sfxVolume = 0.5;
                 musicVolume = 0.5;
+                firstLaunch = true;
             }
         } catch (IOException e) {
             System.err.println("Failed to load settings: " + e.getMessage());
@@ -73,13 +82,13 @@ public class SettingsManager {
             musicEnabled = true;
             sfxVolume = 0.5;
             musicVolume = 0.5;
+            firstLaunch = true;
         }
     }
 
     public void saveSettings() {
         File file = getSettingsFile();
-        SettingsData data = new SettingsData(soundEffectsEnabled, musicEnabled, sfxVolume, musicVolume);
-
+        SettingsData data = new SettingsData(soundEffectsEnabled, musicEnabled, sfxVolume, musicVolume, firstLaunch);
         try (FileWriter writer = new FileWriter(file)) {
             GSON.toJson(data, writer);
         } catch (IOException e) {
@@ -123,19 +132,30 @@ public class SettingsManager {
         saveSettings();
     }
 
+    // Accessors for firstLaunch
+    public boolean isFirstLaunch() {
+        return firstLaunch;
+    }
+
+    public void setFirstLaunch(boolean firstLaunch) {
+        this.firstLaunch = firstLaunch;
+        saveSettings();
+    }
+
     // Inner class for JSON serialization
     private static class SettingsData {
         private boolean soundEffectsEnabled;
         private boolean musicEnabled;
         private double sfxVolume;
         private double musicVolume;
+        private boolean firstLaunch; // persist firstLaunch
 
-        public SettingsData(boolean soundEffectsEnabled, boolean musicEnabled, double sfxVolume, double musicVolume) {
+        public SettingsData(boolean soundEffectsEnabled, boolean musicEnabled, double sfxVolume, double musicVolume, boolean firstLaunch) {
             this.soundEffectsEnabled = soundEffectsEnabled;
             this.musicEnabled = musicEnabled;
             this.sfxVolume = sfxVolume;
             this.musicVolume = musicVolume;
+            this.firstLaunch = firstLaunch;
         }
     }
 }
-
