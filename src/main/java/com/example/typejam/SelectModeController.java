@@ -31,7 +31,10 @@ public class SelectModeController {
     @FXML
     private void onEndlessModeClick(ActionEvent event) {
         // Practice mode skips name & time selection; goes straight to difficulty.
-        GameData.getInstance().setMode("Practice Mode");
+        GameData gameData = GameData.getInstance();
+        gameData.setMode("Practice Mode");
+        // Clear player name for Practice Mode since it doesn't use names
+        gameData.setPlayerName(null);
         try {
             System.out.println("Practice Mode selected - navigating to select-difficulty.fxml");
             NavigationHelper.navigateTo(event, "select-mode.fxml", "select-difficulty.fxml");

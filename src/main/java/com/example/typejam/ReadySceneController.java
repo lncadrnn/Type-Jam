@@ -43,28 +43,44 @@ public class ReadySceneController {
     public void initialize() {
         // Get data from GameData singleton
         GameData gameData = GameData.getInstance();
-        String playerName = gameData.getPlayerName() != null ? gameData.getPlayerName() : "PLAYER";
+        String playerName = gameData.getPlayerName();
         String mode = gameData.getMode() != null ? gameData.getMode().toUpperCase() : "MODE";
         String difficulty = gameData.getDifficulty() != null ? gameData.getDifficulty().toUpperCase() : "DIFFICULTY";
 
-        // Truncate player name to 30 characters maximum with ellipsis
-        if (playerName.length() > 30) {
-            playerName = playerName.substring(0, 30) + "...";
+        boolean isPracticeMode = gameData.getMode() != null && gameData.getMode().equalsIgnoreCase("Practice Mode");
+
+        // Different title for Practice Mode vs Challenge Mode
+        if (isPracticeMode) {
+            // For Practice Mode, just show "PRACTICE MODE" as the title
+            Text titleText = new Text("PRACTICE MODE");
+            titleText.setFill(Color.web("#2b5237"));
+            titleText.setFont(Font.font("Arial", FontWeight.BOLD, 25));
+            titleTextFlow.getChildren().add(titleText);
+        } else {
+            // For Challenge Mode, show "Are you ready, [NAME]?"
+            if (playerName == null) {
+                playerName = "PLAYER";
+            }
+
+            // Truncate player name to 30 characters maximum with ellipsis
+            if (playerName.length() > 30) {
+                playerName = playerName.substring(0, 30) + "...";
+            }
+
+            Text titlePart1 = new Text("Are you ready, ");
+            titlePart1.setFill(Color.web("#2b5237"));
+            titlePart1.setFont(Font.font("Arial", FontWeight.BOLD, 25));
+
+            Text titleName = new Text(playerName);
+            titleName.setFill(Color.web("#2b5237"));
+            titleName.setFont(Font.font("Arial", FontWeight.BOLD, 25));
+
+            Text titlePart2 = new Text("?");
+            titlePart2.setFill(Color.web("#2b5237"));
+            titlePart2.setFont(Font.font("Arial", FontWeight.BOLD, 25));
+
+            titleTextFlow.getChildren().addAll(titlePart1, titleName, titlePart2);
         }
-
-        Text titlePart1 = new Text("Are you ready, ");
-        titlePart1.setFill(Color.web("#2b5237"));
-        titlePart1.setFont(Font.font("Arial", FontWeight.BOLD, 25));
-
-        Text titleName = new Text(playerName);
-        titleName.setFill(Color.web("#2b5237"));
-        titleName.setFont(Font.font("Arial", FontWeight.BOLD, 25));
-
-        Text titlePart2 = new Text("?");
-        titlePart2.setFill(Color.web("#2b5237"));
-        titlePart2.setFont(Font.font("Arial", FontWeight.BOLD, 25));
-
-        titleTextFlow.getChildren().addAll(titlePart1, titleName, titlePart2);
 
         // Create description text with colored mode and difficulty
         Text descPart1 = new Text("You have selected ");
@@ -92,6 +108,8 @@ public class ReadySceneController {
 
     @FXML
     private void onMainMenu(ActionEvent event) throws IOException {
+        // Reset game data when returning to main menu
+        GameData.getInstance().reset();
         GameData.getInstance().clearNavigationHistory();
         NavigationHelper.switchToScene(event, "main-menu.fxml");
     }

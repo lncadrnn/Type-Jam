@@ -458,6 +458,8 @@ public class ResultSceneController {
         try {
             // Restart background music when leaving result scene
             SoundManager.getInstance().startBackgroundMusic();
+            // Reset game data when starting a new game
+            GameData.getInstance().reset();
             GameData.getInstance().clearNavigationHistory();
             NavigationHelper.switchToScene(event, "select-mode.fxml");
         } catch (IOException e) {
