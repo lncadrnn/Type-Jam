@@ -117,7 +117,7 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="leaderboardButton" mnemonicParsing="false" onAction="#onLeaderboard" prefHeight="42.0" prefWidth="42.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;">
+            <Button fx:id="leaderboardButton" mnemonicParsing="false" onAction="#onLeaderboard" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
