@@ -482,7 +482,13 @@ public class ResultSceneController {
             new MessagePair("Keep Trying!", "Every expert was once a beginner."),
             new MessagePair("Don't Give Up!", "Progress takes time and practice."),
             new MessagePair("You've Got This!", "Small steps lead to big improvements."),
-            new MessagePair("Stay Positive!", "Learning is a journey, not a race.")
+            new MessagePair("Stay Positive!", "Learning is a journey, not a race."),
+            new MessagePair("Never Stop Learning!", "Each attempt brings you closer to success."),
+            new MessagePair("Believe in Yourself!", "Your potential is unlimited."),
+            new MessagePair("Start Strong!", "The first step is always the hardest."),
+            new MessagePair("Keep Pushing!", "Greatness comes from persistence."),
+            new MessagePair("You Can Do It!", "Practice makes progress, not perfection."),
+            new MessagePair("Stay Motivated!", "Every challenge is an opportunity to grow.")
         ));
 
         // Challenge Mode: 1 Star (Supportive)
@@ -490,7 +496,13 @@ public class ResultSceneController {
             new MessagePair("Good Start!", "You're on the right track."),
             new MessagePair("Nice Effort!", "Keep practicing to improve your skills."),
             new MessagePair("You're Learning!", "Every attempt makes you better."),
-            new MessagePair("Keep Going!", "Consistency is the key to success.")
+            new MessagePair("Keep Going!", "Consistency is the key to success."),
+            new MessagePair("Solid Beginning!", "You're building a strong foundation."),
+            new MessagePair("Making Progress!", "Your improvement is just beginning."),
+            new MessagePair("Way to Go!", "You're developing valuable skills."),
+            new MessagePair("Great Initiative!", "Your effort is commendable."),
+            new MessagePair("Keep It Up!", "You're heading in the right direction."),
+            new MessagePair("Nice Job!", "Every practice session counts.")
         ));
 
         // Challenge Mode: 2 Stars (Supportive)
@@ -498,7 +510,13 @@ public class ResultSceneController {
             new MessagePair("Well Done!", "You're making steady progress."),
             new MessagePair("Great Effort!", "Your skills are developing nicely."),
             new MessagePair("Keep It Up!", "You're getting better with each try."),
-            new MessagePair("Nice Work!", "Practice is paying off.")
+            new MessagePair("Nice Work!", "Practice is paying off."),
+            new MessagePair("Good Progress!", "You're on your way to mastery."),
+            new MessagePair("Getting Better!", "Your dedication is showing results."),
+            new MessagePair("Fine Work!", "You're building momentum now."),
+            new MessagePair("Keep Practicing!", "Your skills are clearly improving."),
+            new MessagePair("Doing Great!", "You're developing consistency."),
+            new MessagePair("Moving Forward!", "Each session brings improvement.")
         ));
 
         // Challenge Mode: 3 Stars (Motivational)
@@ -507,7 +525,12 @@ public class ResultSceneController {
             new MessagePair("Impressive!", "You're showing real improvement."),
             new MessagePair("Great Progress!", "You're mastering the basics well."),
             new MessagePair("Solid Performance!", "Keep pushing to reach the next level."),
-            new MessagePair("Nice Achievement!", "Your dedication is showing results.")
+            new MessagePair("Nice Achievement!", "Your dedication is showing results."),
+            new MessagePair("Well Executed!", "You're becoming more confident."),
+            new MessagePair("Strong Performance!", "You're in the middle tier now."),
+            new MessagePair("Good Work!", "Your skills are really developing."),
+            new MessagePair("Commendable!", "You're making significant strides."),
+            new MessagePair("Keep Rising!", "You're halfway to excellence.")
         ));
 
         // Challenge Mode: 4 Stars (Celebratory)
@@ -516,7 +539,12 @@ public class ResultSceneController {
             new MessagePair("Outstanding!", "Your typing skills are impressive."),
             new MessagePair("Fantastic Job!", "You're very close to perfection."),
             new MessagePair("Amazing Performance!", "Just one more push to five stars."),
-            new MessagePair("Superb Typing!", "You're in the expert range now.")
+            new MessagePair("Superb Typing!", "You're in the expert range now."),
+            new MessagePair("Brilliant!", "You're demonstrating real mastery."),
+            new MessagePair("Exceptional!", "Your precision is outstanding."),
+            new MessagePair("Remarkable!", "You're typing like a pro."),
+            new MessagePair("Stellar Work!", "Excellence is within reach."),
+            new MessagePair("Magnificent!", "You're among the best typists.")
         ));
 
         // Challenge Mode: 5 Stars (Celebratory)
@@ -525,7 +553,12 @@ public class ResultSceneController {
             new MessagePair("Flawless!", "Your typing skills are exceptional."),
             new MessagePair("Incredible!", "You've reached the pinnacle of typing."),
             new MessagePair("Phenomenal!", "You're a true typing champion!"),
-            new MessagePair("Masterful!", "Five stars, absolute perfection!")
+            new MessagePair("Masterful!", "Five stars, absolute perfection!"),
+            new MessagePair("Legendary!", "You've set the gold standard!"),
+            new MessagePair("Unstoppable!", "Your performance is extraordinary!"),
+            new MessagePair("World-Class!", "You're at the peak of excellence!"),
+            new MessagePair("Spectacular!", "You've achieved the impossible!"),
+            new MessagePair("Unbeatable!", "You're a typing virtuoso!")
         ));
 
         // Practice Mode: General Motivational (7 variations)
