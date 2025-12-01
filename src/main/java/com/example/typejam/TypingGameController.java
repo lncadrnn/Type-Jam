@@ -446,43 +446,37 @@ public class TypingGameController {
             charText.setFont(Font.font("Arial", 28));
 
             if (i < typedText.length()) {
-                // Character has been typed
                 if (typedText.charAt(i) == targetText.charAt(i)) {
-                    // Correct character - green
                     charText.setFill(Color.web("#28a745"));
                     correctChars++;
+                    dataTextFlow.getChildren().add(charText);
                 } else {
-                    // Incorrect character - red
-                    charText.setFill(Color.web("#dc3545"));
-                    // Add centered red rectangle for space-related errors
-                    if (targetText.charAt(i) == ' ' || typedText.charAt(i) == ' ') {
-                        // Create a StackPane to hold the space and centered rectangle
+                    // Mismatch
+                    if (targetText.charAt(i) == ' ') {
+                        // Expected space, user typed a non-space: show subtle red marker
                         StackPane spaceContainer = new StackPane();
-
-                        // Create a red vertical rectangle
-                        Rectangle errorRect = new Rectangle(3, 25);
-                        errorRect.setFill(Color.web("#dc3545"));
-
-                        // Create invisible space text to maintain spacing
                         Text spaceText = new Text(" ");
                         spaceText.setFont(Font.font("Arial", 28));
-
-                        // Add both to the StackPane (rectangle will be centered)
-                        spaceContainer.getChildren().addAll(spaceText, errorRect);
-
-                        // Add the StackPane to the TextFlow
+                        javafx.scene.layout.Region marker = new javafx.scene.layout.Region();
+                        marker.getStyleClass().add("space-error-marker");
+                        marker.setPrefSize(12, 4); // width / height for bar
+                        marker.setMinSize(12, 4);
+                        marker.setMaxSize(12, 4);
+                        marker.setTranslateY(10); // push near baseline
+                        spaceContainer.getChildren().addAll(spaceText, marker);
                         dataTextFlow.getChildren().add(spaceContainer);
                         errors++;
-                        continue; // Skip adding charText below
+                    } else {
+                        // Incorrect non-space character
+                        charText.setFill(Color.web("#dc3545"));
+                        errors++;
+                        dataTextFlow.getChildren().add(charText);
                     }
-                    errors++;
                 }
             } else {
-                // Character not yet typed - black
                 charText.setFill(Color.BLACK);
+                dataTextFlow.getChildren().add(charText);
             }
-
-            dataTextFlow.getChildren().add(charText);
         }
     }
 

@@ -116,3 +116,9 @@
 .button:pressed {
     -fx-cursor: hand;
 }
+
+/* Space error marker for visualization */
+.space-error-marker {
+    -fx-background-color: #dc3545;
+    -fx-background-radius: 2;
+}
