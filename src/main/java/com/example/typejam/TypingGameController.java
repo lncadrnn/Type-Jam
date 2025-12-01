@@ -10,7 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -452,6 +454,27 @@ public class TypingGameController {
                 } else {
                     // Incorrect character - red
                     charText.setFill(Color.web("#dc3545"));
+                    // Add centered red rectangle for space-related errors
+                    if (targetText.charAt(i) == ' ' || typedText.charAt(i) == ' ') {
+                        // Create a StackPane to hold the space and centered rectangle
+                        StackPane spaceContainer = new StackPane();
+
+                        // Create a red vertical rectangle
+                        Rectangle errorRect = new Rectangle(3, 25);
+                        errorRect.setFill(Color.web("#dc3545"));
+
+                        // Create invisible space text to maintain spacing
+                        Text spaceText = new Text(" ");
+                        spaceText.setFont(Font.font("Arial", 28));
+
+                        // Add both to the StackPane (rectangle will be centered)
+                        spaceContainer.getChildren().addAll(spaceText, errorRect);
+
+                        // Add the StackPane to the TextFlow
+                        dataTextFlow.getChildren().add(spaceContainer);
+                        errors++;
+                        continue; // Skip adding charText below
+                    }
                     errors++;
                 }
             } else {
