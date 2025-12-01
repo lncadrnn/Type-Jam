@@ -36,26 +36,26 @@
             <!-- Sound Settings Section -->
             <VBox alignment="CENTER_LEFT" prefHeight="158.0" prefWidth="631.0" spacing="15.0" style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 15;">
                <!-- Sound Effects -->
-               <javafx.scene.control.CheckBox fx:id="soundEffectsCheckBox" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Sound Effects">
+               <CheckBox fx:id="soundEffectsCheckBox" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Sound Effects">
                   <font>
                      <Font name="Arial Bold" size="14.0" />
                   </font>
-               </javafx.scene.control.CheckBox>
+               </CheckBox>
                <HBox alignment="CENTER_LEFT" spacing="10.0">
                   <Text style="-fx-font-size: 12px;" text="SFX Volume:" />
-                  <javafx.scene.control.Slider fx:id="sfxVolumeSlider" max="100" min="0" prefHeight="14.0" prefWidth="339.0" showTickLabels="false" showTickMarks="false" value="50" />
+                  <Slider fx:id="sfxVolumeSlider" max="100" min="0" prefHeight="14.0" prefWidth="339.0" showTickLabels="false" showTickMarks="false" value="50" />
                   <Text fx:id="sfxVolumeLabel" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="50%" />
                </HBox>
 
                <!-- Background Music -->
-               <javafx.scene.control.CheckBox fx:id="backgroundMusicCheckBox" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Background Music">
+               <CheckBox fx:id="backgroundMusicCheckBox" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Background Music">
                   <font>
                      <Font name="Arial Bold" size="14.0" />
                   </font>
-               </javafx.scene.control.CheckBox>
+               </CheckBox>
                <HBox alignment="CENTER_LEFT" spacing="10.0">
                   <Text style="-fx-font-size: 12px;" text="Music Volume:" />
-                  <javafx.scene.control.Slider fx:id="musicVolumeSlider" max="100" min="0" prefHeight="14.0" prefWidth="328.0" showTickLabels="false" showTickMarks="false" value="50" />
+                  <Slider fx:id="musicVolumeSlider" max="100" min="0" prefHeight="14.0" prefWidth="328.0" showTickLabels="false" showTickMarks="false" value="50" />
                   <Text fx:id="musicVolumeLabel" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="50%" />
                </HBox>
             </VBox>
