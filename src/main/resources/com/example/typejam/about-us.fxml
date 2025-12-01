@@ -14,162 +14,162 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="495.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.AboutUsController">
+<AnchorPane prefHeight="579.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.AboutUsController">
    <children>
-      <StackPane prefHeight="495.0" prefWidth="760.0" style="-fx-background-radius: 50;">
+      <StackPane prefHeight="579.0" prefWidth="894.0" style="-fx-background-radius: 50;">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="495.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="760.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="419.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 70; -fx-arc-height: 70;" width="678.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="579.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="894.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="490.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 70; -fx-arc-height: 70;" width="797.0" />
          </children>
       </StackPane>
-      <HBox alignment="CENTER_LEFT" layoutX="39.0" layoutY="11.0" prefHeight="124.0" prefWidth="134.0" style="-fx-background-radius: 100;">
+      <HBox alignment="CENTER_LEFT" layoutX="46.0" layoutY="13.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-radius: 100;">
          <children>
-            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="63.0" prefWidth="69.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
+            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="74.0" prefWidth="81.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
                <graphic>
-                  <ImageView fitHeight="52.0" fitWidth="52.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
+                  <ImageView fitHeight="61.0" fitWidth="61.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
                      <image>
                         <Image url="@../../../assets/back.png" />
                      </image>
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets left="15.0" top="10.0" />
+                  <Insets left="18.0" top="12.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
-      <VBox alignment="TOP_CENTER" layoutX="55.0" layoutY="123.0" prefHeight="309.0" prefWidth="658.0">
+      <VBox alignment="TOP_CENTER" layoutX="65.0" layoutY="144.0" prefHeight="361.0" prefWidth="774.0">
          <children>
-            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="310.0" prefWidth="658.0" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;">
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="362.0" prefWidth="774.0" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;">
                <content>
-                  <VBox alignment="TOP_LEFT" prefHeight="365.0" prefWidth="633.0" spacing="12.0" style="-fx-background-color: transparent;">
+                  <VBox alignment="TOP_LEFT" prefHeight="427.0" prefWidth="744.0" spacing="14.0" style="-fx-background-color: transparent;">
                      <children>
-                        <Text fill="#2b5237" text="Welcome to the Bacoor Elementary School Senior High School Typing Game! This project was created to help our SHS students strengthen their typing speed and accuracy while enjoying a fun, interactive experience. In today's digital world, typing is more than just a skill, it's an essential tool for learning, communication, and future careers." textAlignment="JUSTIFY" wrappingWidth="619.3333740234375">
+                        <Text fill="#2b5237" text="Welcome to the Bacoor Elementary School Senior High School Typing Game! This project was created to help our SHS students strengthen their typing speed and accuracy while enjoying a fun, interactive experience. In today's digital world, typing is more than just a skill, it's an essential tool for learning, communication, and future careers." textAlignment="JUSTIFY" wrappingWidth="728.0">
                            <font>
-                              <Font name="Arial" size="15.0" />
+                              <Font name="Arial" size="17.5" />
                            </font>
                         </Text>
 
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="🎯 Our Purpose" wrappingWidth="500.0">
+                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="🎯 Our Purpose" wrappingWidth="588.0">
                            <font>
-                              <Font name="Arial Bold" size="18.0" />
+                              <Font name="Arial Bold" size="21.0" />
                            </font>
                         </Text>
-                        <VBox spacing="4.0">
+                        <VBox spacing="5.0">
                            <children>
-                              <Text fill="#2b5237" text="- To provide SHS students with a platform to practice and improve typing skills." textAlignment="JUSTIFY" wrappingWidth="600.0">
+                              <Text fill="#2b5237" text="- To provide SHS students with a platform to practice and improve typing skills." textAlignment="JUSTIFY" wrappingWidth="705.0">
                                  <font>
-                                    <Font name="Arial" size="15.0" />
+                                    <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
-                              <Text fill="#2b5237" text="- To prepare learners for academic tasks such as research, reports, and presentations." textAlignment="JUSTIFY" wrappingWidth="600.0">
+                              <Text fill="#2b5237" text="- To prepare learners for academic tasks such as research, reports, and presentations." textAlignment="JUSTIFY" wrappingWidth="705.0">
                                  <font>
-                                    <Font name="Arial" size="15.0" />
+                                    <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
-                              <Text fill="#2b5237" text="- To encourage discipline, accuracy, and confidence in digital literacy." textAlignment="JUSTIFY" wrappingWidth="600.0">
+                              <Text fill="#2b5237" text="- To encourage discipline, accuracy, and confidence in digital literacy." textAlignment="JUSTIFY" wrappingWidth="705.0">
                                  <font>
-                                    <Font name="Arial" size="15.0" />
+                                    <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
                            </children>
                         </VBox>
 
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="🌟 Features" wrappingWidth="500.0">
+                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="🌟 Features" wrappingWidth="588.0">
                            <font>
-                              <Font name="Arial Bold" size="18.0" />
+                              <Font name="Arial Bold" size="21.0" />
                            </font>
                         </Text>
-                        <VBox spacing="4.0">
+                        <VBox spacing="5.0">
                            <children>
-                              <Text fill="#2b5237" text="Multiple Modes: Challenge Mode and Practice Mode." wrappingWidth="600.0">
+                              <Text fill="#2b5237" text="Multiple Modes: Challenge Mode and Practice Mode." wrappingWidth="705.0">
                                  <font>
-                                    <Font name="Arial" size="15.0" />
+                                    <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
-                              <Text fill="#2b5237" text="Difficulty Levels: Easy, medium, and hard passages to match every learner's skill level." textAlignment="JUSTIFY" wrappingWidth="600.0">
+                              <Text fill="#2b5237" text="Difficulty Levels: Easy, medium, and hard passages to match every learner's skill level." textAlignment="JUSTIFY" wrappingWidth="705.0">
                                  <font>
-                                    <Font name="Arial" size="15.0" />
+                                    <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
-                              <Text fill="#2b5237" text="Leaderboards: Fair competition with filters for difficulty, so students can compare scores equally." wrappingWidth="600.0">
+                              <Text fill="#2b5237" text="Leaderboards: Fair competition with filters for difficulty, so students can compare scores equally." wrappingWidth="705.0">
                                  <font>
-                                    <Font name="Arial" size="15.0" />
+                                    <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
                            </children>
                         </VBox>
 
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="💡 Our Vision" wrappingWidth="500.0">
+                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="💡 Our Vision" wrappingWidth="588.0">
                            <font>
-                              <Font name="Arial Bold" size="18.0" />
+                              <Font name="Arial Bold" size="21.0" />
                            </font>
                         </Text>
-                        <Text fill="#2b5237" text="We aim to create a supportive environment where typing practice becomes engaging and rewarding. By combining learning with friendly competition, we hope to inspire students to continuously improve and take pride in their progress." textAlignment="JUSTIFY" wrappingWidth="621.3333740234375">
+                        <Text fill="#2b5237" text="We aim to create a supportive environment where typing practice becomes engaging and rewarding. By combining learning with friendly competition, we hope to inspire students to continuously improve and take pride in their progress." textAlignment="JUSTIFY" wrappingWidth="730.0">
                            <font>
-                              <Font name="Arial" size="15.0" />
-                           </font>
-                        </Text>
-
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="💻 Developers" wrappingWidth="500.0">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
+                              <Font name="Arial" size="17.5" />
                            </font>
                         </Text>
 
-                        <Text fill="#2b5237" text="Developed by BSCS students of Cavite State University – Imus Campus" textAlignment="JUSTIFY" wrappingWidth="621.3333740234375">
+                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="💻 Developers" wrappingWidth="588.0">
                            <font>
-                              <Font name="Arial" size="15.0" />
+                              <Font name="Arial Bold" size="21.0" />
                            </font>
                         </Text>
-                        <TextFlow prefWidth="621.0">
+
+                        <Text fill="#2b5237" text="Developed by BSCS students of Cavite State University – Imus Campus" textAlignment="JUSTIFY" wrappingWidth="730.0">
+                           <font>
+                              <Font name="Arial" size="17.5" />
+                           </font>
+                        </Text>
+                        <TextFlow prefWidth="730.0">
                            <children>
                               <Text fill="#2b5237" text="Main Developer">
                                  <font>
-                                    <Font name="Arial Bold" size="16.0" />
+                                    <Font name="Arial Bold" size="19.0" />
                                  </font>
                               </Text>
                               <Text fill="#2b5237" text=": Lance Adrian Acal">
                                  <font>
-                                    <Font name="Arial" size="15.0" />
+                                    <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
                            </children>
                         </TextFlow>
-                        <TextFlow prefWidth="621.0">
+                        <TextFlow prefWidth="730.0">
                            <children>
                               <Text fill="#2b5237" text="Developers">
                                  <font>
-                                    <Font name="Arial Bold" size="16.0" />
+                                    <Font name="Arial Bold" size="19.0" />
                                  </font>
                               </Text>
                               <Text fill="#2b5237" text=":">
                                  <font>
-                                    <Font name="Arial" size="17.0" />
+                                    <Font name="Arial" size="20.0" />
                                  </font>
                               </Text>
                            </children>
                         </TextFlow>
-                        <VBox spacing="4.0">
+                        <VBox spacing="5.0">
                            <children>
                               <Text fill="#2b5237" text="• Carlo Jose Anyayahan">
                                  <font>
-                                    <Font name="Arial" size="15.0" />
+                                    <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
                               <Text fill="#2b5237" text="• Rejay Buta">
                                  <font>
-                                    <Font name="Arial" size="15.0" />
+                                    <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
                               <Text fill="#2b5237" text="• John Cedrick Delgado">
                                  <font>
-                                    <Font name="Arial" size="15.0" />
+                                    <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
                               <Text fill="#2b5237" text="• Austin Moreno">
                                  <font>
-                                    <Font name="Arial" size="15.0" />
+                                    <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
                            </children>
@@ -183,16 +183,16 @@
             </ScrollPane>
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="113.0" layoutY="28.0" prefHeight="117.0" prefWidth="530.0">
+      <VBox alignment="CENTER" layoutX="133.0" layoutY="33.0" prefHeight="137.0" prefWidth="623.0">
          <children>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="ABOUT TYPE JAM" textAlignment="CENTER" wrappingWidth="296.01220703125">
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="ABOUT TYPE JAM" textAlignment="CENTER" wrappingWidth="348.0">
                <font>
-                  <Font name="Arial Bold" size="32.0" />
+                  <Font name="Arial Bold" size="37.0" />
                </font>
             </Text>
             <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Building confidence, one keystroke at a time." textAlignment="CENTER">
                <font>
-                  <Font name="Arial Bold" size="16.0" />
+                  <Font name="Arial Bold" size="19.0" />
                </font>
             </Text>
          </children>
