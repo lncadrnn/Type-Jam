@@ -2,42 +2,29 @@ package com.example.typejam;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.util.Optional;
 
 public class SettingsController {
 
-    @FXML
-    private Button back_btn;
-
-    @FXML
-    private Button resetDataBtn;
-
-    @FXML
-    private CheckBox soundEffectsCheckBox;
-
-    @FXML
-    private CheckBox backgroundMusicCheckBox;
-
-    @FXML
-    private Slider sfxVolumeSlider;
-
-    @FXML
-    private Slider musicVolumeSlider;
-
-    @FXML
-    private Text sfxVolumeLabel;
-
-    @FXML
-    private Text musicVolumeLabel;
-
+    @FXML private StackPane rootStackPane;
+    @FXML private AnchorPane contentAnchor; // new for targeted blur
+    @FXML private Button back_btn;
+    @FXML private Button resetDataBtn;
+    @FXML private CheckBox soundEffectsCheckBox;
+    @FXML private CheckBox backgroundMusicCheckBox;
+    @FXML private Slider sfxVolumeSlider;
+    @FXML private Slider musicVolumeSlider;
+    @FXML private Text sfxVolumeLabel;
+    @FXML private Text musicVolumeLabel;
 
     @FXML
     private void onBack(ActionEvent event) {
@@ -50,31 +37,44 @@ public class SettingsController {
 
     @FXML
     private void onResetData(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("reset-confirmation-modal.fxml"));
+            StackPane overlay = loader.load();
+            ResetConfirmationController modalController = loader.getController();
 
-        // Show confirmation dialog
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Reset Data");
-        alert.setHeaderText("Are you sure you want to reset all data?");
-        alert.setContentText("This will permanently delete all leaderboard entries and cannot be undone.");
-        alert.getDialogPane().setStyle("-fx-background-color: #ffffff;");
+            // Blur only background content, not the overlay
+            BoxBlur blur = new BoxBlur(8, 8, 3);
+            contentAnchor.setEffect(blur);
 
-        Optional<ButtonType> result = alert.showAndWait();
+            overlay.prefWidthProperty().bind(rootStackPane.widthProperty());
+            overlay.prefHeightProperty().bind(rootStackPane.heightProperty());
 
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            // User confirmed, proceed with reset
-            boolean success = LeaderboardStorage.clearAllData();
+            // Simple entrance animation (fade + scale)
+            overlay.setOpacity(0);
+            overlay.setScaleX(0.96);
+            overlay.setScaleY(0.96);
+            javafx.animation.FadeTransition fade = new javafx.animation.FadeTransition(javafx.util.Duration.millis(180), overlay);
+            fade.setFromValue(0); fade.setToValue(1);
+            javafx.animation.ScaleTransition scale = new javafx.animation.ScaleTransition(javafx.util.Duration.millis(220), overlay);
+            scale.setFromX(0.96); scale.setFromY(0.96); scale.setToX(1); scale.setToY(1);
+            javafx.animation.ParallelTransition pt = new javafx.animation.ParallelTransition(fade, scale);
 
-            // Show result
-            Alert resultAlert = new Alert(
-                success ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR
-            );
-            resultAlert.setTitle("Reset Data");
-            resultAlert.setHeaderText(null);
-            resultAlert.setContentText(
-                success ? "All data has been successfully reset!" : "Failed to reset data. Please try again."
-            );
-            resultAlert.getDialogPane().setStyle("-fx-background-color: #ffffff;");
-            resultAlert.showAndWait();
+            modalController.setCloseHandler(confirmed -> {
+                rootStackPane.getChildren().remove(overlay);
+                contentAnchor.setEffect(null);
+                if (confirmed) {
+                    boolean success = LeaderboardStorage.clearAllData();
+                    ToastUtil.showToast(rootStackPane,
+                            success ? "All data has been successfully reset!" : "Failed to reset data. Please try again.",
+                            success ? ToastUtil.ToastType.SUCCESS : ToastUtil.ToastType.ERROR);
+                }
+            });
+
+            rootStackPane.getChildren().add(overlay);
+            pt.play();
+        } catch (IOException e) {
+            System.err.println("Error showing reset confirmation overlay: " + e.getMessage());
+            ToastUtil.showToast(rootStackPane, "Error showing confirmation dialog", ToastUtil.ToastType.ERROR);
         }
     }
 
@@ -140,13 +140,8 @@ public class SettingsController {
         // Optionally purge old entries upon opening settings
         try {
             int removed = LeaderboardStorage.purgeEntriesOlderThanOneYear();
-            if (removed > 0) {
-                Alert info = new Alert(Alert.AlertType.INFORMATION);
-                info.setTitle("Leaderboard Maintenance");
-                info.setHeaderText(null);
-                info.setContentText(removed + " old entries (>= 1 year) were purged.");
-                info.getDialogPane().setStyle("-fx-background-color: #ffffff;");
-                info.showAndWait();
+            if (removed > 0 && rootStackPane != null) {
+                ToastUtil.showToast(rootStackPane, removed + " old entries (>= 1 year) were purged.", ToastUtil.ToastType.INFO);
             }
         } catch (Exception e) {
             System.err.println("Purge check failed: " + e.getMessage());
