@@ -264,7 +264,7 @@ public class LeaderboardsController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 760, 495);
+        Scene scene = new Scene(root, 894, 579);
         stage.setScene(scene);
         stage.show();
     }
