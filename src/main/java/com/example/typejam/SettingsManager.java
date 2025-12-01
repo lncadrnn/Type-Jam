@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 
 /**
  * Singleton class to manage application settings like sound effects and music preferences.
- * Settings are persisted locally in user's home directory: typejam-settings.json
+ * Settings are persisted locally in: src/main/resources/data/typejam-settings.json
  */
 public class SettingsManager {
 
@@ -38,8 +38,39 @@ public class SettingsManager {
     }
 
     private File getSettingsFile() {
-        Path path = Paths.get(System.getProperty("user.home"), "typejam-settings.json");
-        return path.toFile();
+        // Try to get the data directory from resources first (works in both IDE and JAR)
+        try {
+            java.net.URL resourceUrl = SettingsManager.class.getResource("/data/typing-texts.json");
+            if (resourceUrl != null) {
+                String resourcePath = resourceUrl.getPath();
+                // Handle Windows paths (remove leading slash if present)
+                if (resourcePath.startsWith("/") && resourcePath.contains(":")) {
+                    resourcePath = resourcePath.substring(1);
+                }
+                Path dataDir = Paths.get(resourcePath).getParent();
+                if (dataDir != null && dataDir.toFile().exists()) {
+                    File settingsFile = dataDir.resolve("typejam-settings.json").toFile();
+                    System.out.println("✓ SETTINGS STORAGE LOCATION: " + settingsFile.getAbsolutePath());
+                    return settingsFile;
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Could not locate resources/data directory: " + e.getMessage());
+        }
+
+        // Fallback: use project structure path (for development)
+        String projectRoot = System.getProperty("user.dir");
+        Path dataDir = Paths.get(projectRoot, "src", "main", "resources", "data");
+
+        // Create data directory if it doesn't exist
+        File dataDirFile = dataDir.toFile();
+        if (!dataDirFile.exists()) {
+            dataDirFile.mkdirs();
+        }
+
+        File settingsFile = dataDir.resolve("typejam-settings.json").toFile();
+        System.out.println("✓ SETTINGS STORAGE LOCATION (FALLBACK): " + settingsFile.getAbsolutePath());
+        return settingsFile;
     }
 
     private void loadSettings() {

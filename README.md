@@ -19,7 +19,9 @@ A JavaFX typing practice game to help students build speed and accuracy. Include
 - Settings:
   - Toggle Sound Effects and Background Music on/off
   - Independent volume sliders for SFX and Music (0–100%)
-- Persistence: preferences saved to `%USERPROFILE%/typejam-settings.json`
+- Persistence: 
+  - Settings: `src/main/resources/data/typejam-settings.json`
+  - Leaderboard: `src/main/resources/data/typejam-leaderboard.json`
 
 ## How Scoring Works
 - **WPM** = (Total Characters Typed / 5) / Time in Minutes

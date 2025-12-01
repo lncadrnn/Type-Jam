@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * Utility class for persisting and loading leaderboard entries locally (per device).
- * Data stored as JSON in user's home directory: typejam-leaderboard.json
+ * Data stored as JSON in: src/main/resources/data/typejam-leaderboard.json
  */
 public final class LeaderboardStorage {
 
@@ -31,8 +31,44 @@ public final class LeaderboardStorage {
     private LeaderboardStorage() {}
 
     public static File getStorageFile() {
-        Path path = Paths.get(System.getProperty("user.home"), "typejam-leaderboard.json");
-        return path.toFile();
+        // Try to get the data directory from resources first (works in both IDE and JAR)
+        try {
+            java.net.URL resourceUrl = LeaderboardStorage.class.getResource("/data/typing-texts.json");
+            if (resourceUrl != null) {
+                String resourcePath = resourceUrl.getPath();
+                System.out.println("DEBUG: Found resource URL: " + resourceUrl);
+                System.out.println("DEBUG: Resource path: " + resourcePath);
+                // Handle Windows paths (remove leading slash if present)
+                if (resourcePath.startsWith("/") && resourcePath.contains(":")) {
+                    resourcePath = resourcePath.substring(1);
+                    System.out.println("DEBUG: Cleaned Windows path: " + resourcePath);
+                }
+                Path dataDir = Paths.get(resourcePath).getParent();
+                if (dataDir != null && dataDir.toFile().exists()) {
+                    File leaderboardFile = dataDir.resolve("typejam-leaderboard.json").toFile();
+                    System.out.println("✓ LEADERBOARD STORAGE LOCATION: " + leaderboardFile.getAbsolutePath());
+                    return leaderboardFile;
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Could not locate resources/data directory: " + e.getMessage());
+        }
+
+        // Fallback: use project structure path (for development)
+        String projectRoot = System.getProperty("user.dir");
+        Path dataDir = Paths.get(projectRoot, "src", "main", "resources", "data");
+        System.out.println("DEBUG: Using fallback path - user.dir: " + projectRoot);
+
+        // Create data directory if it doesn't exist
+        File dataDirFile = dataDir.toFile();
+        if (!dataDirFile.exists()) {
+            dataDirFile.mkdirs();
+            System.out.println("DEBUG: Created data directory: " + dataDirFile.getAbsolutePath());
+        }
+
+        File leaderboardFile = dataDir.resolve("typejam-leaderboard.json").toFile();
+        System.out.println("✓ LEADERBOARD STORAGE LOCATION (FALLBACK): " + leaderboardFile.getAbsolutePath());
+        return leaderboardFile;
     }
 
     public static synchronized List<LeaderboardEntry> loadEntries() {
