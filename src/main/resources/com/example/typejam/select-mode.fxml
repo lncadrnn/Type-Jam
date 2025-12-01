@@ -12,15 +12,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootPane" prefHeight="495.0" prefWidth="760.0" style="-fx-background-radius: 50;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.SelectModeController">
+<AnchorPane fx:id="rootPane" prefHeight="579.0" prefWidth="894.0" style="-fx-background-radius: 50;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.SelectModeController">
     <children>
-      <StackPane prefHeight="495.0" prefWidth="760.0" style="-fx-background-radius: 50;">
+      <StackPane prefHeight="579.0" prefWidth="894.0" style="-fx-background-radius: 50;">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="495.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="760.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="419.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 70; -fx-arc-height: 70;" width="678.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="579.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="894.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="490.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 70; -fx-arc-height: 70;" width="797.0" />
          </children>
       </StackPane>
-      <VBox alignment="TOP_CENTER" layoutX="37.0" layoutY="97.0" prefHeight="362.0" prefWidth="684.0" spacing="10.0">
+      <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="115.0" prefHeight="420.0" prefWidth="800.0" spacing="10.0">
          <children>
             <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT MODE">
                <VBox.margin>
@@ -30,10 +30,10 @@
                   <Font name="Arial Bold" size="32.0" />
                </font>
             </Text>
-            <StackPane prefHeight="108.0" prefWidth="684.0">
+            <StackPane prefHeight="108.0" prefWidth="800.0">
                <children>
-                  <Button fx:id="timeChallengeBtn" mnemonicParsing="false" onAction="#onTimeChallengeClick" prefHeight="80.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
-                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="133.0" prefWidth="684.0">
+                  <Button fx:id="timeChallengeBtn" mnemonicParsing="false" onAction="#onTimeChallengeClick" prefHeight="80.0" prefWidth="475.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="133.0" prefWidth="800.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Challenge Mode" wrappingWidth="368.1367392539978">
                            <font>
@@ -52,10 +52,10 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </StackPane>
-            <StackPane prefHeight="89.0" prefWidth="684.0">
+            <StackPane prefHeight="89.0" prefWidth="800.0">
                <children>
-                  <Button fx:id="endlessModeBtn" mnemonicParsing="false" onAction="#onEndlessModeClick" prefHeight="80.0" prefWidth="403.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
-                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="107.0" prefWidth="684.0">
+                  <Button fx:id="endlessModeBtn" mnemonicParsing="false" onAction="#onEndlessModeClick" prefHeight="80.0" prefWidth="475.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="107.0" prefWidth="800.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Practice Mode" wrappingWidth="368.1367392539978">
                            <font>
