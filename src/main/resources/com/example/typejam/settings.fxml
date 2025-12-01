@@ -14,66 +14,66 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="rootStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.SettingsController">
-<AnchorPane fx:id="contentAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="760.0">
+<StackPane fx:id="rootStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.SettingsController">
+<AnchorPane fx:id="contentAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="894.0">
    <children>
-      <StackPane prefHeight="495.0" prefWidth="760.0">
+      <StackPane prefHeight="579.0" prefWidth="894.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="495.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="760.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="419.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 70; -fx-arc-width: 70;" width="678.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="579.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="894.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="490.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 70; -fx-arc-width: 70;" width="797.0" />
          </children>
       </StackPane>
-      <VBox alignment="TOP_CENTER" layoutX="132.0" layoutY="35.0" prefHeight="425.0" prefWidth="517.0" spacing="25.0">
+      <VBox alignment="TOP_CENTER" layoutX="155.0" layoutY="41.0" prefHeight="497.0" prefWidth="608.0" spacing="29.0">
          <children>
             <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTINGS">
                <font>
-                  <Font name="Arial Bold" size="32.0" />
+                  <Font name="Arial Bold" size="37.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="10.0" top="50.0" />
+                  <Insets bottom="12.0" top="58.0" />
                </VBox.margin>
             </Text>
 
             <!-- Sound Settings Section -->
-            <VBox alignment="CENTER_LEFT" prefHeight="158.0" prefWidth="631.0" spacing="15.0" style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 15;">
+            <VBox alignment="CENTER_LEFT" prefHeight="185.0" prefWidth="742.0" spacing="17.5" style="-fx-background-color: #f8f9fa; -fx-padding: 23; -fx-background-radius: 15;">
                <!-- Sound Effects -->
-               <CheckBox fx:id="soundEffectsCheckBox" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Sound Effects">
+               <CheckBox fx:id="soundEffectsCheckBox" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Sound Effects">
                   <font>
-                     <Font name="Arial Bold" size="14.0" />
+                     <Font name="Arial Bold" size="16.0" />
                   </font>
                </CheckBox>
-               <HBox alignment="CENTER_LEFT" spacing="10.0">
-                  <Text style="-fx-font-size: 12px;" text="SFX Volume:" />
-                  <Slider fx:id="sfxVolumeSlider" max="100" min="0" prefHeight="14.0" prefWidth="339.0" showTickLabels="false" showTickMarks="false" value="50" />
-                  <Text fx:id="sfxVolumeLabel" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="50%" />
+               <HBox alignment="CENTER_LEFT" spacing="12.0">
+                  <Text style="-fx-font-size: 14px;" text="SFX Volume:" />
+                  <Slider fx:id="sfxVolumeSlider" max="100" min="0" prefHeight="16.0" prefWidth="398.0" showTickLabels="false" showTickMarks="false" value="50" />
+                  <Text fx:id="sfxVolumeLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="50%" />
                </HBox>
 
                <!-- Background Music -->
-               <CheckBox fx:id="backgroundMusicCheckBox" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Background Music">
+               <CheckBox fx:id="backgroundMusicCheckBox" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Background Music">
                   <font>
-                     <Font name="Arial Bold" size="14.0" />
+                     <Font name="Arial Bold" size="16.0" />
                   </font>
                </CheckBox>
-               <HBox alignment="CENTER_LEFT" spacing="10.0">
-                  <Text style="-fx-font-size: 12px;" text="Music Volume:" />
-                  <Slider fx:id="musicVolumeSlider" max="100" min="0" prefHeight="14.0" prefWidth="328.0" showTickLabels="false" showTickMarks="false" value="50" />
-                  <Text fx:id="musicVolumeLabel" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="50%" />
+               <HBox alignment="CENTER_LEFT" spacing="12.0">
+                  <Text style="-fx-font-size: 14px;" text="Music Volume:" />
+                  <Slider fx:id="musicVolumeSlider" max="100" min="0" prefHeight="16.0" prefWidth="385.0" showTickLabels="false" showTickMarks="false" value="50" />
+                  <Text fx:id="musicVolumeLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="50%" />
                </HBox>
             </VBox>
 
             <!-- Reset Data Button -->
-            <Button fx:id="resetDataBtn" mnemonicParsing="false" onAction="#onResetData" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #dc3545; -fx-background-radius: 25; -fx-cursor: hand;" text="RESET ALL DATA" textFill="WHITE">
+            <Button fx:id="resetDataBtn" mnemonicParsing="false" onAction="#onResetData" prefHeight="58.0" prefWidth="294.0" style="-fx-background-color: #dc3545; -fx-background-radius: 25; -fx-cursor: hand;" text="RESET ALL DATA" textFill="WHITE">
                <font>
-                  <Font name="Arial Bold" size="16.0" />
+                  <Font name="Arial Bold" size="19.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="41.0" layoutY="30.0" prefHeight="102.0" prefWidth="106.0">
+      <HBox alignment="CENTER" layoutX="48.0" layoutY="35.0" prefHeight="119.0" prefWidth="125.0">
          <children>
             <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" style="-fx-background-color: #fff;" textFill="WHITE">
                <graphic>
-                  <ImageView fitHeight="52.0" fitWidth="52.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
+                  <ImageView fitHeight="61.0" fitWidth="61.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
                      <image>
                         <Image url="@../../../assets/back.png" />
                      </image>
