@@ -52,7 +52,7 @@
                   <Insets left="70.0" right="70.0" top="30.0" />
                </VBox.margin>
                <font>
-                  <Font name="Arial" size="25.0" />
+                  <Font name="Arial" size="28.0" />
                </font>
                <padding>
                   <Insets left="30.0" />
