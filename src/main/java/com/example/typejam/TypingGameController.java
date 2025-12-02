@@ -627,6 +627,11 @@ public class TypingGameController {
         Parent root = loader.load();
         Stage stage = (Stage) typingField.getScene().getWindow();
         Scene scene = new Scene(root, 894, 579);
+        // Attach global stylesheet with null check
+        java.net.URL cssUrl = getClass().getResource("/styles/styles.css");
+        if (cssUrl != null) {
+            scene.getStylesheets().add(cssUrl.toExternalForm());
+        }
         stage.setScene(scene);
         stage.show();
     }
@@ -637,6 +642,11 @@ public class TypingGameController {
         Parent root = loader.load();
         Stage stage = (Stage) typingField.getScene().getWindow();
         Scene scene = new Scene(root, 894, 579);
+        // Attach global stylesheet with null check
+        java.net.URL cssUrl = getClass().getResource("/styles/styles.css");
+        if (cssUrl != null) {
+            scene.getStylesheets().add(cssUrl.toExternalForm());
+        }
         stage.setScene(scene);
         stage.show();
     }
