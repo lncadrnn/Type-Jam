@@ -22,28 +22,56 @@
       </StackPane>
       <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="90.0" prefHeight="450.0" prefWidth="800.0" spacing="3.0">
          <children>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT DIFFICULTY" textAlignment="CENTER" wrappingWidth="321.765625">
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT DIFFICULTY" textAlignment="CENTER" wrappingWidth="424.9656189084053">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <font>
-                  <Font name="Arial Bold" size="32.0" />
+                  <Font name="Arial Bold" size="40.0" />
                </font>
             </Text>
-            <StackPane prefHeight="70.0" prefWidth="800.0">
+            <StackPane prefHeight="80.0" prefWidth="800.0">
                <children>
-                  <Button fx:id="easyBtn" mnemonicParsing="false" onAction="#onEasyClick" prefHeight="70.0" prefWidth="413.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="easyBtn" mnemonicParsing="false" onAction="#onEasyClick" prefHeight="80.0" prefWidth="413.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="800.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Easy" wrappingWidth="323.4700516462326">
                            <font>
-                              <Font name="Arial Bold" size="18.0" />
+                              <Font name="Arial Bold" size="22.0" />
                            </font>
                         </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Common words, slower pace." wrappingWidth="323.63673916459084">
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </StackPane>
+            <StackPane prefHeight="80.0" prefWidth="800.0">
+               <children>
+                  <Button fx:id="averageBtn" mnemonicParsing="false" onAction="#onAverageClick" prefHeight="80.0" prefWidth="413.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="800.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Medium" wrappingWidth="323.4700516462326">
+                           <font>
+                              <Font name="Arial Bold" size="22.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mixed vocabulary, normal pace." wrappingWidth="323.63673916459084">
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
                         </Text>
                      </children>
                   </VBox>
@@ -52,57 +80,38 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </StackPane>
-            <StackPane prefHeight="70.0" prefWidth="800.0">
+            <StackPane prefHeight="80.0" prefWidth="800.0">
                <children>
-                  <Button fx:id="averageBtn" mnemonicParsing="false" onAction="#onAverageClick" prefHeight="70.0" prefWidth="413.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
-                  <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="800.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Medium" wrappingWidth="323.4700516462326">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mixed vocabulary, normal pace." wrappingWidth="323.63673916459084">
-                           <VBox.margin>
-                              <Insets top="3.0" />
-                           </VBox.margin>
-                        </Text>
-                     </children>
-                  </VBox>
-               </children>
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </StackPane>
-            <StackPane prefHeight="70.0" prefWidth="800.0">
-               <children>
-                  <Button fx:id="difficultBtn" mnemonicParsing="false" onAction="#onDifficultClick" prefHeight="70.0" prefWidth="413.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="difficultBtn" mnemonicParsing="false" onAction="#onDifficultClick" prefHeight="80.0" prefWidth="413.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="800.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hard" wrappingWidth="323.4700516462326">
                            <font>
-                              <Font name="Arial Bold" size="18.0" />
+                              <Font name="Arial Bold" size="22.0" />
                            </font>
                         </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Complex words, fast pace" wrappingWidth="323.63673916459084">
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
                         </Text>
                      </children>
                   </VBox>
                </children>
                <VBox.margin>
-                  <Insets top="15.0" />
+                  <Insets top="20.0" />
                </VBox.margin>
             </StackPane>
          </children>
       </VBox>
-      <HBox alignment="CENTER_LEFT" layoutX="44.0" layoutY="38.0" prefHeight="70.0" prefWidth="94.0" style="-fx-background-radius: 100;">
+      <HBox alignment="CENTER" layoutX="44.0" layoutY="38.0" prefHeight="90.0" prefWidth="108.0" style="-fx-background-radius: 100;">
          <children>
-            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="52.0" prefWidth="52.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
+            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="79.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
                <graphic>
-                  <ImageView fitHeight="52.0" fitWidth="52.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
+                  <ImageView fitHeight="62.0" fitWidth="58.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
                      <image>
                         <Image url="@../../../assets/back.png" />
                      </image>
