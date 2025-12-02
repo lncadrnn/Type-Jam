@@ -198,16 +198,16 @@ This project was created with ❤️ by:
 
 <table>
   <tr>
-    <td align="center">
+    <!-- <td align="center">
       <a href="https://github.com/Meioseii">
         <img src="https://github.com/Meioseii.png" width="100px;" alt="Meioseii"/>
         <br />
         <sub><b>Meioseii</b></sub>
       </a>
-    </td>
+    </td> -->
     <td align="center">
-      <a href="https://github.com/Retrotaku">
-        <img src="https://github.com/Retrotaku.png" width="100px;" alt="Retrotaku"/>
+      <a href="https://github.com/R3tr0taku">
+        <img src="https://github.com/R3tr0taku.png" width="100px;" alt="R3tr0taku"/>
         <br />
         <sub><b>Retrotaku</b></sub>
       </a>
