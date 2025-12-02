@@ -153,3 +153,47 @@
     -fx-border-insets: 0;
 }
 
+/* Slider styling with black stroke and white fill */
+.slider {
+    -fx-background-color: transparent;
+}
+
+/* The slider track */
+.slider .track {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+/* The filled part of the slider */
+.slider .fill {
+    -fx-background-color: #2b5237;
+    -fx-background-radius: 5px;
+}
+
+/* The slider thumb (circle) */
+.slider .thumb {
+    -fx-background-color: #2b5237;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-radius: 1em;
+    -fx-border-radius: 1em;
+}
+
+/* Remove focus effect (blue outline) from slider thumb */
+.slider:focused {
+    -fx-background-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.slider:focused .thumb {
+    -fx-background-color: #2b5237;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-radius: 1em;
+    -fx-border-radius: 1em;
+}
+
