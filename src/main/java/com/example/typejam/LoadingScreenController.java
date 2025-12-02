@@ -41,7 +41,7 @@ public class LoadingScreenController {
         loader.setLocation(url);
         Parent root = loader.load();
         Stage stage = (Stage) loadingSpinner.getScene().getWindow();
-        Scene scene = new Scene(root, 760, 495);
+        Scene scene = new Scene(root, 894, 579);
         stage.setScene(scene);
         stage.show();
     }
