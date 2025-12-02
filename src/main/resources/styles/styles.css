@@ -122,3 +122,34 @@
     -fx-background-color: #dc3545;
     -fx-background-radius: 2;
 }
+
+/* Checkbox styling with 1px stroke and white fill */
+.check-box {
+    -fx-background-color: transparent;
+}
+
+.check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #2b5237;
+    -fx-border-width: 1px;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+/* Remove focus outline from checkboxes */
+.check-box:focused {
+    -fx-background-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.check-box:focused .box {
+    -fx-background-color: white;
+    -fx-border-color: #2b5237;
+    -fx-border-width: 1px;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+}
+
