@@ -194,21 +194,28 @@ For more detailed developer instructions, see [INSTALLATION.md](INSTALLATION.md)
 
 ## 👥 Contributors
 
-This project was created with ❤️ by:
+This project was created by:
 
 <table>
   <tr>
     <!-- <td align="center">
       <a href="https://github.com/Meioseii">
         <img src="https://github.com/Meioseii.png" width="100px;" alt="Meioseii"/>
-        <br />
+        <br/>
         <sub><b>Meioseii</b></sub>
       </a>
     </td> -->
     <td align="center">
       <a href="https://github.com/R3tr0taku">
         <img src="https://github.com/R3tr0taku.png" width="100px;" alt="R3tr0taku"/>
-        <br />
+        <br/>
+        <sub><b>Retrotaku</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Nakk00">
+        <img src="https://github.com/Nakk00.png" width="100px;" alt="Nakk00"/>
+        <br/>
         <sub><b>Retrotaku</b></sub>
       </a>
     </td>
