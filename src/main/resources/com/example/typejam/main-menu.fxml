@@ -87,10 +87,10 @@
             </TilePane>
          </children>
       </VBox>
-      <StackPane layoutX="19.0" layoutY="19.0" prefHeight="90.0" prefWidth="95.0">
+      <StackPane layoutX="19.0" layoutY="19.0" prefHeight="100.0" prefWidth="110.0">
          <children>
-            <Circle fill="WHITE" radius="39.0" stroke="#2b5237" strokeType="INSIDE" />
-            <ImageView fitHeight="74.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+            <Circle fill="WHITE" radius="53.0" stroke="#2b5237" strokeType="INSIDE" />
+            <ImageView fitHeight="99.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../assets/logo.png" />
                </image>
