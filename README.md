@@ -16,18 +16,13 @@ A typing practice game built with JavaFX.
 ## 🛠️ For Developers
 
 ### Build the Project
-```powershell
-.\build-simple.ps1
+```bash
+mvnw clean package
 ```
 
-### Create Windows App
-```powershell
-.\create-installer.bat
-```
-
-### Create Distribution ZIP
-```powershell
-.\create-distribution-zip.ps1
+### Run Locally
+```bash
+mvnw javafx:run
 ```
 
 ## 📋 System Requirements
@@ -35,16 +30,14 @@ A typing practice game built with JavaFX.
 - 4 GB RAM
 - 200 MB disk space
 
-## 📦 Project Structure
+## 📦 Project Files
 - `src/` - Source code
-- `target/` - Build output
-- `Type-Jam-Portable/` - JAR version (requires Java 17+)
-- `installer-output/` - Windows app
-- `Type-Jam-Windows-Setup.zip` - Ready to share!
+- `pom.xml` - Maven configuration
+- `Type-Jam-Windows-Setup.zip` - **Distribution file (ready to share!)**
 
 ---
 
-**Version:** 1.0
-**Java:** 17
+**Version:** 1.0  
+**Java:** 17  
 **JavaFX:** 21.0.2
 
