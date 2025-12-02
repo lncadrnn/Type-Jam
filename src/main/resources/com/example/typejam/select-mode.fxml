@@ -32,7 +32,7 @@
             </Text>
             <StackPane prefHeight="108.0" prefWidth="800.0">
                <children>
-                  <Button fx:id="timeChallengeBtn" mnemonicParsing="false" onAction="#onTimeChallengeClick" prefHeight="80.0" prefWidth="475.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="timeChallengeBtn" mnemonicParsing="false" onAction="#onTimeChallengeClick" prefHeight="90.0" prefWidth="475.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="133.0" prefWidth="800.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Challenge Mode" wrappingWidth="473.47003698349">
@@ -60,7 +60,7 @@
             </StackPane>
             <StackPane prefHeight="89.0" prefWidth="800.0">
                <children>
-                  <Button fx:id="endlessModeBtn" mnemonicParsing="false" onAction="#onEndlessModeClick" prefHeight="80.0" prefWidth="475.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="endlessModeBtn" mnemonicParsing="false" onAction="#onEndlessModeClick" prefHeight="90.0" prefWidth="475.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="107.0" prefWidth="800.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Practice Mode" wrappingWidth="473.4700473546982">
@@ -82,6 +82,9 @@
                      </children>
                   </VBox>
                </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </StackPane>
          </children>
       </VBox>
