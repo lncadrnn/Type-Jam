@@ -54,7 +54,7 @@ public class ReadySceneController {
             // For Practice Mode, just show "PRACTICE MODE" as the title
             Text titleText = new Text("PRACTICE MODE");
             titleText.setFill(Color.web("#2b5237"));
-            titleText.setFont(Font.font("Arial", FontWeight.BOLD, 25));
+            titleText.setFont(Font.font("Arial", FontWeight.BOLD, 28));
             titleTextFlow.getChildren().add(titleText);
         } else {
             // For Challenge Mode, show "Are you ready, [NAME]?"
@@ -69,15 +69,15 @@ public class ReadySceneController {
 
             Text titlePart1 = new Text("Are you ready, ");
             titlePart1.setFill(Color.web("#2b5237"));
-            titlePart1.setFont(Font.font("Arial", FontWeight.BOLD, 25));
+            titlePart1.setFont(Font.font("Arial", FontWeight.BOLD, 28));
 
             Text titleName = new Text(playerName);
             titleName.setFill(Color.web("#2b5237"));
-            titleName.setFont(Font.font("Arial", FontWeight.BOLD, 25));
+            titleName.setFont(Font.font("Arial", FontWeight.BOLD, 28));
 
             Text titlePart2 = new Text("?");
             titlePart2.setFill(Color.web("#2b5237"));
-            titlePart2.setFont(Font.font("Arial", FontWeight.BOLD, 25));
+            titlePart2.setFont(Font.font("Arial", FontWeight.BOLD, 28));
 
             titleTextFlow.getChildren().addAll(titlePart1, titleName, titlePart2);
         }
@@ -85,23 +85,23 @@ public class ReadySceneController {
         // Create description text with colored mode and difficulty
         Text descPart1 = new Text("You have selected ");
         descPart1.setFill(Color.web("#2b5237"));
-        descPart1.setFont(Font.font("Arial", FontWeight.BOLD, 22));
+        descPart1.setFont(Font.font("Arial", FontWeight.BOLD, 25));
 
         Text descMode = new Text(mode);
         descMode.setFill(Color.web("#2b5237"));
-        descMode.setFont(Font.font("Arial", FontWeight.BOLD, 22));
+        descMode.setFont(Font.font("Arial", FontWeight.BOLD, 25));
 
         Text descPart2 = new Text(" in ");
         descPart2.setFill(Color.web("#2b5237"));
-        descPart2.setFont(Font.font("Arial", FontWeight.BOLD, 22));
+        descPart2.setFont(Font.font("Arial", FontWeight.BOLD, 25));
 
         Text descDifficulty = new Text(difficulty);
         descDifficulty.setFill(Color.web("#2b5237"));
-        descDifficulty.setFont(Font.font("Arial", FontWeight.BOLD, 22));
+        descDifficulty.setFont(Font.font("Arial", FontWeight.BOLD, 25));
 
         Text descPart3 = new Text(" LEVEL.");
         descPart3.setFill(Color.web("#2b5237"));
-        descPart3.setFont(Font.font("Arial", FontWeight.BOLD, 22));
+        descPart3.setFont(Font.font("Arial", FontWeight.BOLD, 25));
 
         descriptionTextFlow.getChildren().addAll(descPart1, descMode, descPart2, descDifficulty, descPart3);
     }
