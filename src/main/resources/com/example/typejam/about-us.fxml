@@ -12,7 +12,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
 
 <AnchorPane prefHeight="579.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.AboutUsController">
    <children>
@@ -50,62 +49,33 @@
                            </font>
                         </Text>
 
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="🎯 Our Purpose" wrappingWidth="588.0">
+                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="💡 Department of Education Vision" wrappingWidth="588.0">
                            <font>
                               <Font name="Arial Bold" size="21.0" />
                            </font>
                         </Text>
-                        <VBox spacing="5.0">
-                           <children>
-                              <Text fill="#2b5237" text="- To provide SHS students with a platform to practice and improve typing skills." textAlignment="JUSTIFY" wrappingWidth="705.0">
-                                 <font>
-                                    <Font name="Arial" size="17.5" />
-                                 </font>
-                              </Text>
-                              <Text fill="#2b5237" text="- To prepare learners for academic tasks such as research, reports, and presentations." textAlignment="JUSTIFY" wrappingWidth="705.0">
-                                 <font>
-                                    <Font name="Arial" size="17.5" />
-                                 </font>
-                              </Text>
-                              <Text fill="#2b5237" text="- To encourage discipline, accuracy, and confidence in digital literacy." textAlignment="JUSTIFY" wrappingWidth="705.0">
-                                 <font>
-                                    <Font name="Arial" size="17.5" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </VBox>
+                        <Text fill="#2b5237" text="We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation. As a learner-centered public institution, the Department of Education continuously improves itself to better serve its stakeholders." textAlignment="JUSTIFY" wrappingWidth="730.0">
+                           <font>
+                              <Font name="Arial" size="17.5" />
+                           </font>
+                        </Text>
 
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="🌟 Features" wrappingWidth="588.0">
+                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="🌟 Department of Education Mission" wrappingWidth="588.0">
                            <font>
                               <Font name="Arial Bold" size="21.0" />
                            </font>
                         </Text>
-                        <VBox spacing="5.0">
-                           <children>
-                              <Text fill="#2b5237" text="Multiple Modes: Challenge Mode and Practice Mode." wrappingWidth="705.0">
-                                 <font>
-                                    <Font name="Arial" size="17.5" />
-                                 </font>
-                              </Text>
-                              <Text fill="#2b5237" text="Difficulty Levels: Easy, medium, and hard passages to match every learner's skill level." textAlignment="JUSTIFY" wrappingWidth="705.0">
-                                 <font>
-                                    <Font name="Arial" size="17.5" />
-                                 </font>
-                              </Text>
-                              <Text fill="#2b5237" text="Leaderboards: Fair competition with filters for difficulty, so students can compare scores equally." wrappingWidth="705.0">
-                                 <font>
-                                    <Font name="Arial" size="17.5" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </VBox>
-
-                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="💡 Our Vision" wrappingWidth="588.0">
+                        <Text fill="#2b5237" text="To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where:Students learn in a child-friendly, gender-sensitive, safe, and motivating environment.Teachers facilitate learning and constantly nurture every learner.Administrators and staff ensure an enabling and supportive environment for effective learning.Families, communities, and stakeholders are actively engaged and share responsibility for developing life-long learners." textAlignment="JUSTIFY" wrappingWidth="730.0">
+                           <font>
+                              <Font name="Arial" size="17.5" />
+                           </font>
+                        </Text>
+                        <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="❤ Department of Education Core Values" wrappingWidth="588.0">
                            <font>
                               <Font name="Arial Bold" size="21.0" />
                            </font>
                         </Text>
-                        <Text fill="#2b5237" text="We aim to create a supportive environment where typing practice becomes engaging and rewarding. By combining learning with friendly competition, we hope to inspire students to continuously improve and take pride in their progress." textAlignment="JUSTIFY" wrappingWidth="730.0">
+                        <Text fill="#2b5237" text="To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where:Students learn in a child-friendly, gender-sensitive, safe, and motivating environment.Teachers facilitate learning and constantly nurture every learner.Administrators and staff ensure an enabling and supportive environment for effective learning.Families, communities, and stakeholders are actively engaged and share responsibility for developing life-long learners." textAlignment="JUSTIFY" wrappingWidth="730.0">
                            <font>
                               <Font name="Arial" size="17.5" />
                            </font>
@@ -122,36 +92,13 @@
                               <Font name="Arial" size="17.5" />
                            </font>
                         </Text>
-                        <TextFlow prefWidth="730.0">
+                        <VBox spacing="5.0">
                            <children>
-                              <Text fill="#2b5237" text="Main Developer">
-                                 <font>
-                                    <Font name="Arial Bold" size="19.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#2b5237" text=": Lance Adrian Acal">
+                              <Text fill="#2b5237" text="• Lance Adrian Acal">
                                  <font>
                                     <Font name="Arial" size="17.5" />
                                  </font>
                               </Text>
-                           </children>
-                        </TextFlow>
-                        <TextFlow prefWidth="730.0">
-                           <children>
-                              <Text fill="#2b5237" text="Developers">
-                                 <font>
-                                    <Font name="Arial Bold" size="19.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#2b5237" text=":">
-                                 <font>
-                                    <Font name="Arial" size="20.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </TextFlow>
-                        <VBox spacing="5.0">
-                           <children>
                               <Text fill="#2b5237" text="• Carlo Jose Anyayahan">
                                  <font>
                                     <Font name="Arial" size="17.5" />
