@@ -1,0 +1,199 @@
+@font-face {
+    font-family: 'Lilita One';
+    src: url('../fonts/LilitaOne-Regular.ttf');
+}
+
+.lilita-one {
+    -fx-font-family: 'Lilita One';
+}
+
+/* Filter buttons */
+.filter-button {
+    -fx-background-color: #2b5237;
+    -fx-background-radius: 20;
+    -fx-text-fill: #f6b539;
+    -fx-font-weight: bold;
+}
+.filter-button:hover {
+    -fx-background-color: #366b48;
+}
+
+/* Reset buttons */
+.reset-button {
+    -fx-background-color: #BE1F1F;
+    -fx-background-radius: 15;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.reset-button:hover {
+    -fx-background-color: #d83535;
+}
+
+/* Shared dropdown base */
+.mode-dropdown, .difficulty-dropdown {
+    -fx-background-color: rgba(255,255,255,0.95);
+    -fx-background-radius: 15;
+    -fx-border-color: #2b5237;
+    -fx-border-radius: 15;
+    -fx-border-width: 2;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 2);
+}
+
+/* Specific tweaks if needed */
+.mode-dropdown {
+    /* Mode dropdown styling (currently same) */
+}
+.difficulty-dropdown {
+    /* Difficulty dropdown could have extra spacing/padding adjustments */
+    -fx-padding: 12 10 12 10;
+}
+
+/* Toggle Switch Styling */
+.toggle-switch {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 20;
+    -fx-text-fill: #666666;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-border-color: #999999;
+    -fx-border-radius: 20;
+    -fx-border-width: 2;
+}
+
+.toggle-switch:selected {
+    -fx-background-color: #2b5237;
+    -fx-text-fill: white;
+    -fx-border-color: #2b5237;
+}
+
+.toggle-switch:hover {
+    -fx-opacity: 0.8;
+}
+
+.toggle-switch:selected:hover {
+    -fx-background-color: #366b48;
+    -fx-border-color: #366b48;
+}
+
+/* Dropdown option buttons */
+.dropdown-option {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #2b5237;
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+    -fx-text-fill: #2b5237;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+.dropdown-option:hover {
+    -fx-background-color: #f6f6f6;
+}
+.dropdown-option:pressed {
+    -fx-background-color: #e2e2e2;
+}
+
+/* Tag style for about-us section headers */
+.tag-label {
+    -fx-background-color: #e8f3ec;
+    -fx-text-fill: #2b5237;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12;
+    -fx-border-color: #2b5237;
+    -fx-border-radius: 12;
+    -fx-border-width: 1.5;
+    -fx-font-weight: bold;
+}
+
+/* Clicker-style cursors for buttons */
+.button {
+    -fx-cursor: hand;
+}
+.button:hover {
+    -fx-cursor: hand;
+}
+.button:pressed {
+    -fx-cursor: hand;
+}
+
+/* Space error marker for visualization */
+.space-error-marker {
+    -fx-background-color: #dc3545;
+    -fx-background-radius: 2;
+}
+
+/* Checkbox styling with 1px stroke and white fill */
+.check-box {
+    -fx-background-color: transparent;
+}
+
+.check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #2b5237;
+    -fx-border-width: 1px;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+/* Remove focus outline from checkboxes */
+.check-box:focused {
+    -fx-background-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.check-box:focused .box {
+    -fx-background-color: white;
+    -fx-border-color: #2b5237;
+    -fx-border-width: 1px;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+}
+
+/* Slider styling with black stroke and white fill */
+.slider {
+    -fx-background-color: transparent;
+}
+
+/* The slider track */
+.slider .track {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+/* The filled part of the slider */
+.slider .fill {
+    -fx-background-color: #2b5237;
+    -fx-background-radius: 5px;
+}
+
+/* The slider thumb (circle) */
+.slider .thumb {
+    -fx-background-color: #2b5237;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-radius: 1em;
+    -fx-border-radius: 1em;
+}
+
+/* Remove focus effect (blue outline) from slider thumb */
+.slider:focused {
+    -fx-background-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.slider:focused .thumb {
+    -fx-background-color: #2b5237;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-radius: 1em;
+    -fx-border-radius: 1em;
+}
+

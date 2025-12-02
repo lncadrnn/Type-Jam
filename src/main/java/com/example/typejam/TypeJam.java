@@ -40,6 +40,17 @@ public class TypeJam extends Application {
         // Disable maximize/minimize: use UTILITY style (close only) and prevent resizing
         stage.setResizable(false);
         stage.setTitle("Type Jam: Master the Keys");
+
+        // Set application icon
+        try {
+            URL iconUrl = TypeJam.class.getResource("/assets/Type-Jam-Logo.ico");
+            if (iconUrl != null) {
+                stage.getIcons().add(new javafx.scene.image.Image(iconUrl.toExternalForm()));
+            }
+        } catch (Exception e) {
+            System.err.println("Warning: Could not load application icon: " + e.getMessage());
+        }
+
         stage.setScene(scene);
         stage.show();
 
