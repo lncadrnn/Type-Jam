@@ -9,9 +9,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-/**
- * Utility class for displaying toast notifications with animations.
- */
 public class ToastUtil {
 
     public enum ToastType {
@@ -25,6 +22,7 @@ public class ToastUtil {
      * @param message   The message to display
      * @param type      The type of toast (SUCCESS, ERROR, INFO)
      */
+
     public static void showToast(StackPane container, String message, ToastType type) {
         // Create full-screen toast overlay
         StackPane toast = new StackPane();

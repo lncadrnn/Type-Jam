@@ -39,7 +39,7 @@ public class TypeJam extends Application {
         }
         // Disable maximize/minimize: use UTILITY style (close only) and prevent resizing
         stage.setResizable(false);
-        stage.setTitle("Typing Test Application");
+        stage.setTitle("Type Jam: Master the Keys");
         stage.setScene(scene);
         stage.show();
 

@@ -65,7 +65,7 @@ public class SettingsController {
                 if (confirmed) {
                     boolean success = LeaderboardStorage.clearAllData();
                     ToastUtil.showToast(rootStackPane,
-                            success ? "All data has been successfully reset!" : "Failed to reset data. Please try again.",
+                            success ? "Leaderboards has been successfully reset!" : "Failed to reset Leaderboards. Please try again.",
                             success ? ToastUtil.ToastType.SUCCESS : ToastUtil.ToastType.ERROR);
                 }
             });
