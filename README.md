@@ -1,65 +1,50 @@
-# Type-Jam
+# Type-Jam: Master the Keys
 
-A JavaFX typing practice game to help students build speed and accuracy. Includes two modes, difficulty levels, leaderboards, and a polished sound system.
+A typing practice game built with JavaFX.
 
-## Features
-- Endless (Practice) and Time Challenge modes
-- Easy / Medium / Hard difficulties
-- Live WPM and Accuracy calculations
-- Leaderboards saved locally
-- Background music and sound effects with volume controls
+## 🎮 For Users
 
-## Sound System
-- Background music: loops on all scenes except typing-game, result-scene, and practice-result-scene
-- Sound effects:
-  - Typing (correct): `assets/sounds/single-kb-type.wav`
-  - Error (incorrect): `assets/sounds/error-buzz.mp3`
-  - Countdown (4s remaining in Challenge Mode): `assets/sounds/countdown-timer.wav`
-  - Result celebration (with confetti): `assets/sounds/congratulatory.mp3`
-- Settings:
-  - Toggle Sound Effects and Background Music on/off
-  - Independent volume sliders for SFX and Music (0–100%)
-- Persistence: 
-  - Settings: `src/main/resources/data/typejam-settings.json`
-  - Leaderboard: `src/main/resources/data/typejam-leaderboard.json`
+**Download:** `Type-Jam-Windows-Setup.zip` (58 MB)
 
-## How Scoring Works
-- **WPM** = (Total Characters Typed / 5) / Time in Minutes
-- **Accuracy** = (Total Characters Typed / (Total Characters Typed + Total Incorrect Keystrokes)) × 100
-- **Star Rating (0–5)** uses a weighted composite score:
-  - **40% WPM Score**: Based on 0-80 WPM range (80+ WPM = 100 score)
-  - **40% Accuracy Score**: Direct percentage (0-100)
-  - **20% Characters Typed Score**: Scaled based on volume (800+ chars = 100 score)
-  - **Composite Score** determines stars:
-    - 5★ Expert: 85-100
-    - 4★ Advanced: 70-84
-    - 3★ Intermediate: 55-69
-    - 2★ Beginner: 40-54
-    - 1★ Needs Practice: 20-39
-    - 0★ Try Again: 0-19
+**How to Install:**
+1. Extract the ZIP file
+2. Open the `Type-Jam` folder
+3. Double-click `Type-Jam.exe`
 
-## Quick Start (Windows PowerShell)
+✅ No Java installation required!
+
+## 🛠️ For Developers
+
+### Build the Project
 ```powershell
-# Build the project
-.\mvnw.cmd clean package
-
-# Run the JavaFX application
-.\mvnw.cmd javafx:run
+.\build-simple.ps1
 ```
-If you use a system-wide Maven installation, replace `mvnw.cmd` with `mvn`.
 
-## Customize Practice Texts
-Edit `src/main/resources/data/typing-texts.json` to add your own sentences under `easy`, `medium`, and `hard`.
+### Create Windows App
+```powershell
+.\create-installer.bat
+```
 
-## Project Layout
-- `src/main/java` — controllers and app code
-- `src/main/resources` — FXML, images, fonts, CSS, sounds
-- `data/typing-texts.json` — customizable practice texts
-- `pom.xml` — Maven build config
+### Create Distribution ZIP
+```powershell
+.\create-distribution-zip.ps1
+```
 
-## Notes
-- JavaFX dependencies (controls, FXML, media) are managed via Maven; use the wrapper `.\mvnw.cmd` for consistent builds.
+## 📋 System Requirements
+- Windows 10 or higher
+- 4 GB RAM
+- 200 MB disk space
 
-## License / Acknowledgements
-- Built for Bacoor National High School (senior high) to support typing practice.
-- Educational use encouraged.
+## 📦 Project Structure
+- `src/` - Source code
+- `target/` - Build output
+- `Type-Jam-Portable/` - JAR version (requires Java 17+)
+- `installer-output/` - Windows app
+- `Type-Jam-Windows-Setup.zip` - Ready to share!
+
+---
+
+**Version:** 1.0
+**Java:** 17
+**JavaFX:** 21.0.2
+
