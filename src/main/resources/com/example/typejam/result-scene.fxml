@@ -29,12 +29,12 @@
             </HBox>
             <Text fx:id="congratsTitle" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Good Effort! Practice makes perfect!" textAlignment="CENTER">
                <font>
-                  <Font name="Arial Bold" size="30.0" />
+                  <Font name="Arial Bold" size="36.0" />
                </font>
             </Text>
             <Text fx:id="congratsSubtitle" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Keep it up! Each star marks a step closer to mastery." textAlignment="CENTER">
                <font>
-                  <Font name="Arial" size="20.0" />
+                  <Font name="Arial" size="24.0" />
                </font>
             </Text>
             <StackPane prefHeight="161.0" prefWidth="787.0">
@@ -46,12 +46,12 @@
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Words per Minute:" HBox.hgrow="NEVER">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font name="Arial" size="19.0" />
                                  </font>
                               </Text>
                               <Text fx:id="wpmValue" strokeType="OUTSIDE" strokeWidth="0.0" text="{WPM}" HBox.hgrow="ALWAYS">
                                  <font>
-                                    <Font name="Arial Bold" size="16.0" />
+                                    <Font name="Arial Bold" size="19.0" />
                                  </font>
                               </Text>
                            </children>
@@ -63,12 +63,12 @@
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Accuracy:" HBox.hgrow="NEVER">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font name="Arial" size="19.0" />
                                  </font>
                               </Text>
                               <Text fx:id="accuracyValue" strokeType="OUTSIDE" strokeWidth="0.0" text="{Accuracy}" HBox.hgrow="ALWAYS">
                                  <font>
-                                    <Font name="Arial Bold" size="16.0" />
+                                    <Font name="Arial Bold" size="19.0" />
                                  </font>
                               </Text>
                            </children>
@@ -77,12 +77,12 @@
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time Consumed:" HBox.hgrow="NEVER">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font name="Arial" size="19.0" />
                                  </font>
                               </Text>
                               <Text fx:id="timeValue" strokeType="OUTSIDE" strokeWidth="0.0" text="{Time Left}" HBox.hgrow="ALWAYS">
                                  <font>
-                                    <Font name="Arial Bold" size="16.0" />
+                                    <Font name="Arial Bold" size="19.0" />
                                  </font>
                               </Text>
                            </children>
@@ -91,12 +91,12 @@
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Characters Typed:" HBox.hgrow="NEVER">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font name="Arial" size="19.0" />
                                  </font>
                               </Text>
                               <Text fx:id="charactersValue" strokeType="OUTSIDE" strokeWidth="0.0" text="{Characters}" HBox.hgrow="ALWAYS">
                                  <font>
-                                    <Font name="Arial Bold" size="16.0" />
+                                    <Font name="Arial Bold" size="19.0" />
                                  </font>
                               </Text>
                            </children>
@@ -105,30 +105,30 @@
                   </VBox>
                </children>
                <VBox.margin>
-                  <Insets top="12.0" />
+                  <Insets top="25.0" />
                </VBox.margin>
             </StackPane>
          </children>
       </VBox>
       <HBox alignment="CENTER" layoutX="54.0" layoutY="422.0" prefHeight="107.0" prefWidth="787.0" spacing="100.0">
          <children>
-            <Button fx:id="mainMenuButton" mnemonicParsing="false" onAction="#onMainMenu" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;" text="MAIN MENU" textFill="#f6b539">
+            <Button fx:id="mainMenuButton" mnemonicParsing="false" onAction="#onMainMenu" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;" text="MAIN MENU" textFill="#f6b539">
                <font>
-                  <Font name="Arial Bold" size="16.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="leaderboardButton" mnemonicParsing="false" onAction="#onLeaderboard" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;">
+            <Button fx:id="leaderboardButton" mnemonicParsing="false" onAction="#onLeaderboard" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;">
                <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../assets/leaderboard.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="letsTypeButton" mnemonicParsing="false" onAction="#onLetsType" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;" text="TRY AGAIN?" textFill="#f6b539">
+            <Button fx:id="letsTypeButton" mnemonicParsing="false" onAction="#onLetsType" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;" text="TRY AGAIN?" textFill="#f6b539">
                <font>
-                  <Font name="Arial Bold" size="16.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font>
             </Button>
          </children>
