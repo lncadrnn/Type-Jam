@@ -29,7 +29,7 @@ public class TypeJam extends Application {
         }
 
         FXMLLoader fxmlLoader = new FXMLLoader(TypeJam.class.getResource("main-menu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 894, 579);
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
             // Attach global stylesheet with null check
         URL cssUrl = TypeJam.class.getResource("/styles/styles.css");
         if (cssUrl != null) {
