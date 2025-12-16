@@ -14,12 +14,12 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="579.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.TypingGameController">
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.typejam.TypingGameController">
    <children>
-      <StackPane prefHeight="579.0" prefWidth="894.0">
+      <StackPane prefHeight="700.0" prefWidth="1200.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="579.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="894.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="468.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="787.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="700.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1200.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="1000.0" />
          </children>
       </StackPane>
       <VBox alignment="TOP_CENTER" layoutX="54.0" layoutY="52.0" prefHeight="325.0" prefWidth="787.0">
