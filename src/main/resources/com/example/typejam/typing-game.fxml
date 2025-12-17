@@ -19,35 +19,35 @@
       <StackPane prefHeight="700.0" prefWidth="1200.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="700.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1200.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="1000.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="1092.0" />
          </children>
       </StackPane>
-      <VBox alignment="TOP_CENTER" layoutX="54.0" layoutY="52.0" prefHeight="325.0" prefWidth="787.0">
+      <VBox alignment="TOP_CENTER" layoutX="106.0" layoutY="60.0" prefHeight="450.0" prefWidth="987.0">
          <children>
             <Text fx:id="playerNameText" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="{Name}" textAlignment="CENTER" wrappingWidth="379.6180624961853">
                <font>
-                  <Font name="Arial Bold" size="34.0" />
+                  <Font name="Arial Bold" size="45.0" />
                </font>
                <VBox.margin>
-                  <Insets top="23.0" />
+                  <Insets top="20.0" />
                </VBox.margin>
             </Text>
             <Text fx:id="difficultyText" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="{Difficulty} Level">
                <font>
-                  <Font name="Arial" size="18.0" />
+                  <Font name="Arial" size="25.0" />
                </font>
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
             </Text>
-            <StackPane alignment="TOP_CENTER" prefHeight="224.0" prefWidth="787.0">
+            <StackPane alignment="TOP_CENTER" prefHeight="322.0" prefWidth="987.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="220.0" stroke="#2b5237" strokeType="INSIDE" strokeWidth="5.0" style="-fx-arc-width: 40; -fx-arc-height: 40;" width="703.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="320.0" stroke="#2b5237" strokeType="INSIDE" strokeWidth="5.0" style="-fx-arc-width: 40; -fx-arc-height: 40;" width="978.0">
                      <StackPane.margin>
                         <Insets />
                      </StackPane.margin>
                   </Rectangle>
-                  <TextFlow fx:id="dataTextFlow" maxWidth="670.0" prefHeight="175.0" prefWidth="670.0" style="-fx-font-size: 28px;">
+                  <TextFlow fx:id="dataTextFlow" maxWidth="962.0" prefHeight="308.0" prefWidth="947.0" style="-fx-font-size: 28px;">
                      <StackPane.margin>
                         <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
                      </StackPane.margin>
@@ -59,26 +59,26 @@
             </StackPane>
          </children>
       </VBox>
-      <StackPane layoutX="683.0" layoutY="58.0" prefHeight="94.0" prefWidth="157.0">
+      <StackPane layoutX="933.0" layoutY="49.0" prefHeight="135.0" prefWidth="212.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="57.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 40; -fx-arc-width: 40;" width="110.0" />
-            <ImageView fx:id="infinityImage" fitHeight="53.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="85.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 40; -fx-arc-width: 40;" width="162.0" />
+            <ImageView fx:id="infinityImage" fitHeight="85.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../assets/infinity.png" />
                </image>
             </ImageView>
             <Text fx:id="timeText" fill="#f6b539" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00">
                <font>
-                  <Font name="Arial Bold" size="24.0" />
+                  <Font name="Arial Bold" size="42.0" />
                </font>
             </Text>
          </children>
       </StackPane>
-      <StackPane layoutX="95.0" layoutY="377.0" prefHeight="128.0" prefWidth="705.0">
+      <StackPane layoutX="111.0" layoutY="510.0" prefHeight="99.0" prefWidth="980.0">
          <children>
-            <TextField fx:id="typingField" prefHeight="55.0" prefWidth="693.0" promptText="Start typing here..." style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #2b5237; -fx-border-width: 2;">
+            <TextField fx:id="typingField" prefHeight="89.0" prefWidth="971.0" promptText="Start typing here..." style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #2b5237; -fx-border-width: 2;">
                <font>
-                  <Font size="25.0" />
+                  <Font size="36.0" />
                </font>
                <padding>
                   <Insets left="20.0" right="20.0" />
@@ -86,11 +86,11 @@
             </TextField>
          </children>
       </StackPane>
-      <HBox alignment="CENTER" layoutX="52.0" layoutY="58.0" prefHeight="70.0" prefWidth="108.0">
+      <HBox alignment="CENTER" layoutX="52.0" layoutY="58.0" prefHeight="142.0" prefWidth="163.0">
          <children>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBack" prefHeight="77.0" prefWidth="79.0" style="-fx-background-color: white; -fx-background-radius: 100;">
                <graphic>
-                  <ImageView fitHeight="62.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="false">
+                  <ImageView fitHeight="79.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="false">
                      <image>
                         <Image url="@../../../assets/back.png" />
                      </image>
@@ -101,11 +101,11 @@
       </HBox>
 
       <!-- End Practice button -->
-      <HBox alignment="CENTER" layoutX="705.0" layoutY="503.0" prefHeight="52.0" prefWidth="140.0">
+      <HBox alignment="CENTER" layoutX="927.0" layoutY="601.0" prefHeight="87.0" prefWidth="260.0">
          <children>
-            <Button fx:id="endPracticeButton" mnemonicParsing="false" onAction="#onEndPractice" prefHeight="45.0" prefWidth="156.0" style="-fx-background-color: #BE1F1F; -fx-background-radius: 20;" text="End Practice" textFill="WHITE">
+            <Button fx:id="endPracticeButton" mnemonicParsing="false" onAction="#onEndPractice" prefHeight="56.0" prefWidth="182.0" style="-fx-background-color: #BE1F1F; -fx-background-radius: 20;" text="End Practice" textFill="WHITE">
                <font>
-                  <Font name="Arial Bold" size="16.0" />
+                  <Font name="Arial Bold" size="22.0" />
                </font>
             </Button>
          </children>

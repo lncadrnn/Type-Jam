@@ -443,7 +443,7 @@ public class TypingGameController {
 
         for (int i = 0; i < targetText.length(); i++) {
             Text charText = new Text(String.valueOf(targetText.charAt(i)));
-            charText.setFont(Font.font("Arial", 32));
+            charText.setFont(Font.font("Arial", 40));
 
             if (i < typedText.length()) {
                 if (typedText.charAt(i) == targetText.charAt(i)) {
@@ -456,7 +456,7 @@ public class TypingGameController {
                         // Expected space, user typed a non-space: show subtle red marker
                         StackPane spaceContainer = new StackPane();
                         Text spaceText = new Text(" ");
-                        spaceText.setFont(Font.font("Arial", 32));
+                        spaceText.setFont(Font.font("Arial", 40));
                         javafx.scene.layout.Region marker = new javafx.scene.layout.Region();
                         marker.getStyleClass().add("space-error-marker");
                         marker.setPrefSize(12, 4); // width / height for bar
