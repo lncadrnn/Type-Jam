@@ -20,7 +20,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 70; -fx-arc-width: 70;" width="1092.0" />
          </children>
       </StackPane>
-      <VBox alignment="TOP_CENTER" layoutX="106.0" layoutY="60.0" prefHeight="563.0" prefWidth="987.0" spacing="10.0">
+      <VBox alignment="TOP_CENTER" layoutX="106.0" layoutY="60.0" prefHeight="563.0" prefWidth="987.0" spacing="5.0">
          <children>
             <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT TIME LIMIT">
                <font>
@@ -30,9 +30,9 @@
                   <Insets top="40.0" />
                </VBox.margin>
             </Text>
-            <StackPane prefHeight="93.0" prefWidth="987.0">
+            <StackPane prefHeight="105.0" prefWidth="987.0">
                <children>
-                  <Button fx:id="oneMinuteBtn" mnemonicParsing="false" onAction="#onOneMinuteClick" prefHeight="94.0" prefWidth="459.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="oneMinuteBtn" mnemonicParsing="false" onAction="#onOneMinuteClick" prefHeight="105.0" prefWidth="475.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="800.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1 Minute" wrappingWidth="350.13670814037323">
@@ -52,12 +52,12 @@
                   </VBox>
                </children>
                <VBox.margin>
-                  <Insets top="40.0" />
+                  <Insets top="30.0" />
                </VBox.margin>
             </StackPane>
-            <StackPane prefHeight="93.0" prefWidth="987.0">
+            <StackPane prefHeight="105.0" prefWidth="987.0">
                <children>
-                  <Button fx:id="threeMinuteBtn" mnemonicParsing="false" onAction="#onThreeMinuteClick" prefHeight="94.0" prefWidth="459.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="threeMinuteBtn" mnemonicParsing="false" onAction="#onThreeMinuteClick" prefHeight="105.0" prefWidth="475.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="69.0" prefWidth="800.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3 Minutes" wrappingWidth="349.87001502513885">
@@ -80,9 +80,9 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </StackPane>
-            <StackPane prefHeight="93.0" prefWidth="9887.0">
+            <StackPane prefHeight="105.0" prefWidth="9887.0">
                <children>
-                  <Button fx:id="fiveMinuteBtn" mnemonicParsing="false" onAction="#onFiveMinuteClick" prefHeight="94.0" prefWidth="459.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <Button fx:id="fiveMinuteBtn" mnemonicParsing="false" onAction="#onFiveMinuteClick" prefHeight="105.0" prefWidth="475.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                   <VBox alignment="CENTER" mouseTransparent="true" prefHeight="80.0" prefWidth="800.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5 Minutes" wrappingWidth="350.67006385326385">
