@@ -21,22 +21,6 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 70; -fx-arc-height: 70;" width="1092.0" />
          </children>
       </StackPane>
-      <HBox alignment="CENTER" layoutX="48.0" layoutY="35.0" prefHeight="142.0" prefWidth="163.0" style="-fx-background-radius: 100;">
-         <children>
-            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="79.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
-               <graphic>
-                  <ImageView fitHeight="79.0" fitWidth="86.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/back.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="18.0" top="12.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
       <VBox alignment="TOP_CENTER" layoutX="106.0" layoutY="184.0" prefHeight="458.0" prefWidth="1000.0">
          <children>
             <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="455.0" prefWidth="983.0" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;">
@@ -144,5 +128,21 @@
             </Text>
          </children>
       </VBox>
+      <HBox alignment="CENTER" layoutX="48.0" layoutY="35.0" prefHeight="142.0" prefWidth="163.0" style="-fx-background-radius: 100;">
+         <children>
+            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="79.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
+               <graphic>
+                  <ImageView fitHeight="79.0" fitWidth="86.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="18.0" top="12.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

@@ -11,6 +11,14 @@ public class AboutUsController {
     @FXML
     private Button back_btn;
 
+    // Ensure the back button stays on top so it remains clickable after revisits
+    @FXML
+    public void initialize() {
+        if (back_btn != null) {
+            back_btn.toFront();
+        }
+    }
+
     @FXML
     private void onBack(ActionEvent event) {
         try {
