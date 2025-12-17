@@ -107,7 +107,7 @@
             </StackPane>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="44.0" layoutY="38.0" prefHeight="142.0" prefWidth="163.0" style="-fx-background-radius: 100;">
+      <HBox alignment="CENTER" layoutX="48.0" layoutY="35.0" prefHeight="142.0" prefWidth="163.0" style="-fx-background-radius: 100;">
          <children>
             <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="79.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
                <graphic>
