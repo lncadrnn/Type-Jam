@@ -18,14 +18,14 @@
       <StackPane prefHeight="700.0" prefWidth="1200.0" style="-fx-background-radius: 50;">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5237" height="700.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="1200.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 70; -fx-arc-height: 70;" width="1000.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 70; -fx-arc-height: 70;" width="1092.0" />
          </children>
       </StackPane>
-      <HBox alignment="CENTER_LEFT" layoutX="46.0" layoutY="13.0" prefHeight="145.0" prefWidth="158.0" style="-fx-background-radius: 100;">
+      <HBox alignment="CENTER" layoutX="48.0" layoutY="35.0" prefHeight="142.0" prefWidth="163.0" style="-fx-background-radius: 100;">
          <children>
-            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="74.0" prefWidth="81.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
+            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#onBack" prefHeight="79.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100;">
                <graphic>
-                  <ImageView fitHeight="61.0" fitWidth="61.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
+                  <ImageView fitHeight="79.0" fitWidth="86.0" mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
                      <image>
                         <Image url="@../../../assets/back.png" />
                      </image>
@@ -37,59 +37,59 @@
             </Button>
          </children>
       </HBox>
-      <VBox alignment="TOP_CENTER" layoutX="65.0" layoutY="144.0" prefHeight="361.0" prefWidth="774.0">
+      <VBox alignment="TOP_CENTER" layoutX="106.0" layoutY="184.0" prefHeight="458.0" prefWidth="1000.0">
          <children>
-            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="362.0" prefWidth="774.0" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;">
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="455.0" prefWidth="983.0" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;">
                <content>
-                  <VBox alignment="TOP_LEFT" prefHeight="427.0" prefWidth="744.0" spacing="14.0" style="-fx-background-color: transparent;">
+                  <VBox alignment="TOP_LEFT" prefHeight="427.0" prefWidth="984.0" spacing="14.0" style="-fx-background-color: transparent;">
                      <children>
-                        <Text fill="#2b5237" text="Welcome to the Bacoor Elementary School Senior High School Typing Game! This project was created to help our SHS students strengthen their typing speed and accuracy while enjoying a fun, interactive experience. In today's digital world, typing is more than just a skill, it's an essential tool for learning, communication, and future careers." textAlignment="JUSTIFY" wrappingWidth="728.0">
+                        <Text fill="#2b5237" text="Welcome to the Bacoor Elementary School Senior High School Typing Game! This project was created to help our SHS students strengthen their typing speed and accuracy while enjoying a fun, interactive experience. In today's digital world, typing is more than just a skill, it's an essential tool for learning, communication, and future careers." textAlignment="JUSTIFY" wrappingWidth="961.60009765625">
                            <font>
-                              <Font name="Arial" size="17.5" />
+                              <Font name="Arial" size="21.0" />
                            </font>
                         </Text>
 
                         <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="💡 Department of Education Vision" wrappingWidth="588.0">
                            <font>
-                              <Font name="Arial Bold" size="21.0" />
+                              <Font name="Arial Bold" size="26.0" />
                            </font>
                         </Text>
-                        <Text fill="#2b5237" text="We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation. As a learner-centered public institution, the Department of Education continuously improves itself to better serve its stakeholders." textAlignment="JUSTIFY" wrappingWidth="730.0">
+                        <Text fill="#2b5237" text="We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation. As a learner-centered public institution, the Department of Education continuously improves itself to better serve its stakeholders." textAlignment="JUSTIFY" wrappingWidth="962.5332641601562">
                            <font>
-                              <Font name="Arial" size="17.5" />
+                              <Font name="Arial" size="21.0" />
                            </font>
                         </Text>
 
                         <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="🌟 Department of Education Mission" wrappingWidth="588.0">
                            <font>
-                              <Font name="Arial Bold" size="21.0" />
+                              <Font name="Arial Bold" size="26.0" />
                            </font>
                         </Text>
-                        <Text fill="#2b5237" text="To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where:Students learn in a child-friendly, gender-sensitive, safe, and motivating environment.Teachers facilitate learning and constantly nurture every learner.Administrators and staff ensure an enabling and supportive environment for effective learning.Families, communities, and stakeholders are actively engaged and share responsibility for developing life-long learners." textAlignment="JUSTIFY" wrappingWidth="730.0">
+                        <Text fill="#2b5237" text="To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where:Students learn in a child-friendly, gender-sensitive, safe, and motivating environment.Teachers facilitate learning and constantly nurture every learner.Administrators and staff ensure an enabling and supportive environment for effective learning.Families, communities, and stakeholders are actively engaged and share responsibility for developing life-long learners." textAlignment="JUSTIFY" wrappingWidth="960.4000244140625">
                            <font>
-                              <Font name="Arial" size="17.5" />
+                              <Font name="Arial" size="21.0" />
                            </font>
                         </Text>
                         <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="❤ Department of Education Core Values" wrappingWidth="588.0">
                            <font>
-                              <Font name="Arial Bold" size="21.0" />
+                              <Font name="Arial Bold" size="26.0" />
                            </font>
                         </Text>
-                        <Text fill="#2b5237" text="To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where:Students learn in a child-friendly, gender-sensitive, safe, and motivating environment.Teachers facilitate learning and constantly nurture every learner.Administrators and staff ensure an enabling and supportive environment for effective learning.Families, communities, and stakeholders are actively engaged and share responsibility for developing life-long learners." textAlignment="JUSTIFY" wrappingWidth="730.0">
+                        <Text fill="#2b5237" text="To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where:Students learn in a child-friendly, gender-sensitive, safe, and motivating environment.Teachers facilitate learning and constantly nurture every learner.Administrators and staff ensure an enabling and supportive environment for effective learning.Families, communities, and stakeholders are actively engaged and share responsibility for developing life-long learners." textAlignment="JUSTIFY" wrappingWidth="961.4666137695312">
                            <font>
-                              <Font name="Arial" size="17.5" />
+                              <Font name="Arial" size="21.0" />
                            </font>
                         </Text>
 
                         <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="💻 Developers" wrappingWidth="588.0">
                            <font>
-                              <Font name="Arial Bold" size="21.0" />
+                              <Font name="Arial Bold" size="26.0" />
                            </font>
                         </Text>
 
-                        <Text fill="#2b5237" text="Developed by BSCS students of Cavite State University – Imus Campus" textAlignment="JUSTIFY" wrappingWidth="730.0">
+                        <Text fill="#2b5237" text="Developed by BSCS students of Cavite State University – Imus Campus" textAlignment="JUSTIFY" wrappingWidth="962.5332641601562">
                            <font>
-                              <Font name="Arial" size="17.5" />
+                              <Font name="Arial" size="21.0" />
                            </font>
                         </Text>
                         <VBox spacing="5.0">
@@ -130,16 +130,16 @@
             </ScrollPane>
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="133.0" layoutY="33.0" prefHeight="137.0" prefWidth="623.0">
+      <VBox alignment="CENTER" layoutX="106.0" layoutY="60.0" prefHeight="138.0" prefWidth="995.0">
          <children>
-            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="ABOUT TYPE JAM" textAlignment="CENTER" wrappingWidth="348.0">
+            <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="ABOUT TYPE JAM" textAlignment="CENTER" wrappingWidth="531.4666442871094">
                <font>
-                  <Font name="Arial Bold" size="37.0" />
+                  <Font name="Arial Bold" size="50.0" />
                </font>
             </Text>
             <Text fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Building confidence, one keystroke at a time." textAlignment="CENTER">
                <font>
-                  <Font name="Arial Bold" size="19.0" />
+                  <Font name="Arial Bold" size="26.0" />
                </font>
             </Text>
          </children>
