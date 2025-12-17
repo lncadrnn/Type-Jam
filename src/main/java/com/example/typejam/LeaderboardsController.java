@@ -62,7 +62,7 @@ public class LeaderboardsController {
     private String selectedDifficulty = null;
 
     private static final double MODE_DROPDOWN_GAP = 19; // mode directly beneath
-    private static final double DIFFICULTY_DROPDOWN_GAP = 58; // move difficulty dropdown further down
+    private static final double DIFFICULTY_DROPDOWN_GAP = 70; // move difficulty dropdown further down
 
     @FXML
     public void initialize() {
