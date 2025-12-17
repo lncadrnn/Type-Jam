@@ -155,31 +155,31 @@ public class LeaderboardsController {
     private HBox createLeaderboardEntryUI(int rank, LeaderboardStorage.LeaderboardEntry entry) {
         HBox entryBox = new HBox();
         entryBox.setAlignment(Pos.CENTER_LEFT);
-        entryBox.setPrefHeight(40.0);
+        entryBox.setPrefHeight(56.0); // increased height for bigger row content
         entryBox.setPrefWidth(600.0);
-        entryBox.setSpacing(15.0);
+        entryBox.setSpacing(20.0); // a bit more spacing between elements
         entryBox.setStyle("-fx-background-color: white; -fx-background-radius: 15; " +
                 "-fx-border-color: #2b5237; -fx-border-radius: 15; -fx-border-width: 2; " +
-                "-fx-padding: 5 15 5 15;");
+                "-fx-padding: 10 20 10 20;"); // more padding
 
         Node rankNode = createRankGraphic(rank);
 
         Text nameText = new Text(entry.getPlayerName());
         nameText.setFill(javafx.scene.paint.Color.web("#2b5237"));
-        nameText.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        nameText.setFont(Font.font("Arial", FontWeight.BOLD, 25)); // set to 25
 
         Text modeText = new Text(entry.getMode());
         modeText.setFill(javafx.scene.paint.Color.web("#2b5237"));
-        modeText.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
+        modeText.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 24)); // set to 24
 
         Text diffText = new Text(entry.getDifficulty());
         diffText.setFill(javafx.scene.paint.Color.web("#2b5237"));
-        diffText.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
+        diffText.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 24)); // set to 24
 
         String starString = getStarString(entry.getStars());
         Text starsText = new Text(starString);
         starsText.setFill(javafx.scene.paint.Color.web("#f6b539"));
-        starsText.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        starsText.setFont(Font.font("Arial", FontWeight.BOLD, 30)); // set to 30
         starsText.setTextAlignment(javafx.scene.text.TextAlignment.RIGHT);
 
         Region spacer = new Region();
@@ -194,15 +194,15 @@ public class LeaderboardsController {
         URL url = getClass().getResource("/assets/" + fileName);
         if (url != null) {
             ImageView iv = new ImageView(new Image(url.toExternalForm()));
-            iv.setFitHeight(32);
-            iv.setFitWidth(32);
+            iv.setFitHeight(48); // increased medal size
+            iv.setFitWidth(48);
             iv.setPreserveRatio(true);
             return iv;
         }
         // Fallback to text if image not found
         Text fallback = new Text(String.valueOf(rank));
         fallback.setFill(javafx.scene.paint.Color.web("#2b5237"));
-        fallback.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        fallback.setFont(Font.font("Arial", FontWeight.BOLD, 22)); // larger fallback text
         return fallback;
     }
 
