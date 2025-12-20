@@ -617,7 +617,7 @@ public class TypingGameController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("loading-screen.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) typingField.getScene().getWindow();
-        Scene scene = new Scene(root, 894, 579);
+        Scene scene = new Scene(root, 1200, 700);
         stage.setScene(scene);
         stage.show();
     }
@@ -626,7 +626,7 @@ public class TypingGameController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("result-scene.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) typingField.getScene().getWindow();
-        Scene scene = new Scene(root, 894, 579);
+        Scene scene = new Scene(root, 1200, 700);
         // Attach global stylesheet with null check
         java.net.URL cssUrl = getClass().getResource("/styles/styles.css");
         if (cssUrl != null) {
@@ -641,7 +641,7 @@ public class TypingGameController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("practice-result-scene.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) typingField.getScene().getWindow();
-        Scene scene = new Scene(root, 894, 579);
+        Scene scene = new Scene(root, 1200, 700);
         // Attach global stylesheet with null check
         java.net.URL cssUrl = getClass().getResource("/styles/styles.css");
         if (cssUrl != null) {
