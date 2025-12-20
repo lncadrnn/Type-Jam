@@ -74,9 +74,9 @@
             </Text>
          </children>
       </StackPane>
-      <StackPane layoutX="111.0" layoutY="510.0" prefHeight="99.0" prefWidth="980.0">
+      <StackPane layoutX="111.0" layoutY="510.0" prefHeight="99.0" prefWidth="978.0">
          <children>
-            <TextField fx:id="typingField" prefHeight="89.0" prefWidth="971.0" promptText="Start typing here..." style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #2b5237; -fx-border-width: 2;">
+            <TextField fx:id="typingField" prefHeight="89.0" prefWidth="1076.0" promptText="Start typing here..." style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #2b5237; -fx-border-width: 2;">
                <font>
                   <Font size="36.0" />
                </font>
