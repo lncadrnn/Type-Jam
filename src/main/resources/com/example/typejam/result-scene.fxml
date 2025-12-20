@@ -20,19 +20,19 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="1092.0" />
          </children>
       </StackPane>
-      <VBox alignment="TOP_CENTER" layoutX="54.0" layoutY="56.0" prefHeight="490.0" prefWidth="1096.0">
+      <VBox alignment="TOP_CENTER" layoutX="54.0" layoutY="97.0" prefHeight="449.0" prefWidth="1096.0">
          <children>
-            <HBox fx:id="starsContainer" alignment="CENTER" prefWidth="1096.0" spacing="40.0">
+            <HBox fx:id="starsContainer" alignment="CENTER" prefWidth="1096.0" spacing="60.0">
                <VBox.margin>
-                  <Insets bottom="30.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
-            <Text fx:id="congratsTitle" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Good Effort! Practice makes perfect!" textAlignment="CENTER">
+            <Text fx:id="congratsTitle" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Good Effort! Practice makes perfect!" textAlignment="CENTER" wrappingWidth="869.677734375">
                <font>
                   <Font name="Arial Bold" size="50.0" />
                </font>
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets top="35.0" />
                </VBox.margin>
             </Text>
             <Text fx:id="congratsSubtitle" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="Keep it up! Each star marks a step closer to mastery." textAlignment="CENTER">
@@ -108,12 +108,12 @@
                   </VBox>
                </children>
                <VBox.margin>
-                  <Insets top="25.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
             </StackPane>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="50.0" layoutY="528.0" prefHeight="123.0" prefWidth="1099.0" spacing="140.0">
+      <HBox alignment="CENTER" layoutX="50.0" layoutY="528.0" prefHeight="117.0" prefWidth="1099.0" spacing="140.0">
          <children>
             <Button fx:id="mainMenuButton" mnemonicParsing="false" onAction="#onMainMenu" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #2B5237; -fx-background-radius: 100;" text="MAIN MENU" textFill="#f6b539">
                <font>
