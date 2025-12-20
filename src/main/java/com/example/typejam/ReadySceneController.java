@@ -52,9 +52,9 @@ public class ReadySceneController {
         // Different title for Practice Mode vs Challenge Mode
         if (isPracticeMode) {
             // For Practice Mode, just show "PRACTICE MODE" as the title
-            Text titleText = new Text("PRACTICE MODE");
+            Text titleText = new Text("Get Ready to Practice!");
             titleText.setFill(Color.web("#2b5237"));
-            titleText.setFont(Font.font("Arial", FontWeight.BOLD, 28));
+            titleText.setFont(Font.font("Arial", FontWeight.BOLD, 33));
             titleTextFlow.getChildren().add(titleText);
         } else {
             // For Challenge Mode, show "Are you ready, [NAME]?"
@@ -134,4 +134,3 @@ public class ReadySceneController {
         NavigationHelper.navigateTo(event, "ready-scene.fxml", "typing-game.fxml");
     }
 }
-
