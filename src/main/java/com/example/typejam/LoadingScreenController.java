@@ -41,7 +41,7 @@ public class LoadingScreenController {
         loader.setLocation(url);
         Parent root = loader.load();
         Stage stage = (Stage) loadingSpinner.getScene().getWindow();
-        Scene scene = new Scene(root, 894, 579);
+        Scene scene = new Scene(root, 1200, 700);
         // Attach global stylesheet with null check
         java.net.URL cssUrl = getClass().getResource("/styles/styles.css");
         if (cssUrl != null) {

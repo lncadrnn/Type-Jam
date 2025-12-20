@@ -164,7 +164,12 @@ public class LeaderboardsController {
 
         Node rankNode = createRankGraphic(rank);
 
-        Text nameText = new Text(entry.getPlayerName());
+        // Truncate player name to 11 characters maximum with ellipsis
+        String displayName = entry.getPlayerName();
+        if (displayName.length() > 11) {
+            displayName = displayName.substring(0, 11) + "...";
+        }
+        Text nameText = new Text(displayName);
         nameText.setFill(javafx.scene.paint.Color.web("#2b5237"));
         nameText.setFont(Font.font("Arial", FontWeight.BOLD, 25)); // set to 25
 

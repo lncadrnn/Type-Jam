@@ -24,7 +24,7 @@
       </StackPane>
       <VBox alignment="TOP_CENTER" layoutX="106.0" layoutY="60.0" prefHeight="450.0" prefWidth="987.0">
          <children>
-            <Text fx:id="playerNameText" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="{Name}" textAlignment="CENTER" wrappingWidth="379.6180624961853">
+            <Text fx:id="playerNameText" fill="#2b5237" strokeType="OUTSIDE" strokeWidth="0.0" text="{Name}" textAlignment="CENTER" wrappingWidth="598.0180258750916">
                <font>
                   <Font name="Arial Bold" size="45.0" />
                </font>

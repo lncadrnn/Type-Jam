@@ -132,9 +132,9 @@ public class TypingGameController {
             }
         }
 
-        // Truncate player name to 30 characters maximum with ellipsis
-        if (playerName.length() > 30) {
-            playerName = playerName.substring(0, 30) + "...";
+        // Truncate player name to 11 characters maximum with ellipsis
+        if (playerName.length() > 11) {
+            playerName = playerName.substring(0, 11) + "...";
         }
 
         // Set the text values
