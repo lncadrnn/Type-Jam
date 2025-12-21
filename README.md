@@ -161,9 +161,6 @@ Type-Jam/
 ├── pom.xml                                # Maven configuration
 └── README.md                              # This file
 ```
-
-For more detailed developer instructions, see [INSTALLATION.md](INSTALLATION.md).
-
 ---
 
 ## 📋 System Requirements
