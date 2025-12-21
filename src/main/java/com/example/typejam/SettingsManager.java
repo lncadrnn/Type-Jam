@@ -58,9 +58,13 @@ public class SettingsManager {
             System.err.println("Could not locate resources/data directory: " + e.getMessage());
         }
 
-        // Fallback: use project structure path (for development)
-        String projectRoot = System.getProperty("user.dir");
-        Path dataDir = Paths.get(projectRoot, "src", "main", "resources", "data");
+        // Fallback: use per-user AppData path to avoid writing to desktop/project directories
+        String appData = System.getenv("APPDATA"); // e.g., C:\Users\<user>\AppData\Roaming
+        if (appData == null || appData.isEmpty()) {
+            // If APPDATA is not available, fallback to user.home
+            appData = System.getProperty("user.home");
+        }
+        Path dataDir = Paths.get(appData, "Type-Jam", "data");
 
         // Create data directory if it doesn't exist
         File dataDirFile = dataDir.toFile();
@@ -69,7 +73,7 @@ public class SettingsManager {
         }
 
         File settingsFile = dataDir.resolve("typejam-settings.json").toFile();
-        System.out.println("✓ SETTINGS STORAGE LOCATION (FALLBACK): " + settingsFile.getAbsolutePath());
+        System.out.println("✓ SETTINGS STORAGE LOCATION (APPDATA): " + settingsFile.getAbsolutePath());
         return settingsFile;
     }
 

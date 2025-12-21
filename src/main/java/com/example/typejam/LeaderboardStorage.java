@@ -36,12 +36,9 @@ public final class LeaderboardStorage {
             java.net.URL resourceUrl = LeaderboardStorage.class.getResource("/data/typing-texts.json");
             if (resourceUrl != null) {
                 String resourcePath = resourceUrl.getPath();
-                System.out.println("DEBUG: Found resource URL: " + resourceUrl);
-                System.out.println("DEBUG: Resource path: " + resourcePath);
                 // Handle Windows paths (remove leading slash if present)
                 if (resourcePath.startsWith("/") && resourcePath.contains(":")) {
                     resourcePath = resourcePath.substring(1);
-                    System.out.println("DEBUG: Cleaned Windows path: " + resourcePath);
                 }
                 Path dataDir = Paths.get(resourcePath).getParent();
                 if (dataDir != null && dataDir.toFile().exists()) {
@@ -54,20 +51,22 @@ public final class LeaderboardStorage {
             System.err.println("Could not locate resources/data directory: " + e.getMessage());
         }
 
-        // Fallback: use project structure path (for development)
-        String projectRoot = System.getProperty("user.dir");
-        Path dataDir = Paths.get(projectRoot, "src", "main", "resources", "data");
-        System.out.println("DEBUG: Using fallback path - user.dir: " + projectRoot);
+        // Fallback: use per-user AppData path to avoid writing to desktop/project directories
+        String appData = System.getenv("APPDATA"); // e.g., C:\Users\<user>\AppData\Roaming
+        if (appData == null || appData.isEmpty()) {
+            // If APPDATA is not available, fallback to user.home
+            appData = System.getProperty("user.home");
+        }
+        Path dataDir = Paths.get(appData, "Type-Jam", "data");
 
         // Create data directory if it doesn't exist
         File dataDirFile = dataDir.toFile();
         if (!dataDirFile.exists()) {
             dataDirFile.mkdirs();
-            System.out.println("DEBUG: Created data directory: " + dataDirFile.getAbsolutePath());
         }
 
         File leaderboardFile = dataDir.resolve("typejam-leaderboard.json").toFile();
-        System.out.println("✓ LEADERBOARD STORAGE LOCATION (FALLBACK): " + leaderboardFile.getAbsolutePath());
+        System.out.println("✓ LEADERBOARD STORAGE LOCATION (APPDATA): " + leaderboardFile.getAbsolutePath());
         return leaderboardFile;
     }
 
