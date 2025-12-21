@@ -171,7 +171,14 @@ For more detailed developer instructions, see [INSTALLATION.md](INSTALLATION.md)
 - **OS**: Windows 10 or higher (macOS/Linux via source)
 - **RAM**: 4 GB minimum
 - **Storage**: 200 MB disk space
-- **Display**: 1024x768 or higher resolution
+
+---
+
+## ⬇️ Download
+
+Download the Windows executable (zipped) for Type Jam from Google Drive:
+
+🔗 [Type Jam - Windows EXE (Zipped)](https://drive.google.com/drive/folders/1e14NgyUluS3bvRHoUus2xPAgtqBwnDCo?usp=sharing)
 
 ---
 
