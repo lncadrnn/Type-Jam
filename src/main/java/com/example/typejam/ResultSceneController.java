@@ -142,7 +142,7 @@ public class ResultSceneController {
         // Create confetti pane overlay
         confettiPane = new Pane();
         confettiPane.setMouseTransparent(true);
-        confettiPane.setPrefSize(760, 495);
+        confettiPane.setPrefSize(1200, 700);
 
         // Add confetti pane on top of root pane
         if (rootPane != null) {
@@ -162,9 +162,9 @@ public class ResultSceneController {
             Color.web("#C7CEEA")  // Purple
         };
 
-        // Create confetti particles
-        for (int i = 0; i < 150; i++) {
-            double x = random.nextDouble() * 760;
+        // Create confetti particles (more particles for larger screen)
+        for (int i = 0; i < 350; i++) {
+            double x = random.nextDouble() * 1200;
             double y = -random.nextDouble() * 200 - 50; // Start above screen
             Circle circle = new Circle(random.nextDouble() * 4 + 2); // Random size 2-6
             circle.setFill(colors[random.nextInt(colors.length)]);
@@ -254,7 +254,7 @@ public class ResultSceneController {
             updatePosition();
 
             // Return true if still visible
-            return y < 550; // Keep animating until below screen
+            return y < 700; // Keep animating until below screen
         }
 
         private void updatePosition() {
